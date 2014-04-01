@@ -1,0 +1,11 @@
+body {
+    background-image: url("../images/fond_ecran_badminton.jpg");
+	background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page{
+	opacity: 0.91;
+}

@@ -1,0 +1,61 @@
+#entete {
+	width : 1250px;
+	margin-left : auto;
+	margin-right : auto;	
+}
+
+
+#menu {
+	 display: none; 
+	 position : absloute;
+	 float : left;
+}
+
+#menu ul {
+		float : left;
+}
+
+#menu ul ul {
+			display: none; 
+			position: absolute; 
+			margin:0px; 
+			padding: 0px; 
+			border: 1px solid #B0B0B0;
+}
+
+#menu li {
+		list-style-type: none; 
+		position: relative; 
+		width: 200px; 
+		color:#ffd;
+		background:#333;
+		padding: 2px; 
+		margin: 0px;
+		font-size:20px;
+		font-family: 'Gentium Basic', 'Times New Roman', Times, serif;
+}
+#menu li:hover, 
+#menu li.sfhover {
+				background-color: #ffd;
+				color:#333;
+}
+
+
+#menu li a {
+		text-decoration:none;
+}
+
+
+#menu li:hover ul.niveau2,  
+#menu li.sfhover ul.niveau2, 
+#menu li li.sfhover {display: block}
+
+
+#connexion {
+	float : right;
+}
+
+#utilisateur {
+	float : right;
+	display: none; 
+}
