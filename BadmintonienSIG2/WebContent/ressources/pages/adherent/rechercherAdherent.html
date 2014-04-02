@@ -9,10 +9,8 @@
     <meta name="description" content="badminton">
     <meta name="author" content="SIG²">
 
-    <title>Création/Modification des adhérents</title>
 	<link rel="stylesheet" href="../../css/global.css">
 	<link rel="stylesheet" href="../../dist/bootstrap/3.0.0/css/bootstrap.css">
-    <link rel="stylesheet" href="http://getbootstrap.com/examples/carousel/carousel.css">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -28,7 +26,7 @@
 ================================================== -->
   <body>
     <div id="entete">
-  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div id="menu">
 		<ul class="nav nav-pills navbar-left">
 		   <li><a href="../index.html">Accueil</a></li>
@@ -37,8 +35,8 @@
 			      Adhérents <span class="caret"></span>
 		    	</a>
                 <ul class="dropdown-menu">
-                  <li class="active"><a href="#">Créer un adhérent</a></li>
-                  <li><a href="#">Modifier un adhérent</a></li>
+                  <li class="active"><a href="creerModifierAdherent.html">Créer un adhérent</a></li>
+                  <li><a href="creerModifierAdherent.html">Modifier un adhérent</a></li>
                   <li><a href="#">Supprimer un adhérent</a></li>
                   <li><a href="#">Mettre à jour les pièces reçues de l'adhérent</a></li>
                   <li><a href="#">Renseigner les indisponibilités</a></li>
@@ -51,7 +49,7 @@
 			      Tournois <span class="caret"></span>
 		    	</a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Renseigner les participants</a></li>
+                  <li><a href="../tournoi/renseignerParticipant.html">Renseigner les participants</a></li>
                   <li><a href="#">Générer les poules</a></li>
                   <li><a href="#">Renseigner les paramètres du tournoi</a></li>
                   <li><a href="#">Générer les tableaux à élimination</a></li>
@@ -97,120 +95,112 @@
   </div>
 
 <div class="container page">
-	<div class="row">
-		<div class="well col-lg-12">
-			<div class="col-lg-5">
-				<form class="form-horizontal">
-				  <fieldset>
-				    <legend>Création / Modification d'un adhérent</legend>
-				    <div class="form-group">
-				      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-				      <div class="col-lg-10">
-				        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-				      </div>
-				    </div>
-				    <div class="form-group">
-				      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-				      <div class="col-lg-10">
-				        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-				        <div class="checkbox">
-				          <label>
-				            <input type="checkbox"> Checkbox
-				          </label>
-				        </div>
-				      </div>
-				    </div>
-				    <div class="form-group">
-				      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-				      <div class="col-lg-10">
-				        <textarea class="form-control" rows="3" id="textArea"></textarea>
-				        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-				      </div>
-				    </div>
-				    <div class="form-group">
-				      <label class="col-lg-2 control-label">Radios</label>
-				      <div class="col-lg-10">
-				        <div class="radio">
-				          <label>
-				            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-				            Option one is this
-				          </label>
-				        </div>
-				        <div class="radio">
-				          <label>
-				            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-				            Option two can be something else
-				          </label>
-				        </div>
-				      </div>
-				    </div>
-				    <div class="form-group">
-				      <label for="select" class="col-lg-2 control-label">Selects</label>
-				      <div class="col-lg-10">
-				        <select class="form-control" id="select">
-				          <option>1</option>
-				          <option>2</option>
-				          <option>3</option>
-				          <option>4</option>
-				          <option>5</option>
-				        </select>
-				        <br>
-				        <select multiple="" class="form-control">
-				          <option>1</option>
-				          <option>2</option>
-				          <option>3</option>
-				          <option>4</option>
-				          <option>5</option>
-				        </select>
-				      </div>
-				    </div>
-				    <div class="form-group">
-				      <div class="col-lg-10 col-lg-offset-2">
-				        <button class="btn btn-default">Cancel</button>
-				        <button type="submit" class="btn btn-primary">Submit</button>
-				      </div>
-				    </div>
-				  </fieldset>
-				</form>
-			</div>
-			<div class="col-lg-7">
-				<div class="panel panel-default">
+	<div class="row well">
+		<div class="col-sm-12">
+		  	<fieldset>
+			    <legend>Recherche d'un adhérent</legend>
+		    </fieldset>
+	    	<div class="col-sm-12">
+		    	<div class="panel panel-default">
 				  <!-- Default panel contents -->
-				  <div class="panel-heading">Pièces administratives</div>
+				  <div class="panel-heading">Critères de recherche</div>
 				  <div class="panel-body">
-				    <p>gestion des pièces....</p>
-				  </div>
-				</div>
-				<div class="panel panel-default">
-				  <!-- Default panel contents -->
-				  <div class="panel-heading">Indisponibilités</div>
-				  <div class="panel-body">
-				    <p>Calendar</p>
+				  	<form action="" class="form-horizontal">
+				  		<div class="form-group">
+					      <label for="inputFCD" class="col-sm-2 control-label">FCD</label>
+					        <div class="input-group input-group-sm col-sm-4">
+							  <input type="text" class="form-control" id="inputFCD" placeholder="Licence FCD">
+							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+							</div>
+					      <label for="inputFFBa" class="col-sm-1 control-label">FFBa</label>
+					       <div class="input-group input-group-sm col-sm-4">
+							  <input type="text" class="form-control" id="inputFFBa" placeholder="Licence FFBa">
+							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+							</div>
+					    </div>
+					    <div class="form-group">
+					      <label for="inputNom" class="col-sm-2 control-label">Nom</label>
+					      <div class="input-group input-group-sm col-sm-4">
+							  <input type="text" class="form-control" id="inputNom" placeholder="Nom">
+							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+							</div>
+					    </div>
+					    <div class="form-group">
+					      <label for="inputPrenom" class="col-sm-2 control-label">Prénom</label>
+					       <div class="input-group input-group-sm col-sm-4">
+							  <input type="text" class="form-control" id="inputPrenom" placeholder="Prenom">
+							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+							</div>
+					    </div>
+					   	<div class="form-group">
+					      <label class="col-sm-2 control-label">Sexe</label>
+					      <div class="col-sm-5">
+					        <div class="radio-inline">
+					          <label>
+					            <input type="radio" name="sexe" id="sexeF" value="femme">
+					            Femme
+					          </label>
+					        </div>
+					        <div class="radio-inline">
+					          <label>
+					            <input type="radio" name="sexe" id="sexeH" value="homme">
+					          	Homme
+					          </label>
+					        </div>
+					        <div class="radio-inline">
+					          <label>
+					            <input type="radio" name="sexe" id="sexeT" value="tous" checked="checked">
+					          	Tous
+					          </label>
+					        </div>
+					      </div>
+					    </div>
+					   	<div class="form-group">
+					      <label class="col-sm-2 control-label" for="inputNaissance">Année de naissance</label>
+					      <div class="input-group input-group-sm col-sm-3">
+							  <input type="text" class="form-control" id="inputNaissance" placeholder="année" maxlength="4" >
+							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+						  </div>
+						</div>
+						<div class="form-group">
+						<label for="selectClub" class="col-sm-2 control-label">Club</label>
+						<div class="col-sm-6">
+							<select class="form-control" id="selectClub">
+							     <option>-</option>
+							     <option>CSA ETRS Cesson Sévigné</option>
+							     <option>CSA...</option>
+							     <option>CSA Brest</option>
+							     <option>CSA Autres</option>
+							     <option>...</option>
+							</select>
+						</div>				    
+				    </div>
+				  	</form>
 				  </div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-    <p>...</p>
-  </div>
- 
-  <!-- Table -->
-   
-    ...
-  <table class="table"></table>
-</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type='text/javascript' src="../../dist/jQuery/2.1.0/js/jquery.js" ></script>
-	<script src="../../dist/bootstrap/3.0.0/js/bootstrap.js""></script>
+	<script src="../../dist/bootstrap/3.0.0/js/bootstrap.js"></script>
 	<script src="../../js/gestionMenu.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
+    <script type="text/javascript">
+  /*  $(document).ready(function() {
+	    $('#sandbox-container .input-daterange').datepicker({
+		    todayBtn: "linked",
+		    language: "fr",
+		    orientation: "top auto",
+		    autoclose: true,
+		    todayHighlight: true
+		});
+    });*/
+
+    </script>
   </body>
 </html>

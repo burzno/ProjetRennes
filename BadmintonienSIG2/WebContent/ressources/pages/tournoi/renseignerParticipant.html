@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+	<title>Le Badmintonien Cessonnais</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="badminton">
+    <meta name="author" content="SIG²">
+
+	<link rel="stylesheet" href="../../css/global.css">
+	<link rel="stylesheet" href="../../dist/bootstrap/3.0.0/css/bootstrap.css">
+<style type="text/css">
+	@font-size-base:20px;
+</style>
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div id="entete">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div id="menu">
+		<ul class="nav nav-pills navbar-left">
+		   <li><a href="../index.html">Accueil</a></li>
+           <li class="dropdown connect">
+	            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			      Adhérents <span class="caret"></span>
+		    	</a>
+                <ul class="dropdown-menu">
+                  <li class="active"><a href="../adherent/creerModifierAdherent.html">Créer un adhérent</a></li>
+                  <li><a href="../adherent/creerModifierAdherent.html">Modifier un adhérent</a></li>
+                  <li><a href="#">Supprimer un adhérent</a></li>
+                  <li><a href="#">Mettre à jour les pièces reçues de l'adhérent</a></li>
+                  <li><a href="#">Renseigner les indisponibilités</a></li>
+				  <li><a href="#">Imprimer les pièces fournies</a></li>
+				  <li><a href="../adherent/rechercherAdherent.html">Rechercher un adhérent</a></li>
+				</ul>
+			</li>
+           <li class="dropdown connect">
+	            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			      Tournois <span class="caret"></span>
+		    	</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Renseigner les participants</a></li>
+                  <li><a href="#">Générer les poules</a></li>
+                  <li><a href="#">Renseigner les paramètres du tournoi</a></li>
+                  <li><a href="#">Générer les tableaux à élimination</a></li>
+                  <li><a href="#">Saisir les résultats</a></li>
+				  <li><a href="#">Editer la programmation</a></li>
+				  <li><a href="#">Envoyer les résultats</a></li>
+				  <li><a href="#">Editer les feuilles de match</a></li>
+				</ul>
+		   </li>
+           <li class="dropdown connect">
+	            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			     Championnat <span class="caret"></span>
+		    	</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Créer une équipe</a></li>
+                  <li><a href="#">Rechercher des adhérents</a></li>
+                  <li><a href="#">Etablir une convocation</a></li>
+				</ul>
+			</li>
+           <li class="dropdown connect">
+	            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			      Gérer le contenu du site <span class="caret"></span>
+		    	</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Mettre en ligne une fiche d'entrainement</a></li>
+                  <li><a href="#">Mettre en ligne une vidéo</a></li>
+                  <li><a href="#">Mettre en ligne une actualité</a></li>
+				</ul>
+			</li>
+        </ul>
+		 <form id="connexion" method="get" class="navbar-form navbar-right" role="connect">
+				<div class="form-group">
+					<input type="text" name="login" id="login" placeholder="adresse@mail.com" class="form-control">
+				</div>
+				<div class="form-group">
+					<input type="password" name="mdp" id="mdp" placeholder="Mot de passe" class="form-control">
+				</div>
+				<input type="button" name="connexion_btn" id="connexion_btn" value="Se connecter" class="btn btn-success">
+	     </form>			
+        <div class="navbar-text navbar-right" id="utilisateur"><span></span>&nbsp;&nbsp;<input type="button" id="deconnexion_btn" value="Se déconnecter" class="btn btn-danger"></div>
+	</div>
+	</nav>
+  </div>
+
+<div class="container page">
+	<div class="row well">
+		<div class="col-sm-12">
+		  	<fieldset>
+			    <legend>Renseigner des participant</legend>
+		    </fieldset>
+	    	<div class="col-sm-8">
+		    	<div class="panel panel-default">
+				  <!-- Default panel contents -->
+				  <div class="panel-heading">Critères de recherche</div>
+				  <div class="panel-body">
+				  	<form action="" class="form-horizontal">
+				  		<div class="form-group">
+					      <label for="inputFCD" class="col-sm-2 control-label">FCD</label>
+					        <div class="input-group input-group-sm col-sm-4">
+							  <input type="text" class="form-control" id="inputFCD" placeholder="Licence FCD">
+							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+							</div>
+					    </div>
+					    <div class="form-group">
+					      <label for="inputNom" class="col-sm-2 control-label">Nom</label>
+					      <div class="input-group input-group-sm col-sm-4">
+							  <input type="text" class="form-control" id="inputNom" placeholder="Nom">
+							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+							</div>
+					      <label for="inputPrenom" class="col-sm-2 control-label">Prénom</label>
+					       <div class="input-group input-group-sm col-sm-4">
+							  <input type="text" class="form-control" id="inputPrenom" placeholder="Prenom">
+							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+							</div>
+					    </div>
+					   	<div class="form-group">
+					      <label class="col-sm-2 control-label">Sexe</label>
+					      <div class="col-sm-6">
+					        <div class="radio-inline">
+					          <label>
+					            <input type="radio" name="sexe" id="sexeF" value="femme">
+					            Femme
+					          </label>
+					        </div>
+					        <div class="radio-inline">
+					          <label>
+					            <input type="radio" name="sexe" id="sexeH" value="homme">
+					          	Homme
+					          </label>
+					        </div>
+					        <div class="radio-inline">
+					          <label>
+					            <input type="radio" name="sexe" id="sexeT" value="tous" checked="checked">
+					          	Tous
+					          </label>
+					        </div>
+					      </div>
+					    </div>
+						<div class="form-group">
+							<label for="selectClub" class="col-sm-2 control-label">Club</label>
+							<div class="col-sm-6">
+								<select class="form-control input-sm" id="selectClub">
+								     <option>-</option>
+								     <option>CSA ETRS Cesson Sévigné</option>
+								     <option>CSA...</option>
+								     <option>CSA Brest</option>
+								     <option>CSA Autres</option>
+								     <option>...</option>
+								</select>
+							</div>				    
+					    </div>
+						<div class="form-group">
+							<label for="selectClassementMin" class="col-sm-3 control-label">Classement min</label>
+							<div class="col-sm-2">
+								<select class="form-control input-sm" id="selectClassementMin">
+								     <option>-</option>
+								     <option>A1</option>
+								     <option>A2</option>
+								     <option>A3</option>
+								     <option>A4</option>
+								     <option>B1</option>
+								     <option>B2</option>
+								     <option>B3</option>
+								     <option>B4</option>
+								     <option>C1</option>
+								     <option>C2</option>
+								     <option>C3</option>
+								     <option>C4</option>
+								     <option>D1</option>
+								     <option>D2</option>
+								     <option>D3</option>
+								     <option>D4</option>
+								</select>
+							</div>				    
+							<label for="selectClassementMax" class="col-sm-1 control-label">max</label>
+							<div class="col-sm-2">
+								<select class="form-control input-sm" id="selectClassementMax">
+								     <option>-</option>
+								     <option>A1</option>
+								     <option>A2</option>
+								     <option>A3</option>
+								     <option>A4</option>
+								     <option>B1</option>
+								     <option>B2</option>
+								     <option>B3</option>
+								     <option>B4</option>
+								     <option>C1</option>
+								     <option>C2</option>
+								     <option>C3</option>
+								     <option>C4</option>
+								     <option>D1</option>
+								     <option>D2</option>
+								     <option>D3</option>
+								     <option>D4</option>
+								</select>
+							</div>				    
+					    </div>
+						<div class="form-group">
+							<label for="selectCategorie" class="col-sm-3 control-label">Catégorie</label>
+							<div class="col-sm-5">
+								<select class="form-control input-sm" id="selectCategorie">
+								     <option>-</option>
+								     <option>Sénior</option>
+								     <option>Vétéran 1</option>
+								     <option>Vétéran 2</option>
+								     <option>Vétéran 3</option>
+								     <option>Vétéran 4</option>
+								</select>
+							</div>				    
+					    </div>
+				  	</form>
+				  </div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+		    	<div class="panel panel-default">
+				  <!-- Default panel contents -->
+				  <div class="panel-heading">Tournoi</div>
+				  <div class="panel-body">
+				  <div><span class="col-sm-6">Date</span><span id="tournoiDate" class="col-sm-6 text-right text-info">12/04/2014</span></div>
+				  <div><span class="col-sm-5">Lieu</span><span id="tournoiLieu" class="col-sm-7 text-right text-info">ETRS Rennes</span></div>
+				  <div><span class="col-sm-10">Nb Terrains disponibles</span><span id="tournoiTerrain" class="col-sm-2 text-right text-info">5</span></div>
+				  <div><span class="col-sm-8">Durée d'un match</span><span id="tournoiMatch" class="col-sm-4 text-right text-info">25 min</span></div>
+				  <div><span class="col-sm-8">Tps de récupération</span><span id="tournoiRecup" class="col-sm-4 text-right text-info">20 min</span></div>
+				  </div>
+			   </div>
+		   </div>
+		</div>
+	</div>
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type='text/javascript' src="../../dist/jQuery/2.1.0/js/jquery.js" ></script>
+	<script src="../../dist/bootstrap/3.0.0/js/bootstrap.js"></script>
+	<script src="../../js/gestionMenu.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+    <script type="text/javascript">
+  /*  $(document).ready(function() {
+	    $('#sandbox-container .input-daterange').datepicker({
+		    todayBtn: "linked",
+		    language: "fr",
+		    orientation: "top auto",
+		    autoclose: true,
+		    todayHighlight: true
+		});
+    });*/
+
+    </script>
+  </body>
+</html>
