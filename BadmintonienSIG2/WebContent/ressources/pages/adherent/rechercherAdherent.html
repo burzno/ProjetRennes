@@ -21,6 +21,51 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<style type="text/css">
+/* pager wrapper, div */
+.tablesorter-pager {
+	padding: 5px;
+}
+/* pager wrapper, in thead/tfoot */
+td.tablesorter-pager {
+	background-color: #e6eeee;
+	margin: 0; /* needed for bootstrap .pager gets a 18px bottom margin */
+}
+/* pager navigation arrows */
+.tablesorter-pager img {
+	vertical-align: middle;
+	margin-right: 2px;
+	cursor: pointer;
+}
+
+/* pager output text */
+.tablesorter-pager .pagedisplay {
+	padding: 0 5px 0 5px;
+	width: auto;
+	white-space: nowrap;
+	text-align: center;
+}
+
+/* pager element reset (needed for bootstrap) */
+.tablesorter-pager select {
+	margin: 0;
+	padding: 0;
+}
+
+/*** css used when "updateArrows" option is true ***/
+/* the pager itself gets a disabled class when the number of rows is less than the size */
+.tablesorter-pager.disabled {
+	display: none;
+}
+/* hide or fade out pager arrows when the first or last row is visible */
+.tablesorter-pager .disabled {
+	/* visibility: hidden */
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	cursor: default;
+}
+
+</style>
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -80,15 +125,6 @@
 				</ul>
 			</li>
         </ul>
-		 <form id="connexion" method="get" class="navbar-form navbar-right" role="connect">
-				<div class="form-group">
-					<input type="text" name="login" id="login" placeholder="adresse@mail.com" class="form-control">
-				</div>
-				<div class="form-group">
-					<input type="password" name="mdp" id="mdp" placeholder="Mot de passe" class="form-control">
-				</div>
-				<input type="button" name="connexion_btn" id="connexion_btn" value="Se connecter" class="btn btn-success">
-	     </form>			
         <div class="navbar-text navbar-right" id="utilisateur"><span></span>&nbsp;&nbsp;<input type="button" id="deconnexion_btn" value="Se déconnecter" class="btn btn-danger"></div>
 	</div>
 	</nav>
@@ -109,76 +145,152 @@
 				  		<div class="form-group">
 					      <label for="inputFCD" class="col-sm-2 control-label">FCD</label>
 					        <div class="input-group input-group-sm col-sm-4">
-							  <input type="text" class="form-control" id="inputFCD" placeholder="Licence FCD">
+							  <input type="text" class="form-control search" id="inputFCD" placeholder="Licence FCD" data-column="0">
 							  <span class="input-group-addon glyphicon glyphicon-search"></span>
 							</div>
 					      <label for="inputFFBa" class="col-sm-1 control-label">FFBa</label>
 					       <div class="input-group input-group-sm col-sm-4">
-							  <input type="text" class="form-control" id="inputFFBa" placeholder="Licence FFBa">
+							  <input type="text" class="form-control search" id="inputFFBa" placeholder="Licence FFBa"  data-column="1">
 							  <span class="input-group-addon glyphicon glyphicon-search"></span>
 							</div>
 					    </div>
 					    <div class="form-group">
 					      <label for="inputNom" class="col-sm-2 control-label">Nom</label>
 					      <div class="input-group input-group-sm col-sm-4">
-							  <input type="text" class="form-control" id="inputNom" placeholder="Nom">
+							  <input type="text" class="form-control search" id="inputNom" placeholder="Nom" data-column="2">
+								</select>
 							  <span class="input-group-addon glyphicon glyphicon-search"></span>
 							</div>
-					    </div>
-					    <div class="form-group">
-					      <label for="inputPrenom" class="col-sm-2 control-label">Prénom</label>
+					      <label for="inputPrenom" class="col-sm-1 control-label">Prénom</label>
 					       <div class="input-group input-group-sm col-sm-4">
-							  <input type="text" class="form-control" id="inputPrenom" placeholder="Prenom">
+							  <input type="text" class="form-control search" id="inputPrenom" placeholder="Prenom"  data-column="3">
 							  <span class="input-group-addon glyphicon glyphicon-search"></span>
 							</div>
 					    </div>
 					   	<div class="form-group">
-					      <label class="col-sm-2 control-label">Sexe</label>
-					      <div class="col-sm-5">
-					        <div class="radio-inline">
-					          <label>
-					            <input type="radio" name="sexe" id="sexeF" value="femme">
-					            Femme
-					          </label>
-					        </div>
-					        <div class="radio-inline">
-					          <label>
-					            <input type="radio" name="sexe" id="sexeH" value="homme">
-					          	Homme
-					          </label>
-					        </div>
-					        <div class="radio-inline">
-					          <label>
-					            <input type="radio" name="sexe" id="sexeT" value="tous" checked="checked">
-					          	Tous
-					          </label>
-					        </div>
+					      <label class="col-sm-2 control-label" for="selectSexe">Sexe</label>
+					      <div class="col-sm-4">
+								<select class="form-control input-sm search" id="selectSexe" data-column="4">
+								</select>
 					      </div>
-					    </div>
-					   	<div class="form-group">
 					      <label class="col-sm-2 control-label" for="inputNaissance">Année de naissance</label>
 					      <div class="input-group input-group-sm col-sm-3">
-							  <input type="text" class="form-control" id="inputNaissance" placeholder="année" maxlength="4" >
+							  <input type="text" class="form-control search" id="inputNaissance" placeholder="année" data-column="5">
 							  <span class="input-group-addon glyphicon glyphicon-search"></span>
 						  </div>
 						</div>
 						<div class="form-group">
-						<label for="selectClub" class="col-sm-2 control-label">Club</label>
-						<div class="col-sm-6">
-							<select class="form-control" id="selectClub">
-							     <option>-</option>
-							     <option>CSA ETRS Cesson Sévigné</option>
-							     <option>CSA...</option>
-							     <option>CSA Brest</option>
-							     <option>CSA Autres</option>
-							     <option>...</option>
-							</select>
-						</div>				    
-				    </div>
+							<label for="selectClub" class="col-sm-2 control-label">Club</label>
+							<div class="col-sm-6">
+								<select class="form-control search" id="selectClub" data-column="6">
+								</select>
+							</div>		
+							<div class="input-group input-group-sm col-sm-2  col-sm-offset-1">
+								<input type="button" value="Effacer les filtres" class="btn-info reset">
+							</div>		    
+				    	</div>
 				  	</form>
 				  </div>
 				</div>
 			</div>
+		</div>
+		<div class="col-sm-12">
+			<table id="sortTable" class="panel panel-default table-hover">
+		        <thead>
+		          <tr>
+		            <th>Licence FCD</th>
+		            <th>Licence FFBa</th>
+		            <th>Nom</th>
+		            <th>Prenom</th>
+		            <th class="filter-select">Sexe</th>
+		            <th>Année de naissance</th>
+		            <th class="filter-select">Club</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+			       	 <tr>
+			            <td>123</td>
+			            <td></td>
+			            <td>Denet</td>
+			            <td>Charles</td>
+			            <td>Homme</td>
+			            <td>1962</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+			       	 <tr>
+			            <td>1265843</td>
+			            <td></td>
+			            <td>Dendfget</td>
+			            <td>Chqgarles</td>
+			            <td>Homme</td>
+			            <td>1959</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+			       	 <tr>
+			            <td>12654653</td>
+			            <td></td>
+			            <td>Deqsfnet</td>
+			            <td>Chqgsdharles</td>
+			            <td>Homme</td>
+			            <td>1960</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+			       	 <tr>
+			            <td>12654653</td>
+			            <td></td>
+			            <td>Deqsfnet</td>
+			            <td>Chqgsdharles</td>
+			            <td>Homme</td>
+			            <td>1960</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+			       	 <tr>
+			            <td>12654653</td>
+			            <td></td>
+			            <td>Deqsfnet</td>
+			            <td>Chqgsdharles</td>
+			            <td>Homme</td>
+			            <td>1960</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+			       	 <tr>
+			            <td>12654653</td>
+			            <td></td>
+			            <td>Deqsfnet</td>
+			            <td>Chqgsdharles</td>
+			            <td>Homme</td>
+			            <td>1960</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+			       	 <tr>
+			            <td>12654653</td>
+			            <td></td>
+			            <td>Deqsfnet</td>
+			            <td>Chqgsdharles</td>
+			            <td>Femme</td>
+			            <td>1960</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+		         </tbody>
+		      <tfoot>
+		      	<tr>
+		      	<th colspan="7" class="ts-pager form-horizontal tablesorter-pager text-center" data-column="0">
+				<button type="button" class="btn first disabled" tabindex="0" aria-disabled="true"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
+				<button type="button" class="btn prev disabled" tabindex="0" aria-disabled="true"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
+				<span class="pagedisplay">1 - 10 / 15 (50)</span> <!-- this can be any element, including an input -->
+				<button type="button" class="btn next" tabindex="0" aria-disabled="false"><i class="icon-arrow-right glyphicon glyphicon-forward"></i></button>
+				<button type="button" class="btn last" tabindex="0" aria-disabled="false"><i class="icon-step-forward glyphicon glyphicon-step-forward"></i></button>
+				<select class="pagesize input-mini" title="Nombre de résultats sur la page" aria-disabled="false">
+					<option selected="selected" value="10">10</option>
+					<option value="20">20</option>
+					<option value="30">30</option>
+					<option value="40">40</option>
+				</select>
+				<select class="pagenum input-mini" title="Select page number" aria-disabled="false"><option>1</option><option>2</option></select>
+			</th>
+		      	</tr>
+		      </tfoot>
+		      </table>		
 		</div>
 	</div>
 </div>
@@ -188,19 +300,61 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script type='text/javascript' src="../../dist/jQuery/2.1.0/js/jquery.js" ></script>
 	<script src="../../dist/bootstrap/3.0.0/js/bootstrap.js"></script>
-	<script src="../../js/gestionMenu.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
-    <script type="text/javascript">
-  /*  $(document).ready(function() {
-	    $('#sandbox-container .input-daterange').datepicker({
-		    todayBtn: "linked",
-		    language: "fr",
-		    orientation: "top auto",
-		    autoclose: true,
-		    todayHighlight: true
-		});
-    });*/
+	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.js"></script>
+	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.pager.js"></script>
+	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.widgets.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			$("#sortTable").tablesorter({
+			    // this will apply the bootstrap theme if "uitheme" widget is included
+			    // the widgetOptions.uitheme is no longer required to be set
+			    theme : "bootstrap",
+			    dateFormat: "ddmmyyyy",
+			    widthFixed: false,
+			    headerTemplate : '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
 
-    </script>
+			    // widget code contained in the jquery.tablesorter.widgets.js file
+			    // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+			    widgets : [ "uitheme","filter", "zebra" ],
+
+			    widgetOptions : {
+			      // using the default zebra striping class name, so it actually isn't included in the theme variable above
+			      // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+			      zebra : ["even", "odd"],
+
+			      // reset filters button
+		          filter_external : '.search',
+		          // include column filters
+		          filter_columnFilters: false,
+		          filter_saveFilters : true,
+		          filter_reset: '.reset'
+			          
+			      // set the uitheme widget to use the bootstrap theme class names
+			      // this is no longer required, if theme is set
+			       //,uitheme : "bootstrap"
+			    
+			    }
+			  });
+			$("#sortTable").tablesorterPager({
+
+			    // target the pager markup - see the HTML block below
+			    container: $(".ts-pager"),
+
+			    // target the pager page select dropdown - choose a page
+			    cssGoto  : ".pagenum",
+
+			    // remove rows from the table to speed up the sort of large tables.
+			    // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+			    removeRows: false,
+
+			    // output string - default is '{page}/{totalPages}';
+			    // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+			    //output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+			    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+
+			  });
+			})
+	</script>
   </body>
 </html>
