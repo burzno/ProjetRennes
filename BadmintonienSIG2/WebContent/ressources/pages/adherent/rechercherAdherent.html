@@ -186,7 +186,7 @@ td.tablesorter-pager {
 								</select>
 							</div>		
 							<div class="input-group input-group-sm col-sm-2  col-sm-offset-1">
-								<input type="button" value="Effacer les filtres" class="btn-info reset">
+								<input type="button" value="Effacer les filtres" class="btn btn-warning reset">
 							</div>		    
 				    	</div>
 				  	</form>
@@ -195,7 +195,7 @@ td.tablesorter-pager {
 			</div>
 		</div>
 		<div class="col-sm-12">
-			<table id="sortTable" class="panel panel-default table-hover">
+			<table id="sortTable" class="panel panel-default table-hover tableauSelectable">
 		        <thead>
 		          <tr>
 		            <th>Licence FCD</th>
@@ -354,6 +354,7 @@ td.tablesorter-pager {
 			    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
 
 			  });
+			$(".tableauSelectable").find("tr").click(function(){$(this).toggleClass("select");});
 			})
 	</script>
   </body>

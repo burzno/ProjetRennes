@@ -97,7 +97,7 @@
 							  <span class="input-group-addon glyphicon glyphicon-search"></span>
 							</div>
 							<div class="input-group input-group-sm col-sm-4  col-sm-offset-2">
-								<input type="button" value="Effacer les filtres" class="btn-info reset">
+								<input type="button" value="Effacer les filtres" class="btn btn-warning reset">
 							</div>	
 					    </div>
 					    <div class="form-group">
@@ -168,30 +168,47 @@
 				  </div>
 			   </div>
 		   </div>
+		   <div class="col-sm-4">
+		    	<div class="panel panel-default">
+				  <div class="panel-heading list-group">
+					  <div class="row">
+						  <div class="text-left col-sm-6">
+					  			<select class="form-control input-sm" id="selectTableaux">
+									<option>-</option>
+									<option>Tableau 1</option>
+									<option>Tableau 2</option>
+									<option>Tableau 3</option>
+								</select> 
+						  </div>
+						  <div class="text-right col-sm-6">
+					  			<input type="button" value="+" alt="Créer un nouveau tableau" class="btn btn-info">
+						  </div>
+					  </div>
+				  </div>
+				  <div class="panel-body">
+				  <div><span class="col-sm-5">Format</span><span id="tabFormat" class="col-sm-7 text-right text-info">-</span></div>
+				  <div><span class="col-sm-5">Classement</span><span id="tabClassement" class="col-sm-7 text-right text-info">-</span></div>
+				  <div><span class="col-sm-5">Catégories</span><span id="tabCategorie" class="col-sm-7 text-right text-info">-</span></div>
+				  <div><span class="col-sm-10">Nb de participants/Poule</span><span id="tabParticipant" class="col-sm-2 text-right text-info">-</span></div>
+				  </div>
+			   </div>
+		   </div>
 		</div>
 		<div class="col-sm-5">
 			<h4>Adhérents</h4>
 		</div>
-		<div class="col-sm-5 col-sm-offset-1">
-			<h4>Tableaux</h4>
-			<div class="col-sm-4">
-				<select class="form-control input-sm" id="selectTableaux">
-					<option></option>
-					<option>Tableau 1</option>
-					<option>Tableau 2</option>
-					<option>Tableau 3</option>
-				</select>
-			</div>				    
+		<div class="col-sm-6 col-sm-offset-1 row">
+			<h4>Participants au tableau</h4>
 		</div>
 		<div class="col-sm-5">
-			<table id="tableAdherent" class="panel panel-default table-hover">
+			<table id="tableAdherent" class="panel panel-default table-hover tableauSelectable">
 		        <thead>
 		          <tr>
 		            <th>FCD</th>
 		            <th>Nom</th>
 		            <th>Prenom</th>
 		            <th class="filter-select hidden">Sexe</th>
-		            <th class="hidden">Catégorie</th>
+		            <th class="filter-select hidden">Catégorie</th>
 		            <th class="filter-select hidden">Club</th>
 		            <th class="filter-select hidden">CS</th>
 		            <th class="filter-select hidden">CD</th>
@@ -204,7 +221,7 @@
 			            <td>Denet</td>
 			            <td>Charles</td>
 			            <td class="hidden">Homme</td>
-			            <td class="hidden">Sénior</td>
+			            <td class="hidden">Vétéran 1</td>
 			            <td class="hidden">CSA ETRS Rennes</td>
 			            <td class="hidden">A2</td>
 			            <td class="hidden">B1</td>
@@ -225,7 +242,7 @@
 		      </table>	
 		</div>
 		<div class="col-sm-4 col-sm-offset-1">
-			<table id="tableTableau" class="panel panel-default table-hover">
+			<table id="tableTableau" class="panel panel-default table-hover tableauSelectable">
 		        <thead>
 		          <tr>
 		            <th>FCD</th>
@@ -278,11 +295,12 @@
 		          filter_external : '.search',
 		          // include column filters
 		          filter_columnFilters: false,
-		          filter_saveFilters : true,
+		          filter_saveFilters : false,
 		          filter_reset: '.reset'
 			    
 			    }
 			  });
+			  
 			$("#tableTableau").tablesorter({
 			    // this will apply the bootstrap theme if "uitheme" widget is included
 			    // the widgetOptions.uitheme is no longer required to be set
@@ -301,6 +319,16 @@
 			      zebra : ["even", "odd"]
 			    }
 			  });
+			  
+			//$(".tableauSelectable").find("tr").click(function(){$(this).toggleClass("select");});
+
+			$(".tableauSelectable").find("tbody > tr").click(function(){
+				if($(this).parent().parent().attr("id") == $("#tableAdherent").attr("id"))
+					$("#tableTableau").find("tbody").append(this);
+				else
+					$("#tableAdherent").find("tbody").append(this);
+			});
+
 			})
 		</script>
   </body>

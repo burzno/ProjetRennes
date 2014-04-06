@@ -14,3 +14,7 @@ body {
 .table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
     background-color: lightBlue !important;
 }
+
+.select > td {
+    background: none repeat scroll 0 0 #4499FF !important;
+}
