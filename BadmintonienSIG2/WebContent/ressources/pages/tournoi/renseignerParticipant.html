@@ -11,9 +11,7 @@
 
 	<link rel="stylesheet" href="../../css/global.css">
 	<link rel="stylesheet" href="../../dist/bootstrap/3.0.0/css/bootstrap.css">
-<style type="text/css">
-	@font-size-base:20px;
-</style>
+
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -113,7 +111,7 @@
 							</div>
 					    </div>
 					   	<div class="form-group">
-					      <label class="col-sm-2 control-label">Sexe</label>
+					      <label class="col-sm-2 control-label" for="selectSexe">Sexe</label>
 					      <div class="col-sm-4">
 					        	<select class="form-control input-sm search" id="selectSexe" data-column="3">
 								</select>
@@ -181,7 +179,7 @@
 								</select> 
 						  </div>
 						  <div class="text-right col-sm-6">
-					  			<input type="button" value="+" alt="Créer un nouveau tableau" class="btn btn-info">
+					  			<input type="button" value="+" alt="Créer un nouveau tableau" class="btn btn-info" data-toggle="modal" data-target="#myModal">
 						  </div>
 					  </div>
 				  </div>
@@ -201,7 +199,7 @@
 			<h4>Participants au tableau</h4>
 		</div>
 		<div class="col-sm-5">
-			<table id="tableAdherent" class="panel panel-default table-hover tableauSelectable">
+			<table id="tableAdherent" class="panel panel-default table-hover tableauSwitch">
 		        <thead>
 		          <tr>
 		            <th>FCD</th>
@@ -242,7 +240,7 @@
 		      </table>	
 		</div>
 		<div class="col-sm-4 col-sm-offset-1">
-			<table id="tableTableau" class="panel panel-default table-hover tableauSelectable">
+			<table id="tableTableau" class="panel panel-default table-hover tableauSwitch">
 		        <thead>
 		          <tr>
 		            <th>FCD</th>
@@ -259,10 +257,95 @@
 		         <tbody>
 		         </tbody>
 		      </table>	
-		
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Création d'un tableau</h4>
+      </div>
+      <div class="modal-body">
+  			<div class="col-sm-12">
+				<form action="" class="form-horizontal">
+						<div class="form-group">
+					      <label class="col-sm-2 control-label" for="selectFormat">Format</label>
+					      <div class="col-sm-4">
+					        	<select class="form-control input-sm" id="selectFormat">
+					        		<option>-</option>
+					        		<option>Simple</option>
+					        		<option>Double</option>
+					        		<option>Double Mixte</option>
+								</select>
+					      </div>
+					      <label for="selectClassement" class="col-sm-2 control-label">Classement</label>
+							<div class="col-sm-4">
+								<select class="form-control input-sm" id="selectClassement">
+					        		<option>-</option>
+					        		<option>A1</option>
+					        		<option>B1</option>
+					        		<option>C1</option>
+					        		<option>...</option>
+								</select>
+							</div>	
+						</div>	
+						<div class="form-group">
+					      <label for="selectCategorie" class="col-sm-2 control-label">Catégorie</label>
+							<div class="col-sm-4">
+								<select class="form-control input-sm" id="selectCategorie">
+					        		<option>-</option>
+					        		<option>Sénior</option>
+					        		<option>Vétéran 1</option>
+					        		<option>Vétéran 2</option>
+					        		<option>Vétéran 3</option>
+					        		<option>Vétéran 4</option>
+								</select>
+							</div>	
+					      <label for="inputNbPers" class="col-sm-2 control-label">Nb Pers</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control input-sm" id="inputNbPers"/>
+							</div>
+							<div class="text-right col-sm-2">
+					  			<input type="button" value="Add" alt="Ajouter tableau" class="btn btn-primary" id="addNewTab">
+						  </div>
+					    </div>
+				</form>
+	      	</div>
+     		<div class="col-sm-12">
+	        	<table id="tableCreateTableau" class="panel panel-default table-hover tableauSelectable">
+			        <thead>
+			          <tr>
+			            <th>Ident</th>
+			            <th>Format</th>
+			            <th>Classement</th>
+			            <th>Catégorie</th>
+			            <th>Nb Pers/Poule</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+				          <tr>
+				            <td>1</td>
+				            <td>Simple</td>
+				            <td>-</td>
+				            <td>Sénior</td>
+				            <td>20</td>
+				          </tr>
+		         	</tbody>
+		      	</table>	
+	      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Enregistrer</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -320,14 +403,38 @@
 			    }
 			  });
 			  
-			//$(".tableauSelectable").find("tr").click(function(){$(this).toggleClass("select");});
+			$("#tableCreateTableau").tablesorter({
+			    // this will apply the bootstrap theme if "uitheme" widget is included
+			    // the widgetOptions.uitheme is no longer required to be set
+			    theme : "bootstrap",
+			    dateFormat: "ddmmyyyy",
+			    widthFixed: false,
+			    headerTemplate : '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
 
-			$(".tableauSelectable").find("tbody > tr").click(function(){
+			    // widget code contained in the jquery.tablesorter.widgets.js file
+			    // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+			    widgets : [ "uitheme", "zebra" ],
+
+			    widgetOptions : {
+			      // using the default zebra striping class name, so it actually isn't included in the theme variable above
+			      // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+			      zebra : ["even", "odd"]
+			    }
+			  });
+			  
+			$(".tableauSelectable").find("tr").click(function(){$(this).toggleClass("select");});
+
+			$(".tableauSwitch").find("tbody > tr").click(function(){
 				if($(this).parent().parent().attr("id") == $("#tableAdherent").attr("id"))
 					$("#tableTableau").find("tbody").append(this);
 				else
 					$("#tableAdherent").find("tbody").append(this);
 			});
+			
+			$("#addNewTab").click(function(){
+					console.debug(this);
+					alert("gerer l'ajout de la ligne au tableau du dessous");
+				});
 
 			})
 		</script>
