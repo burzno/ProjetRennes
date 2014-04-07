@@ -11,7 +11,11 @@
 
 	<link rel="stylesheet" href="../../css/global.css">
 	<link rel="stylesheet" href="../../dist/bootstrap/3.0.0/css/bootstrap.css">
-
+<style type="text/css">
+#labelTableau{
+	font-weight: normal;
+}
+</style>
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -139,8 +143,8 @@
 </div>
 
 
-<div class="container page">
-	<div class="row well">
+<div class="container page well">
+	<div class="row ">
 		<div class="col-sm-12">
 		  	<fieldset>
 			    <legend>Renseigner des participant</legend>
@@ -232,13 +236,14 @@
 		   <div class="col-sm-4">
 		    	<div class="panel panel-default">
 				  <div class="panel-heading list-group">
-					  <div class="row">
-						  <div class="text-left col-sm-6">
+					  <div class="row ">
+						  <label for="selectTableaux" class="col-sm-3" id="labelTableau">Tableau</label>
+						  <div class="text-left col-sm-3">
 					  			<select class="form-control input-sm" id="selectTableaux">
 									<option>-</option>
-									<option>Tableau 1</option>
-									<option>Tableau 2</option>
-									<option>Tableau 3</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
 								</select> 
 						  </div>
 						  <div class="text-right col-sm-6">
@@ -255,8 +260,13 @@
 			   </div>
 		   </div>
 		</div>
-		<div class="col-sm-5">
-			<h4>Adhérents</h4>
+		<div class="col-sm-5 row">
+			<div class="col-sm-3">
+				<h4>Adhérents</h4>
+			</div>
+			<div class="col-sm-2">
+				<input type="button" value="+" alt="Ajouter un adhérent" class="btn btn-info">
+			</div>
 		</div>
 		<div class="col-sm-6 col-sm-offset-1 row">
 			<h4>Participants au tableau</h4>
@@ -322,6 +332,9 @@
 		      </table>	
 		</div>
 	</div>
+	<div class="col-sm-12 text-center">
+		<button type="button" class="btn btn-primary">Valider le tournoi</button>
+	</div>
 </div>
 
 
@@ -369,12 +382,12 @@
 					        		<option>Vétéran 4</option>
 								</select>
 							</div>	
-					      <label for="inputNbPers" class="col-sm-2 control-label">Nb Pers</label>
+					      <label for="inputNbPers" class="col-sm-2 control-label">Nb Pax</label>
 							<div class="col-sm-2">
 								<input type="text" class="form-control input-sm" id="inputNbPers"/>
 							</div>
 							<div class="text-right col-sm-2">
-					  			<input type="button" value="Add" alt="Ajouter tableau" class="btn btn-primary" id="addNewTab">
+					  			<input type="button" value="Ajouter" alt="Ajouter tableau" class="btn btn-primary" id="addNewTab">
 						  </div>
 					    </div>
 				</form>

@@ -20,7 +20,29 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style type="text/css">
+.group-header {
+  user-select: none;
+  -moz-user-select: none;
+  font-size: 20px;
+  color: blue; 
+}
 
+.group-header > td {
+    background-color: #B0C4DE !important;
+    text-align: center;
+    text-transform: capitalize;
+}
+.tablesorter tbody > tr > td[contenteditable=true] {
+	background: lightcyan;
+	text-align: center;
+}
+.tablesorter tbody > tr > td[contenteditable=true]:focus {
+  outline: #08f 1px solid;
+  background: #eee;
+  resize: none;
+}
+</style>
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -111,46 +133,114 @@
 				   </div>
 			</div>
 		<div class="col-sm-12">
-			<table id="sortTable" class="panel panel-default table-hover tableauSelectable">
+			<table id="sortTable" class="panel panel-default table-hover">
 		        <thead>
-		          <tr>
-		            <th>Tableau</th>
-		            <th>Format</th>
-		            <th>Classement</th>
-		            <th>Catégorie</th>
-		            <th>Nombre de participants</th>
-		            <th>Nombre de poules</th>
+		           <tr>
+		            <th class="group-false">FCD</th>
+		            <th class="group-false">Nom</th>
+		            <th class="group-false">Prenom</th>
+		            <th class="group-false">Sexe</th>
+		            <th class="group-false">Catégorie</th>
+		            <th class="group-false">Club</th>
+		            <th class="group-false">Classement</th>
+		            <th class="group-separator">Poule</th>
 		          </tr>
 		        </thead>
 		        <tbody>
 			       	 <tr>
-			            <td>Tableau Un</td>
-			            <td>Simple</td>
-			            <td>-</td>
+			            <td>132</td>
+			            <td>Denet</td>
+			            <td>Charles</td>
+			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>18</td>
-			            <td>-</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 1</td>
 			         </tr>
 			       	 <tr>
-			            <td>Tableau Deux</td>
-			            <td>Double</td>
-			            <td>-</td>
-			            <td>Vétéran 1</td>
-			            <td>12</td>
-			            <td>-</td>
+			            <td>142</td>
+			            <td>Harlet</td>
+			            <td>Marc</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 1</td>
 			         </tr>
 			       	 <tr>
-			            <td>Tableau Trois</td>
-			            <td>Double Mixte</td>
-			            <td>-</td>
+			            <td>165</td>
+			            <td>Hugue</td>
+			            <td>Antoine</td>
+			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>16</td>
-			            <td>-</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 1</td>
+			         </tr>
+			       	 <tr>
+			            <td>685</td>
+			            <td>Serbof</td>
+			            <td>Alfred</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 2</td>
+			         </tr>
+			       	 <tr>
+			            <td>354</td>
+			            <td>Hergu</td>
+			            <td>Arnaud</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 2</td>
+			         </tr>
+			       	 <tr>
+			            <td>687</td>
+			            <td>Osgor</td>
+			            <td>Jean</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 2</td>
+			         </tr>
+			       	 <tr>
+			            <td>456</td>
+			            <td>Marna</td>
+			            <td>Sebastien</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 3</td>
+			         </tr>
+			       	 <tr>
+			            <td>852</td>
+			            <td>Carlos</td>
+			            <td>Nicolas</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 3</td>
+			         </tr>
+			       	 <tr>
+			            <td>159</td>
+			            <td>Antoine</td>
+			            <td>Marc</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>ETRS Rennes</td>
+			            <td>C1</td>
+			            <td>Poule 3</td>
 			         </tr>
 		         </tbody>
 		      <tfoot>
 		      	<tr>
-			      	<th colspan="7" class="ts-pager form-horizontal tablesorter-pager text-center" data-column="0">
+			      	<th colspan="8" class="ts-pager form-horizontal tablesorter-pager text-center" data-column="0">
 						<button type="button" class="btn first disabled" tabindex="0" aria-disabled="true"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
 						<button type="button" class="btn prev disabled" tabindex="0" aria-disabled="true"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
 						<span class="pagedisplay">1 - 10 / 15 (50)</span> <!-- this can be any element, including an input -->
@@ -168,9 +258,7 @@
 		   </table>		
 		</div>
 		<div class="col-sm-12 text-center">
-			<button type="button" class="btn btn-primary">Editer la programmation des poules</button>
-			<button type="button" class="btn btn-primary col-sm-offset-1">Editer la programmation des tableaux</button>
-		
+			<button type="button" class="btn btn-primary">Générer le tableau à élimination direct</button>
 		</div>
 	</div>
 </div>
@@ -183,6 +271,8 @@
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.js"></script>
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.pager.js"></script>
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.widgets.js"></script>
+	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.grouping.js"></script>
+	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.widget-editable.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
@@ -192,30 +282,48 @@
 			    theme : "bootstrap",
 			    dateFormat: "ddmmyyyy",
 			    widthFixed: false,
+			    sortList : [[7,0]],
 			    headerTemplate : '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
 
 			    // widget code contained in the jquery.tablesorter.widgets.js file
 			    // use the zebra stripe widget if you plan on hiding any rows (filter widget)
-			    widgets : [ "uitheme","filter", "zebra" ],
+			    widgets : [ "uitheme", "zebra", "group", "editable"],
 
 			    widgetOptions : {
 			      // using the default zebra striping class name, so it actually isn't included in the theme variable above
 			      // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
 			      zebra : ["even", "odd"],
 
-			      // reset filters button
-		          filter_external : '.search',
-		          // include column filters
-		          filter_columnFilters: false,
-		          filter_saveFilters : true,
-		          filter_reset: '.reset'
-			          
-			      // set the uitheme widget to use the bootstrap theme class names
-			      // this is no longer required, if theme is set
-			       //,uitheme : "bootstrap"
+	              group_collapsible : true,
+	              group_collapsed   : false,
+	              group_count       : false,
+	              filter_childRows  : false,
+	              
+	              editable_columns       : [7],       // or "0-2" (v2.14.2); point to the columns to make editable (zero-based index)
+	              editable_enterToAccept : true,          // press enter to accept content, or click outside if false
+	              editable_autoResort    : true,         // auto resort after the content has changed.
+	              editable_noEdit        : 'no-edit',     // class name of cell that is not editable
+	              editable_editComplete  : 'editComplete' // event fired after the table content has been edited
 			    
 			    }
-			  });
+			  })
+			  /*.children('tbody').on('editComplete', 'td', function(){
+			      var $this = $(this),
+			        $allRows = $this.closest('table')[0].config.$tbodies.children('tr'),
+
+			        newContent = $this.text(),
+			        cellIndex = this.cellIndex, // there shouldn't be any colspans in the tbody
+			        rowIndex = $allRows.index( $this.closest('tr') );
+			      
+			      $.post("mysite.php", {
+			        "row"     : rowIndex,
+			        "cell"    : cellIndex,
+			        "content" : newContent
+			      });
+			      
+			    })*/;
+
+			  
 			$("#sortTable").tablesorterPager({
 
 			    // target the pager markup - see the HTML block below
@@ -225,13 +333,11 @@
 			    // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
 			    removeRows: false,
 
-			    // output string - default is '{page}/{totalPages}';
 			    // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
 			    //output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
 			    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
 
 			  });
-			$(".tableauSelectable").find("tr").click(function(){$(this).toggleClass("select");});
 			})
 	</script>
   </body>
