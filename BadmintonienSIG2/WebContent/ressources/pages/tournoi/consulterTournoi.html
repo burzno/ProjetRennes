@@ -35,13 +35,13 @@
 			      Adhérents <span class="caret"></span>
 		    	</a>
                 <ul class="dropdown-menu">
-                  <li class="active"><a href="creerModifierAdherent.html">Créer un adhérent</a></li>
-                  <li><a href="creerModifierAdherent.html">Modifier un adhérent</a></li>
+                  <li class="active"><a href="../adherent/creerModifierAdherent.html">Créer un adhérent</a></li>
+                  <li><a href="../adherent/creerModifierAdherent.html">Modifier un adhérent</a></li>
                   <li><a href="#">Supprimer un adhérent</a></li>
                   <li><a href="#">Mettre à jour les pièces reçues de l'adhérent</a></li>
                   <li><a href="#">Renseigner les indisponibilités</a></li>
 				  <li><a href="#">Imprimer les pièces fournies</a></li>
-				  <li><a href="#">Rechercher un adhérent</a></li>
+				  <li><a href="../adherent/rechercherAdherent.html">Rechercher un adhérent</a></li>
 				</ul>
 			</li>
            <li class="dropdown connect">
@@ -49,6 +49,7 @@
 			      Tournois <span class="caret"></span>
 		    	</a>
                 <ul class="dropdown-menu">
+                  <li><a href="renseignerParticipant.html">Renseigner les participants</a></li>
                   <li><a href="#">Générer les poules</a></li>
                   <li><a href="#">Renseigner les paramètres du tournoi</a></li>
                   <li><a href="#">Générer les tableaux à élimination</a></li>
@@ -86,165 +87,90 @@
 
 <div class="container page">
 	<div class="row well">
-		<div class="col-sm-12">
-		  	<fieldset>
-			    <legend>Recherche d'un adhérent</legend>
-		    </fieldset>
-	    	<div class="col-sm-12">
-		    	<div class="panel panel-default">
-				  <!-- Default panel contents -->
-				  <div class="panel-heading">Critères de recherche</div>
-				  <div class="panel-body">
-				  	<form action="" class="form-horizontal">
-				  		<div class="form-group">
-					      <label for="inputFCD" class="col-sm-2 control-label">FCD</label>
-					        <div class="input-group input-group-sm col-sm-4">
-							  <input type="text" class="form-control search" id="inputFCD" placeholder="Licence FCD" data-column="0">
-							  <span class="input-group-addon glyphicon glyphicon-search"></span>
-							</div>
-					      <label for="inputFFBa" class="col-sm-1 control-label">FFBa</label>
-					       <div class="input-group input-group-sm col-sm-4">
-							  <input type="text" class="form-control search" id="inputFFBa" placeholder="Licence FFBa"  data-column="1">
-							  <span class="input-group-addon glyphicon glyphicon-search"></span>
-							</div>
-					    </div>
-					    <div class="form-group">
-					      <label for="inputNom" class="col-sm-2 control-label">Nom</label>
-					      <div class="input-group input-group-sm col-sm-4">
-							  <input type="text" class="form-control search" id="inputNom" placeholder="Nom" data-column="2">
-								</select>
-							  <span class="input-group-addon glyphicon glyphicon-search"></span>
-							</div>
-					      <label for="inputPrenom" class="col-sm-1 control-label">Prénom</label>
-					       <div class="input-group input-group-sm col-sm-4">
-							  <input type="text" class="form-control search" id="inputPrenom" placeholder="Prenom"  data-column="3">
-							  <span class="input-group-addon glyphicon glyphicon-search"></span>
-							</div>
-					    </div>
-					   	<div class="form-group">
-					      <label class="col-sm-2 control-label" for="selectSexe">Sexe</label>
-					      <div class="col-sm-4">
-								<select class="form-control input-sm search" id="selectSexe" data-column="4">
-								</select>
-					      </div>
-					      <label class="col-sm-2 control-label" for="inputNaissance">Année de naissance</label>
-					      <div class="input-group input-group-sm col-sm-3">
-							  <input type="text" class="form-control search" id="inputNaissance" placeholder="année" data-column="5">
-							  <span class="input-group-addon glyphicon glyphicon-search"></span>
+			<div class="col-sm-12">
+			  	<fieldset>
+				    <legend>Consultation du tournoi</legend>
+			    </fieldset>
+			    	<div class="panel panel-default">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading">Récapitulatif du Tournoi --Nom--</div>
+					  <div class="panel-body">
+						  <div>
+							  <span class="col-sm-3 text-right">Date</span><span id="tournoiDate" class="col-sm-3 text-info">12/04/2014</span>
+							  <span class="col-sm-3 text-right">Lieu</span><span id="tournoiLieu" class="col-sm-3 text-info">ETRS Rennes</span>
 						  </div>
-						</div>
-						<div class="form-group">
-							<label for="selectClub" class="col-sm-2 control-label">Club</label>
-							<div class="col-sm-6">
-								<select class="form-control search" id="selectClub" data-column="6">
-								</select>
-							</div>		
-							<div class="input-group input-group-sm col-sm-2  col-sm-offset-1">
-								<input type="button" value="Effacer les filtres" class="btn btn-warning reset">
-							</div>		    
-				    	</div>
-				  	</form>
-				  </div>
-				</div>
+						  <div>
+							  <span class="col-sm-3 text-right">Durée d'un match</span><span id="tournoiMatch" class="col-sm-3 text-info">25 min</span>
+							  <span class="col-sm-3 text-right">Tps de récupération</span><span id="tournoiRecup" class="col-sm-3 text-info">20 min</span>
+						  </div>
+						  <div>
+						  	  <span class="col-sm-3 text-right">Nb Terrains disponibles</span><span id="tournoiTerrain" class="col-sm-3 text-info">5</span>
+						  	  <span class="col-sm-3 text-right">Nb d'inscrit</span><span id="tournoiParticipants" class="col-sm-3 text-info">46</span>
+						  </div>
+					  </div>
+				   </div>
 			</div>
-		</div>
 		<div class="col-sm-12">
 			<table id="sortTable" class="panel panel-default table-hover tableauSelectable">
 		        <thead>
 		          <tr>
-		            <th>Licence FCD</th>
-		            <th>Licence FFBa</th>
-		            <th>Nom</th>
-		            <th>Prenom</th>
-		            <th class="filter-select">Sexe</th>
-		            <th>Année de naissance</th>
-		            <th class="filter-select">Club</th>
+		            <th>Tableau</th>
+		            <th>Format</th>
+		            <th>Classement</th>
+		            <th>Catégorie</th>
+		            <th>Nombre de participants</th>
+		            <th>Nombre de poules</th>
 		          </tr>
 		        </thead>
 		        <tbody>
 			       	 <tr>
-			            <td>123</td>
-			            <td></td>
-			            <td>Denet</td>
-			            <td>Charles</td>
-			            <td>Homme</td>
-			            <td>1962</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
+			            <td>Tableau Un</td>
+			            <td>Simple</td>
+			            <td>-</td>
+			            <td>Sénior</td>
+			            <td>18</td>
+			            <td>-</td>
+			         </tr>
 			       	 <tr>
-			            <td>1265843</td>
-			            <td></td>
-			            <td>Dendfget</td>
-			            <td>Chqgarles</td>
-			            <td>Homme</td>
-			            <td>1959</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
+			            <td>Tableau Deux</td>
+			            <td>Double</td>
+			            <td>-</td>
+			            <td>Vétéran 1</td>
+			            <td>12</td>
+			            <td>-</td>
+			         </tr>
 			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
-			            <td>Homme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
-			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
-			            <td>Homme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
-			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
-			            <td>Homme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
-			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
-			            <td>Homme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
-			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
-			            <td>Femme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
+			            <td>Tableau Trois</td>
+			            <td>Double Mixte</td>
+			            <td>-</td>
+			            <td>Sénior</td>
+			            <td>16</td>
+			            <td>-</td>
+			         </tr>
 		         </tbody>
 		      <tfoot>
 		      	<tr>
-		      	<th colspan="7" class="ts-pager form-horizontal tablesorter-pager text-center" data-column="0">
-				<button type="button" class="btn first disabled" tabindex="0" aria-disabled="true"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
-				<button type="button" class="btn prev disabled" tabindex="0" aria-disabled="true"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
-				<span class="pagedisplay">1 - 10 / 15 (50)</span> <!-- this can be any element, including an input -->
-				<button type="button" class="btn next" tabindex="0" aria-disabled="false"><i class="icon-arrow-right glyphicon glyphicon-forward"></i></button>
-				<button type="button" class="btn last" tabindex="0" aria-disabled="false"><i class="icon-step-forward glyphicon glyphicon-step-forward"></i></button>
-				<select class="pagesize input-mini" title="Nombre de résultats sur la page" aria-disabled="false">
-					<option selected="selected" value="10">10</option>
-					<option value="20">20</option>
-					<option value="30">30</option>
-					<option value="40">40</option>
-				</select>
-				<select class="pagenum input-mini" title="Select page number" aria-disabled="false"><option>1</option><option>2</option></select>
-			</th>
+			      	<th colspan="7" class="ts-pager form-horizontal tablesorter-pager text-center" data-column="0">
+						<button type="button" class="btn first disabled" tabindex="0" aria-disabled="true"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
+						<button type="button" class="btn prev disabled" tabindex="0" aria-disabled="true"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
+						<span class="pagedisplay">1 - 10 / 15 (50)</span> <!-- this can be any element, including an input -->
+						<button type="button" class="btn next" tabindex="0" aria-disabled="false"><i class="icon-arrow-right glyphicon glyphicon-forward"></i></button>
+						<button type="button" class="btn last" tabindex="0" aria-disabled="false"><i class="icon-step-forward glyphicon glyphicon-step-forward"></i></button>
+						<select class="pagesize input-mini" title="Nombre de résultats sur la page" aria-disabled="false">
+							<option selected="selected" value="5">5</option>
+							<option value="10">10</option>
+							<option value="15">15</option>
+							<option value="20">20</option>
+						</select>
+					</th>
 		      	</tr>
 		      </tfoot>
-		      </table>		
+		   </table>		
+		</div>
+		<div class="col-sm-12 text-center">
+			<button type="button" class="btn btn-primary">Editer la programmation des poules</button>
+			<button type="button" class="btn btn-primary col-sm-offset-1">Editer la programmation des tableaux</button>
+		
 		</div>
 	</div>
 </div>
@@ -294,9 +220,6 @@
 
 			    // target the pager markup - see the HTML block below
 			    container: $(".ts-pager"),
-
-			    // target the pager page select dropdown - choose a page
-			    cssGoto  : ".pagenum",
 
 			    // remove rows from the table to speed up the sort of large tables.
 			    // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.

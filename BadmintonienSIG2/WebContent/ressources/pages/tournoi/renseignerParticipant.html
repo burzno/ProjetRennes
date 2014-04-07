@@ -75,6 +75,69 @@
 	</div>
 	</nav>
   </div>
+<!-- FIN NAVBAR
+================================================== -->
+
+<!-- Modal Tournoi -->
+<div class="modal fade" id="myModalTournoi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Création d'un tournoi</h4>
+      </div>
+      <div class="modal-body">
+  			<div class="col-sm-12">
+				<form onsubmit="return validerFormTournoi(this);" class="form-horizontal" action="">
+						<div class="form-group">
+							<label for="inputNomTournoi" class="col-sm-5 control-label text-left">Nom du tournoi</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control input-sm" id="inputNomTournoi" placeholder="Nom" name="inputNomTournoi"/>
+							</div>
+						</div>	
+						<div class="form-group">
+					     	<label for="inputDateTournoi" class="col-sm-5 control-label text-left">Date</label>
+							<div class="col-sm-4">
+								<input type="date" class="form-control input-sm" id="inputDateTournoi" placeholder="jj/mm/aaaa" required="required"/>
+							</div>
+					    </div>
+						<div class="form-group">
+					     	<label for="inputLieuTournoi" class="col-sm-5 control-label text-left">Lieu</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control input-sm" id="inputLieuTournoi" placeholder="Lieu" required="required"/>
+							</div>
+					    </div>
+						<div class="form-group">
+					     	<label for="inputDureeTournoi" class="col-sm-5 control-label text-left">Durée d'un match</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control input-sm" id="inputDureeTournoi" value="25" placeholder="Durée moyenne" required="required"/>
+							</div>
+					    </div>
+						<div class="form-group">
+					     	<label for="inputRecupTournoi" class="col-sm-5 control-label text-left">Temps de récupération</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control input-sm" id="inputRecupTournoi" value="20" placeholder="Récupération minimum" required="required"/>
+							</div>
+					    </div>
+						<div class="form-group">
+					     	<label for="inputNbTerrainTournoi" class="col-sm-5 control-label text-left">Nombre de terrains disponible</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control input-sm" id="inputNbTerrainTournoi" placeholder="Nombre de terrains" required="required"/>
+							</div>
+					    </div>
+					    <input type="submit" id="btnSubmitFormTournoi" style="display: none">
+				</form>
+	      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" onclick="$('#btnSubmitFormTournoi').click()">Enregistrer</button>
+        <a href="../index.html">
+        	<button type="button" class="btn btn-default">Annuler</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="container page">
 	<div class="row well">
@@ -261,7 +324,8 @@
 	</div>
 </div>
 
-<!-- Modal -->
+
+<!-- Modal Tableau -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -356,6 +420,8 @@
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.widgets.js"></script>
     	<script type="text/javascript">
 		$(document).ready(function() {
+
+			$("#myModalTournoi").modal({backdrop:false, keyboard:false});
 			
 			$("#tableAdherent").tablesorter({
 			    // this will apply the bootstrap theme if "uitheme" widget is included
@@ -437,6 +503,14 @@
 				});
 
 			})
+		
+		function validerFormTournoi(form){
+			console.log(form.inputNomTournoi);
+			console.debug(form);
+			$("#myModalTournoi").modal("hide");
+			alert("insérer les infos dans le récap du tournoi")
+			return false;
+		}
 		</script>
   </body>
 </html>
