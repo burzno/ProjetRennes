@@ -111,7 +111,7 @@
 				   </div>
 			</div>
 		<div class="col-sm-12">
-			<table id="sortTable" class="panel panel-default table-hover text-center">
+			<table id="sortTable" class="panel panel-default table-hover text-center tableauSelectable">
 		        <thead>
 		          <tr>
 		            <th>Tableau</th>
@@ -177,7 +177,9 @@
 		</div>
 	</div>
 </div>
-
+<a href="consulterTableau.html">
+<button type="button" style="display: none" id="lienConsulterTableau"></button>
+</a>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -234,7 +236,7 @@
 			    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
 
 			  });
-			$(".tableauSelectable").find("tr").click(function(){$(this).toggleClass("select");});
+			$(".tableauSelectable").find("tr").click(function(){$("#lienConsulterTableau").click();});
 			})
 	</script>
   </body>
