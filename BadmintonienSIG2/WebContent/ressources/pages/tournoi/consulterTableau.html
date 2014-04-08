@@ -32,6 +32,7 @@
     background-color: #B0C4DE !important;
     text-align: center;
     text-transform: capitalize;
+    cursor: pointer;
 }
 .tablesorter tbody > tr > td[contenteditable=true] {
 	background: lightcyan;
@@ -50,7 +51,7 @@
     <div id="entete">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div id="menu">
-		<ul class="nav nav-pills navbar-left">
+		<ul class="nav nav-pills navbar-left ">
 		   <li><a href="../index.html">Accueil</a></li>
            <li class="dropdown connect">
 	            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -58,11 +59,6 @@
 		    	</a>
                 <ul class="dropdown-menu">
                   <li class="active"><a href="../adherent/creerModifierAdherent.html">Créer un adhérent</a></li>
-                  <li><a href="../adherent/creerModifierAdherent.html">Modifier un adhérent</a></li>
-                  <li><a href="#">Supprimer un adhérent</a></li>
-                  <li><a href="#">Mettre à jour les pièces reçues de l'adhérent</a></li>
-                  <li><a href="#">Renseigner les indisponibilités</a></li>
-				  <li><a href="#">Imprimer les pièces fournies</a></li>
 				  <li><a href="../adherent/rechercherAdherent.html">Rechercher un adhérent</a></li>
 				</ul>
 			</li>
@@ -71,14 +67,8 @@
 			      Tournois <span class="caret"></span>
 		    	</a>
                 <ul class="dropdown-menu">
-                  <li><a href="renseignerParticipant.html">Renseigner les participants</a></li>
-                  <li><a href="#">Générer les poules</a></li>
-                  <li><a href="#">Renseigner les paramètres du tournoi</a></li>
-                  <li><a href="#">Générer les tableaux à élimination</a></li>
-                  <li><a href="#">Saisir les résultats</a></li>
-				  <li><a href="#">Editer la programmation</a></li>
-				  <li><a href="#">Envoyer les résultats</a></li>
-				  <li><a href="#">Editer les feuilles de match</a></li>
+                  <li><a href="renseignerParticipant.html">Créer un tournoi</a></li>
+				  <li><a href="#">Rechercher un tournoi</a></li>
 				</ul>
 		   </li>
            <li class="dropdown connect">
@@ -87,7 +77,6 @@
 		    	</a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Créer une équipe</a></li>
-                  <li><a href="#">Rechercher des adhérents</a></li>
                   <li><a href="#">Etablir une convocation</a></li>
 				</ul>
 			</li>
@@ -115,7 +104,7 @@
 			    </fieldset>
 			    	<div class="panel panel-default">
 					  <!-- Default panel contents -->
-					  <div class="panel-heading">Récapitulatif du Tableau --Nom--</div>
+					   <div class="panel-heading">Récapitulatif du Tableau 1</div>
 					  <div class="panel-body">
 						  <div>
 							  <span class="col-sm-3 text-right">Date</span><span id="tournoiDate" class="col-sm-3 text-info">12/04/2014</span>
@@ -123,10 +112,11 @@
 						  </div>
 						  <div>
 						  	  <span class="col-sm-3 text-right">Format</span><span id="tournoiTerrain" class="col-sm-3 text-info">Simple</span>
-						  	  <span class="col-sm-3 text-right">Classement</span><span id="tournoiParticipants" class="col-sm-3 text-info">C1</span>
+						  	  <span class="col-sm-3 text-right">Classement</span><span id="tournoiParticipants" class="col-sm-3 text-info">A1</span>
 						  </div>
 						  <div>
 						  	  <span class="col-sm-3 text-right">Catégorie</span><span id="tournoiTerrain" class="col-sm-3 text-info">Sénior</span>
+							  <span class="col-sm-3 text-right">Nombre de joueurs</span><span id="tournoiParticipants" class="col-sm-3 text-info">9</span>
 						  </div>
 					  </div>
 				   </div>
@@ -147,93 +137,93 @@
 		        </thead>
 		        <tbody>
 			       	 <tr>
-			            <td>132</td>
-			            <td>Denet</td>
-			            <td>Charles</td>
+			            <td>68759812</td>
+			            <td>Guichard</td>
+			            <td>Jeremy</td>
 			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
+			            <td>CSA ETRS Rennes</td>
+			            <td>A1</td>
 			            <td>Poule 1</td>
 			         </tr>
 			       	 <tr>
-			            <td>142</td>
-			            <td>Harlet</td>
-			            <td>Marc</td>
+			            <td>45832147</td>
+			            <td>Gavin</td>
+			            <td>Maxime</td>
 			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
+			            <td>CSA Quimper</td>
+			            <td>A1</td>
 			            <td>Poule 1</td>
 			         </tr>
 			       	 <tr>
-			            <td>165</td>
-			            <td>Hugue</td>
-			            <td>Antoine</td>
+			            <td>73246545</td>
+			            <td>Teulet</td>
+			            <td>Jeremy</td>
 			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
+			            <td>CSA Brest</td>
+			            <td>A1</td>
 			            <td>Poule 1</td>
 			         </tr>
 			       	 <tr>
-			            <td>685</td>
-			            <td>Serbof</td>
-			            <td>Alfred</td>
+			            <td>56248971</td>
+			            <td>Chedal</td>
+			            <td>Clement</td>
 			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
+			            <td>CSA Nantes</td>
+			            <td>A1</td>
 			            <td>Poule 2</td>
 			         </tr>
 			       	 <tr>
-			            <td>354</td>
-			            <td>Hergu</td>
+			            <td>89351164</td>
+			            <td>Cartier</td>
+			            <td>Mathieu</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>CSA ETRS Rennes</td>
+			            <td>A1</td>
+			            <td>Poule 2</td>
+			         </tr>
+			       	 <tr>
+			            <td>36568974</td>
+			            <td>Fonteneau</td>
+			            <td>Alexis</td>
+			            <td>Homme</td>
+			            <td>Sénior</td>
+			            <td>CSA Nantes</td>
+			            <td>A1</td>
+			            <td>Poule 2</td>
+			         </tr>
+			       	 <tr>
+			            <td>89657866</td>
+			            <td>Thomas</td>
 			            <td>Arnaud</td>
 			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
-			            <td>Poule 2</td>
-			         </tr>
-			       	 <tr>
-			            <td>687</td>
-			            <td>Osgor</td>
-			            <td>Jean</td>
-			            <td>Homme</td>
-			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
-			            <td>Poule 2</td>
-			         </tr>
-			       	 <tr>
-			            <td>456</td>
-			            <td>Marna</td>
-			            <td>Sebastien</td>
-			            <td>Homme</td>
-			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
+			            <td>CSA ETRS Rennes</td>
+			            <td>A1</td>
 			            <td>Poule 3</td>
 			         </tr>
 			       	 <tr>
-			            <td>852</td>
-			            <td>Carlos</td>
-			            <td>Nicolas</td>
+			            <td>35567566</td>
+			            <td>Leroy</td>
+			            <td>Jeremy</td>
 			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
+			            <td>CSA ETRS Rennes</td>
+			            <td>A1</td>
 			            <td>Poule 3</td>
 			         </tr>
 			       	 <tr>
-			            <td>159</td>
-			            <td>Antoine</td>
-			            <td>Marc</td>
+			            <td>36556865</td>
+			            <td>Boudier</td>
+			            <td>Amaury</td>
 			            <td>Homme</td>
 			            <td>Sénior</td>
-			            <td>ETRS Rennes</td>
-			            <td>C1</td>
+			            <td>CSA ETRS Rennes</td>
+			            <td>A1</td>
 			            <td>Poule 3</td>
 			         </tr>
 		         </tbody>
@@ -306,8 +296,9 @@
 			    
 			    }
 			  })
-			  /*.children('tbody').on('editComplete', 'td', function(){
-			      var $this = $(this),
+			  .children('tbody').on('editComplete', 'td', function(){
+				  loadEffect();
+			      /*var $this = $(this),
 			        $allRows = $this.closest('table')[0].config.$tbodies.children('tr'),
 
 			        newContent = $this.text(),
@@ -318,9 +309,9 @@
 			        "row"     : rowIndex,
 			        "cell"    : cellIndex,
 			        "content" : newContent
-			      });
+			      });*/
 			      
-			    })*/;
+			    });
 
 			  
 			$("#sortTable").tablesorterPager({
@@ -337,7 +328,15 @@
 			    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
 
 			  });
+	
+				loadEffect();
 			})
+			function loadEffect(){
+				$(".group-header").find("td").click(function(){consultPoule();});
+			}
+			function consultPoule(){
+				window.location = window.location.pathname.split("WebContent/ressources")[0]+"WebContent/ressources/pages/tournoi/consulterPoule.html";
+			}
 	</script>
   </body>
 </html>

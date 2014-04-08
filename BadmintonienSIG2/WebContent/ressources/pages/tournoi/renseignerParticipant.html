@@ -23,7 +23,7 @@
     <div id="entete">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div id="menu">
-		<ul class="nav nav-pills navbar-left">
+		<ul class="nav nav-pills navbar-left ">
 		   <li><a href="../index.html">Accueil</a></li>
            <li class="dropdown connect">
 	            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -31,11 +31,6 @@
 		    	</a>
                 <ul class="dropdown-menu">
                   <li class="active"><a href="../adherent/creerModifierAdherent.html">Créer un adhérent</a></li>
-                  <li><a href="../adherent/creerModifierAdherent.html">Modifier un adhérent</a></li>
-                  <li><a href="#">Supprimer un adhérent</a></li>
-                  <li><a href="#">Mettre à jour les pièces reçues de l'adhérent</a></li>
-                  <li><a href="#">Renseigner les indisponibilités</a></li>
-				  <li><a href="#">Imprimer les pièces fournies</a></li>
 				  <li><a href="../adherent/rechercherAdherent.html">Rechercher un adhérent</a></li>
 				</ul>
 			</li>
@@ -44,14 +39,8 @@
 			      Tournois <span class="caret"></span>
 		    	</a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Renseigner les participants</a></li>
-                  <li><a href="#">Générer les poules</a></li>
-                  <li><a href="#">Renseigner les paramètres du tournoi</a></li>
-                  <li><a href="#">Générer les tableaux à élimination</a></li>
-                  <li><a href="#">Saisir les résultats</a></li>
-				  <li><a href="#">Editer la programmation</a></li>
-				  <li><a href="#">Envoyer les résultats</a></li>
-				  <li><a href="#">Editer les feuilles de match</a></li>
+                  <li><a href="#">Créer un tournoi</a></li>
+				  <li><a href="#">Rechercher un tournoi</a></li>
 				</ul>
 		   </li>
            <li class="dropdown connect">
@@ -60,7 +49,6 @@
 		    	</a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Créer une équipe</a></li>
-                  <li><a href="#">Rechercher des adhérents</a></li>
                   <li><a href="#">Etablir une convocation</a></li>
 				</ul>
 			</li>
@@ -83,7 +71,7 @@
 ================================================== -->
 
 <!-- Modal Tournoi -->
-<div class="modal fade" id="myModalTournoi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+<div class="modal fade" id="myModalTournoi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -238,24 +226,23 @@
 				  <div class="panel-heading list-group">
 					  <div class="row ">
 						  <label for="selectTableaux" class="col-sm-3" id="labelTableau">Tableau</label>
-						  <div class="text-left col-sm-3">
+						  <div class="text-left col-sm-4">
 					  			<select class="form-control input-sm" id="selectTableaux">
 									<option>-</option>
-									<option>1</option>
+									<option selected="selected">1</option>
 									<option>2</option>
-									<option>3</option>
 								</select> 
 						  </div>
-						  <div class="text-right col-sm-6">
-					  			<input type="button" value="+" alt="Créer un nouveau tableau" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+						  <div class="text-right col-sm-5">
+					  			<input type="button" value="+" title="Créer un nouveau tableau" class="btn btn-info" data-toggle="modal" data-target="#myModal">
 						  </div>
 					  </div>
 				  </div>
 				  <div class="panel-body">
-				  <div><span class="col-sm-5">Format</span><span id="tabFormat" class="col-sm-7 text-right text-info">-</span></div>
-				  <div><span class="col-sm-5">Classement</span><span id="tabClassement" class="col-sm-7 text-right text-info">-</span></div>
-				  <div><span class="col-sm-5">Catégories</span><span id="tabCategorie" class="col-sm-7 text-right text-info">-</span></div>
-				  <div><span class="col-sm-10">Nb de participants/Poule</span><span id="tabParticipant" class="col-sm-2 text-right text-info">-</span></div>
+				  <div><span class="col-sm-5">Format</span><span id="tabFormat" class="col-sm-7 text-right text-info">Simple</span></div>
+				  <div><span class="col-sm-5">Classement</span><span id="tabClassement" class="col-sm-7 text-right text-info">A1</span></div>
+				  <div><span class="col-sm-5">Catégories</span><span id="tabCategorie" class="col-sm-7 text-right text-info">Sénior</span></div>
+				  <div><span class="col-sm-10">Nb de participants/Poule</span><span id="tabParticipant" class="col-sm-2 text-right text-info">3</span></div>
 				  </div>
 			   </div>
 		   </div>
@@ -265,7 +252,7 @@
 				<h4>Adhérents</h4>
 			</div>
 			<div class="col-sm-2">
-				<input type="button" value="+" alt="Ajouter un adhérent" class="btn btn-info">
+				<input type="button" value="+" title="Ajouter un adhérent" class="btn btn-info" onclick="addAdherent()">
 			</div>
 		</div>
 		<div class="col-sm-6 col-sm-offset-1 row">
@@ -286,11 +273,11 @@
 		            <th class="filter-select hidden">CDM</th>
 		          </tr>
 		        </thead>
-		        <tbody>
+		         <tbody>
 			       	 <tr>
-			            <td>123</td>
-			            <td>Denet</td>
-			            <td>Charles</td>
+			            <td>68759812</td>
+			            <td>Guichard</td>
+			            <td>Jeremy</td>
 			            <td class="hidden">Homme</td>
 			            <td class="hidden">Vétéran 1</td>
 			            <td class="hidden">CSA ETRS Rennes</td>
@@ -299,15 +286,136 @@
 			            <td class="hidden">A4</td>
 			          </tr>
 			       	 <tr>
-			            <td>654</td>
-			            <td>Harlet</td>
-			            <td>Catherine</td>
-			            <td class="hidden">Femme</td>
+			            <td>41258767</td>
+			            <td>Pommier</td>
+			            <td>Mathieu</td>
+			            <td class="hidden">Homme</td>
 			            <td class="hidden">Sénior</td>
 			            <td class="hidden">CSA ETRS Rennes</td>
 			            <td class="hidden">A1</td>
 			            <td class="hidden">C1</td>
 			            <td class="hidden">B2</td>
+			          </tr>
+					  <tr>
+			            <td>45832147</td>
+			            <td>Gavin</td>
+			            <td>Maxime</td>
+			            <td class="hidden">Homme</td>
+			            <td class="hidden">Vétéran 1</td>
+			            <td class="hidden">CSA Quimper</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>73246545</td>
+			            <td>Teulet</td>
+			            <td>Jeremy</td>
+			            <td class="hidden">Homme</td>
+			            <td class="hidden">Vétéran 1</td>
+			            <td class="hidden">CSA Brest</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>01578964</td>
+			            <td>Chaveroux</td>
+			            <td>Chloe</td>
+			            <td class="hidden">Femme</td>
+			            <td class="hidden">Sénior</td>
+			            <td class="hidden">CSA ETRS Rennes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>56248971</td>
+			            <td>Chedal</td>
+			            <td>Clement</td>
+			            <td class="hidden">Homme</td>
+			            <td class="hidden">Vétéran 1</td>
+			            <td class="hidden">CSA Nantes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>89351164</td>
+			            <td>Cartier</td>
+			            <td>Mathieu</td>
+			            <td class="hidden">Homme</td>
+			            <td class="hidden">Vétéran 1</td>
+			            <td class="hidden">CSA ETRS Rennes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>56571201</td>
+			            <td>Gautereau</td>
+			            <td>Lucie</td>
+			            <td class="hidden">Femme</td>
+			            <td class="hidden">Vétéran 1</td>
+			            <td class="hidden">CSA ETRS Rennes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>36568974</td>
+			            <td>Fonteneau</td>
+			            <td>Alexis</td>
+			            <td class="hidden">Homme</td>
+			            <td class="hidden">Sénior</td>
+			            <td class="hidden">CSA Nantes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>14502556</td>
+			            <td>Coic</td>
+			            <td>Gaelleanne</td>
+			            <td class="hidden">Femme</td>
+			            <td class="hidden">Sénior</td>
+			            <td class="hidden">CSA ETRS Rennes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>89657866</td>
+			            <td>Thomas</td>
+			            <td>Arnaud</td>
+			            <td class="hidden">Homme</td>
+			            <td class="hidden">Vétéran 1</td>
+			            <td class="hidden">CSA ETRS Rennes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>35567566</td>
+			            <td>Leroy</td>
+			            <td>Jeremy</td>
+			            <td class="hidden">Homme</td>
+			            <td class="hidden">Vétéran 1</td>
+			            <td class="hidden">CSA ETRS Rennes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
+			          </tr>
+					  <tr>
+			            <td>36556865</td>
+			            <td>Boudier</td>
+			            <td>Amaury</td>
+			            <td class="hidden">Homme</td>
+			            <td class="hidden">Vétéran 1</td>
+			            <td class="hidden">CSA ETRS Rennes</td>
+			            <td class="hidden">A2</td>
+			            <td class="hidden">B1</td>
+			            <td class="hidden">A4</td>
 			          </tr>
 		         </tbody>
 		      </table>	
@@ -409,9 +517,16 @@
 				          <tr>
 				            <td>1</td>
 				            <td>Simple</td>
-				            <td>-</td>
+				            <td>A1</td>
 				            <td>Sénior</td>
-				            <td>20</td>
+				            <td>3</td>
+				          </tr>
+				           <tr>
+				            <td>2</td>
+				            <td>Double Mixte</td>
+				            <td>A2</td>
+				            <td>Vétéran 1</td>
+				            <td>3</td>
 				          </tr>
 		         	</tbody>
 		      	</table>	
@@ -520,11 +635,19 @@
 			})
 		
 		function validerFormTournoi(form){
-			console.log(form.inputNomTournoi);
-			console.debug(form);
+			$("#tournoiDate").val(form.inputDateTournoi.value);
+			$("#tournoiLieu").val(form.inputLieuTournoi.value);
+			$("#tournoiTerrain").val(form.inputNbTerrainTournoi.value);
+			$("#tournoiMatch").val(form.inputDureeTournoi.value);
+			$("#tournoiRecup").val(form.inputRecupTournoi.value);
+
 			$("#myModalTournoi").modal("hide");
-			alert("insérer les infos dans le récap du tournoi")
+
 			return false;
+		}
+
+		function addAdherent(){
+			window.location = window.location.pathname.split("WebContent/ressources")[0]+"WebContent/ressources/pages/adherent/creerModifierAdherent.html";
 		}
 		</script>
   </body>

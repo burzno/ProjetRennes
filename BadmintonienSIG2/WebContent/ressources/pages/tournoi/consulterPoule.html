@@ -11,6 +11,7 @@
 
 	<link rel="stylesheet" href="../../css/global.css">
 	<link rel="stylesheet" href="../../dist/bootstrap/3.0.0/css/bootstrap.css">
+	<link rel="stylesheet" href="../../dist/bootstrap/dialog/css/bootstrap-dialog.min.css">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -20,7 +21,16 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style type="text/css">
 
+	#sortTable > tbody > tr > td > img {
+		cursor: pointer;
+	} 
+	#sortTable > tbody > tr > td, #sortTable > thead > tr > td {
+		text-align: center;
+	} 
+
+</style>
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -28,7 +38,7 @@
     <div id="entete">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div id="menu">
-		<ul class="nav nav-pills navbar-left ">
+<ul class="nav nav-pills navbar-left ">
 		   <li><a href="../index.html">Accueil</a></li>
            <li class="dropdown connect">
 	            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -75,101 +85,119 @@
 
 <div class="container page">
 	<div class="row well">
-			<div class="col-sm-12">
-			  	<fieldset>
-				    <legend>Consultation du tournoi</legend>
-			    </fieldset>
+		<div class="col-sm-12">
+		  	<fieldset>
+			    <legend>Consulter une poule</legend>
+		    </fieldset>
+		    <div class="col-sm-12">
 			    	<div class="panel panel-default">
 					  <!-- Default panel contents -->
-					  <div class="panel-heading">Récapitulatif du Tournoi de printemps</div>
+					  <div class="panel-heading">Listing des joueurs</div>
 					  <div class="panel-body">
 						  <div>
-							  <span class="col-sm-3 text-right">Date</span><span id="tournoiDate" class="col-sm-3 text-info">12/04/2014</span>
-							  <span class="col-sm-3 text-right">Lieu</span><span id="tournoiLieu" class="col-sm-3 text-info">ETRS Rennes</span>
+							  <span class="col-sm-3 text-right">Joueur 1</span><span id="tournoiDate" class="col-sm-3 text-info">Guichard Jeremy</span>
+							  <span class="col-sm-3 text-right">Joueur 2</span><span id="tournoiLieu" class="col-sm-3 text-info">Gavin Maxime</span>
 						  </div>
 						  <div>
-							  <span class="col-sm-3 text-right">Durée d'un match</span><span id="tournoiMatch" class="col-sm-3 text-info">25 min</span>
-							  <span class="col-sm-3 text-right">Temps de récupération</span><span id="tournoiRecup" class="col-sm-3 text-info">20 min</span>
-						  </div>
-						  <div>
-						  	  <span class="col-sm-3 text-right">Nombre Terrains disponibles</span><span id="tournoiTerrain" class="col-sm-3 text-info">5</span>
-						  	  <span class="col-sm-3 text-right">Nombre d'inscrit</span><span id="tournoiParticipants" class="col-sm-3 text-info">21</span>
+							  <span class="col-sm-3 text-right">Joueur 3</span><span id="tournoiDate" class="col-sm-3 text-info">Teulet Jeremy</span>
+							  <span class="col-sm-3 text-right">Joueur 4</span><span id="tournoiLieu" class="col-sm-3 text-info">Chedal Clement</span>
 						  </div>
 					  </div>
 				   </div>
 			</div>
-		<div class="col-sm-12">
-			<table id="sortTable" class="panel panel-default table-hover text-center tableauSelectable">
-		        <thead>
-		          <tr>
-		            <th>Tableau</th>
-		            <th>Format</th>
-		            <th>Classement</th>
-		            <th>Catégorie</th>
-		            <th>Nombre de participants</th>
-		            <th>Nombre de poules</th>
-		            <th class="text-center">Générer les poules</th>
-		          </tr>
-		        </thead>
-		        <tbody>
-			       	 <tr>
-			            <td>Tableau 1</td>
-			            <td>Simple</td>
-			            <td>A1</td>
-			            <td>Sénior</td>
-			            <td>9</td>
-			            <td>-</td>
-			            <td class="text-center"><img  src="../../images/icones/create_poule.png" alt="Check" height="40px" title="Générer les poules"></td>
-			         </tr>
-			       	 <tr>
-			            <td>Tableau 2</td>
-			            <td>Double Mixte</td>
-			            <td>A2</td>
-			            <td>Vétéran 1</td>
-			            <td>12</td>
-			            <td>-</td>
-			            <td class="text-center"><img src="../../images/icones/create_poule.png" alt="Check" height="40px" title="Générer les poules"></td>
-			         </tr>
-		         </tbody>
-		      <tfoot>
-		      	<tr>
-			      	<th colspan="7" class="ts-pager form-horizontal tablesorter-pager text-center" data-column="0">
-						<button type="button" class="btn first disabled" tabindex="0" aria-disabled="true"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
-						<button type="button" class="btn prev disabled" tabindex="0" aria-disabled="true"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
-						<span class="pagedisplay">1 - 10 / 15 (50)</span> <!-- this can be any element, including an input -->
-						<button type="button" class="btn next" tabindex="0" aria-disabled="false"><i class="icon-arrow-right glyphicon glyphicon-forward"></i></button>
-						<button type="button" class="btn last" tabindex="0" aria-disabled="false"><i class="icon-step-forward glyphicon glyphicon-step-forward"></i></button>
-						<select class="pagesize input-mini" title="Nombre de résultats sur la page" aria-disabled="false">
-							<option selected="selected" value="5">5</option>
-							<option value="10">10</option>
-							<option value="15">15</option>
-							<option value="20">20</option>
-						</select>
-					</th>
-		      	</tr>
-		      </tfoot>
-		   </table>		
-		</div>
-		<div class="col-sm-12 text-center">
-			<button type="button" class="btn btn-primary">Editer la programmation des poules</button>
-			<button type="button" class="btn btn-primary col-sm-offset-1">Editer la programmation des tableaux</button>
+	    	<div class="col-sm-12">
+		    	<div class="panel panel-default">
+				  <!-- Default panel contents -->
+				  <div class="panel-heading">Poule 1</div>
+				  <div class="panel-body">
+					<table id="sortTable" class="panel panel-default table-hover">
+						 <thead>
+							  <tr>
+							    <th></th>
+							    <th>Set 1</th>
+							    <th>Set 2</th>
+							    <th>Set 3</th>
+							    <th>Gagnant</th>
+							    <th>Perdant</th>
+							    <th width="30px"></th>
+							  </tr>
+						  </thead>
+						  <tbody>
+							  <tr>
+							    <td>1-2</td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td><img src="../../images/icones/volant.jpg" alt="Check" height="55px" title="Editer la feuille de match" onclick="msg('1-2')"></td>
+							  </tr>
+							  <tr>
+							    <td>3-4</td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td><img src="../../images/icones/volant.jpg" alt="Check" height="55px" title="Editer la feuille de match" onclick="msg('3-4')"></td>
+							  </tr>
+							  <tr>
+							    <td>1-3</td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td><img src="../../images/icones/volant.jpg" alt="Check" height="55px" title="Editer la feuille de match" onclick="msg('1-3')"></td>
+							  </tr>
+							  <tr>
+							    <td>2-4</td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td><img src="../../images/icones/volant.jpg" alt="Check" height="55px" title="Editer la feuille de match" onclick="msg('2-4')"></td>
+							  </tr>
+							  <tr>
+							    <td>1-4</td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td><img src="../../images/icones/volant.jpg" alt="Check" height="55px" title="Editer la feuille de match" onclick="msg('1-4')"></td>
+							  </tr>
+							  <tr>
+							    <td>2-3</td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td></td>
+							    <td><img src="../../images/icones/volant.jpg" alt="Check" height="55px" title="Editer la feuille de match" onclick="msg('2-3')"></td>
+							  </tr>
+						</tbody>
+					</table>
+				  </div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-<a href="consulterTableau.html">
-<button type="button" style="display: none" id="lienConsulterTableau"></button>
-</a>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type='text/javascript' src="../../dist/jQuery/2.1.0/js/jquery.js" ></script>
 	<script src="../../dist/bootstrap/3.0.0/js/bootstrap.js"></script>
+	<script src="../../dist/bootstrap/dialog/js/bootstrap-dialog.min.js"></script>
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.js"></script>
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.pager.js"></script>
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.widgets.js"></script>
+	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.widget-editable.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			
 			$("#sortTable").tablesorter({
 			    // this will apply the bootstrap theme if "uitheme" widget is included
 			    // the widgetOptions.uitheme is no longer required to be set
@@ -180,7 +208,7 @@
 
 			    // widget code contained in the jquery.tablesorter.widgets.js file
 			    // use the zebra stripe widget if you plan on hiding any rows (filter widget)
-			    widgets : [ "uitheme","filter", "zebra" ],
+			    widgets : [ "uitheme","filter", "zebra", "editable" ],
 
 			    widgetOptions : {
 			      // using the default zebra striping class name, so it actually isn't included in the theme variable above
@@ -192,31 +220,40 @@
 		          // include column filters
 		          filter_columnFilters: false,
 		          filter_saveFilters : true,
-		          filter_reset: '.reset'
+		          filter_reset: '.reset',
 			          
-			      // set the uitheme widget to use the bootstrap theme class names
-			      // this is no longer required, if theme is set
-			       //,uitheme : "bootstrap"
+	              editable_columns       : [1,2,3,4,5],       // or "0-2" (v2.14.2); point to the columns to make editable (zero-based index)
+	              editable_enterToAccept : true,          // press enter to accept content, or click outside if false
+	              editable_autoResort    : true,         // auto resort after the content has changed.
+	              editable_noEdit        : 'no-edit',     // class name of cell that is not editable
+	              editable_editComplete  : 'editComplete' // event fired after the table content has been edited
+			    
 			    
 			    }
 			  });
-			$("#sortTable").tablesorterPager({
+		});
 
-			    // target the pager markup - see the HTML block below
-			    container: $(".ts-pager"),
-
-			    // remove rows from the table to speed up the sort of large tables.
-			    // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
-			    removeRows: false,
-
-			    // output string - default is '{page}/{totalPages}';
-			    // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
-			    //output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
-			    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
-
-			  });
-			$(".tableauSelectable").find("tr").click(function(){$("#lienConsulterTableau").click();});
-			})
+		function msg(joueur){
+			openAlert("édition de la feuille de match pour les joueurs "+joueur);
+		}
+		
+		function openAlert(msg){
+			openDialog(msg, BootstrapDialog.TYPE_INFO, "Information");
+		}
+		
+		function openDialog(msg, type, title){
+	            BootstrapDialog.show({
+	                type: type,
+	                title: title,
+	                message: msg,
+	                buttons: [{
+			                    label: 'Fermer',
+			                    action: function(dialogRef){
+			                        dialogRef.close();
+	                    		}
+            				}]
+	           		 });     
+		}
 	</script>
   </body>
 </html>

@@ -11,6 +11,7 @@
 
 	<link rel="stylesheet" href="../../css/global.css">
 	<link rel="stylesheet" href="../../dist/bootstrap/3.0.0/css/bootstrap.css">
+	<link rel="stylesheet" href="../../dist/bootstrap/dialog/css/bootstrap-dialog.min.css">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -20,7 +21,17 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style type="text/css">
 
+.tableRightBtn {
+	height: 320px; 
+}
+
+.tableRightBtn > tbody > tr > td > img{
+	cursor: pointer;
+} 
+
+</style>
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -28,7 +39,7 @@
     <div id="entete">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div id="menu">
-		<ul class="nav nav-pills navbar-left">
+		<ul class="nav nav-pills navbar-left ">
 		   <li><a href="../index.html">Accueil</a></li>
            <li class="dropdown connect">
 	            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -36,11 +47,6 @@
 		    	</a>
                 <ul class="dropdown-menu">
                   <li class="active"><a href="creerModifierAdherent.html">Créer un adhérent</a></li>
-                  <li><a href="creerModifierAdherent.html">Modifier un adhérent</a></li>
-                  <li><a href="#">Supprimer un adhérent</a></li>
-                  <li><a href="#">Mettre à jour les pièces reçues de l'adhérent</a></li>
-                  <li><a href="#">Renseigner les indisponibilités</a></li>
-				  <li><a href="#">Imprimer les pièces fournies</a></li>
 				  <li><a href="#">Rechercher un adhérent</a></li>
 				</ul>
 			</li>
@@ -49,13 +55,8 @@
 			      Tournois <span class="caret"></span>
 		    	</a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Générer les poules</a></li>
-                  <li><a href="#">Renseigner les paramètres du tournoi</a></li>
-                  <li><a href="#">Générer les tableaux à élimination</a></li>
-                  <li><a href="#">Saisir les résultats</a></li>
-				  <li><a href="#">Editer la programmation</a></li>
-				  <li><a href="#">Envoyer les résultats</a></li>
-				  <li><a href="#">Editer les feuilles de match</a></li>
+                  <li><a href="../tournoi/renseignerParticipant.html">Créer un tournoi</a></li>
+				  <li><a href="#">Rechercher un tournoi</a></li>
 				</ul>
 		   </li>
            <li class="dropdown connect">
@@ -64,7 +65,6 @@
 		    	</a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Créer une équipe</a></li>
-                  <li><a href="#">Rechercher des adhérents</a></li>
                   <li><a href="#">Etablir une convocation</a></li>
 				</ul>
 			</li>
@@ -161,68 +161,122 @@
 		            <th class="filter-select">Club</th>
 		          </tr>
 		        </thead>
-		        <tbody>
+		         <tbody>
 			       	 <tr>
-			            <td>123</td>
-			            <td></td>
-			            <td>Denet</td>
-			            <td>Charles</td>
+			            <td>68759812</td>
+			            <td>14587965</td>
+			            <td>Guichard</td>
+			            <td>Jeremy</td>
 			            <td>Homme</td>
-			            <td>1962</td>
+			            <td>1990</td>
 			            <td>CSA ETRS Rennes</td>
 			          </tr>
 			       	 <tr>
-			            <td>1265843</td>
+			            <td>41258767</td>
 			            <td></td>
-			            <td>Dendfget</td>
-			            <td>Chqgarles</td>
+			            <td>Pommier</td>
+			            <td>Mathieu</td>
 			            <td>Homme</td>
-			            <td>1959</td>
+			            <td>1989</td>
 			            <td>CSA ETRS Rennes</td>
 			          </tr>
 			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
+			            <td>45832147</td>
+			            <td>99835567</td>
+			            <td>Gavin</td>
+			            <td>Maxime</td>
 			            <td>Homme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
+			            <td>1992</td>
+			            <td>CSA Quimper</td>
 			          </tr>
 			       	 <tr>
-			            <td>12654653</td>
+			            <td>73246545</td>
 			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
+			            <td>Teulet</td>
+			            <td>Jeremy</td>
 			            <td>Homme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
+			            <td>1985</td>
+			            <td>CSA Brest</td>
 			          </tr>
 			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
-			            <td>Homme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
-			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
-			            <td>Homme</td>
-			            <td>1960</td>
-			            <td>CSA ETRS Rennes</td>
-			          </tr>
-			       	 <tr>
-			            <td>12654653</td>
-			            <td></td>
-			            <td>Deqsfnet</td>
-			            <td>Chqgsdharles</td>
+			            <td>01578964</td>
+			            <td>68457879</td>
+			            <td>Chaveroux</td>
+			            <td>Chloe</td>
 			            <td>Femme</td>
-			            <td>1960</td>
+			            <td>1993</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+			       	 <tr>
+			            <td>56248971</td>
+			            <td></td>
+			            <td>Chedal</td>
+			            <td>Clement</td>
+			            <td>Homme</td>
+			            <td>1984</td>
+			            <td>CSA Nantes</td>
+			          </tr>
+			       	 <tr>
+			            <td>89351164</td>
+			            <td></td>
+			            <td>Cartier</td>
+			            <td>Mathieu</td>
+			            <td>Homme</td>
+			            <td>1980</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+					  <tr>
+			            <td>56571201</td>
+			            <td></td>
+			            <td>Gautereau</td>
+			            <td>Lucie</td>
+			            <td>Femme</td>
+			            <td>1987</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+					  <tr>
+			            <td>36568974</td>
+			            <td></td>
+			            <td>Fonteneau</td>
+			            <td>Alexis</td>
+			            <td>Homme</td>
+			            <td>1982</td>
+			            <td>CSA Nantes</td>
+			          </tr>
+					  <tr>
+			            <td>14502556</td>
+			            <td>01441710</td>
+			            <td>Coic</td>
+			            <td>Gaelleanne</td>
+			            <td>Femme</td>
+			            <td>1979</td>
+			            <td>CSA Nantes</td>
+			          </tr>
+					  <tr>
+			            <td>89657866</td>
+			            <td>12057606</td>
+			            <td>Thomas</td>
+			            <td>Arnaud</td>
+			            <td>Homme</td>
+			            <td>1990</td>
+			            <td>CSA Nantes</td>
+			          </tr>
+					  <tr>
+			            <td>35567566</td>
+			            <td></td>
+			            <td>Leroy</td>
+			            <td>Jeremy</td>
+			            <td>Homme</td>
+			            <td>1988</td>
+			            <td>CSA ETRS Rennes</td>
+			          </tr>
+					  <tr>
+			            <td>36556865</td>
+			            <td>01020556</td>
+			            <td>Boudier</td>
+			            <td>Amaury</td>
+			            <td>Homme</td>
+			            <td>1987</td>
 			            <td>CSA ETRS Rennes</td>
 			          </tr>
 		         </tbody>
@@ -247,16 +301,23 @@
 		      </table>		
 		</div>
 		<div class="col-sm-1">
-			<div class="col-sm-12">
-			    <img src="../../images/icones/calendar.png" alt="Check" height="40px" title="Editer les disponibilités">
-	      </div>
-			<div class="col-sm-12">
-			    <img src="../../images/icones/edit.png" alt="Check" height="40px" title="Modifier l'adhérent">
-	      </div>
-			<div class="col-sm-12">
-			    <img src="../../images/icones/supp.png" alt="Check" height="40px" title="Supprimer l'adhérent">
-	      </div>
-			
+			<table class="tableRightBtn">
+					<tr>
+						<td>
+					    	<img src="../../images/icones/calendar.png" alt="Check" height="40px" title="Editer les disponibilités" onclick="dispoAdherent()">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							    <img src="../../images/icones/edit.png" alt="Check" height="40px" title="Modifier l'adhérent" onclick="editAdherent()">
+						</td>
+					</tr>
+					<tr>
+						<td>	
+						    <img src="../../images/icones/supp.png" alt="Check" height="40px" title="Supprimer l'adhérent" onclick="suppAdherent()">
+						</td>
+					</tr>
+			</table>
 		</div>
 	</div>
 </div>
@@ -266,12 +327,12 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script type='text/javascript' src="../../dist/jQuery/2.1.0/js/jquery.js" ></script>
 	<script src="../../dist/bootstrap/3.0.0/js/bootstrap.js"></script>
+	<script src="../../dist/bootstrap/dialog/js/bootstrap-dialog.min.js"></script>
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.js"></script>
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.pager.js"></script>
 	<script src="../../dist/jQuery/tableSorter/jquery.tablesorter.widgets.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			
 			$("#sortTable").tablesorter({
 			    // this will apply the bootstrap theme if "uitheme" widget is included
 			    // the widgetOptions.uitheme is no longer required to be set
@@ -322,6 +383,62 @@
 			  });
 			$(".tableauSelectable").find("tr").click(function(){$(this).toggleClass("select");});
 			})
+			function getAdherents(){
+				return $(".select");
+			}
+			function getNbAdherents(){
+				return getAdherents().size();
+			}
+		
+			function dispoAdherent(){
+				openAlert("TODO Mettre en place un datePicker pour définir la période")
+			}
+			
+			function editAdherent(){
+				if(getNbAdherents() == 1){
+					window.location = window.location.pathname.split("WebContent/ressources")[0]+"WebContent/ressources/pages/adherent/creerModifierAdherentEdit.html";
+				}else{
+					openErr("Veuillez sélectionner un seul adhérent afin de l'éditer");
+				}
+			}
+			
+			function suppAdherent(){
+				if(getNbAdherents() != 0){
+					BootstrapDialog.confirm("Voulez vous vraiment supprimer ces "+getNbAdherents()+" adhérent(s) ?", function(rs){
+									if(rs){
+									getAdherents().each(function(){
+														$(this).remove();
+													});
+									}
+								});
+				}else{
+					openErr("Veuillez sélectionner au moins un adhérent à supprimer");
+				}
+				
+			}
+
+			function openErr(msg){
+				openDialog(msg, BootstrapDialog.TYPE_DANGER, "Erreur");
+			}
+			
+			function openAlert(msg){
+				openDialog(msg, BootstrapDialog.TYPE_INFO, "Alerte");
+			}
+			
+			function openDialog(msg, type, title){
+		            BootstrapDialog.show({
+		                type: type,
+		                title: title,
+		                message: msg,
+		                buttons: [{
+				                    label: 'Fermer',
+				                    action: function(dialogRef){
+				                        dialogRef.close();
+		                    		}
+                				}]
+		           		 });     
+			}
+
 	</script>
   </body>
 </html>
