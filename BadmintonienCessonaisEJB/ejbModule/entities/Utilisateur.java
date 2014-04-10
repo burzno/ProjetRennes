@@ -13,6 +13,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -27,8 +29,8 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode(of={"id"})
 @NamedQueries({
 
-	@NamedQuery(name="allAdherents",query="select ad from Adherent ad"),
-	@NamedQuery(name="findAdherentByName",query="select ad from Adherent ad WHERE ad.nom = :nomAdherent")
+	@NamedQuery(name="findallUtilisateurs",query="select u from Utilisateur u"),
+	@NamedQuery(name="findUtilisateurByMail",query="select u from Utilisateur u WHERE u.adresse_mail = :mailUtilisateur")
 
 })
 public class Utilisateur implements Serializable{
@@ -41,6 +43,7 @@ public class Utilisateur implements Serializable{
 	String prenom;
 	String adresse_mail;
 	String mot_de_passe;
+	@Temporal(TemporalType.DATE)
 	Date date_naissance;
 	String adresse;
 	int code_postale;

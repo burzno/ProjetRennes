@@ -13,5 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="D:/Documents/lucas.guerrot/Documents/eclipse-jee-kepler-SR1-win32/JAVA-libs/Lombok/lombok.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/logger"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
