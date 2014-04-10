@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib version="2.0"
+		xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
+	
+			<namespace>http://bc/customtags</namespace>
+			<tag>
+				<tag-name>bc-header</tag-name>
+				<source>bc-header.xhtml</source>
+				<attribute>
+					<name>for</name>
+				</attribute>
+				<attribute>
+					<name>label</name>
+				</attribute>
+			</tag>
+</facelet-taglib>
