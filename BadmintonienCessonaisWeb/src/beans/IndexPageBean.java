@@ -16,7 +16,7 @@ public class IndexPageBean{
 		
 	}
 	
-	//avant que le garbageCollector de passe
+	//avant que le garbageCollector ne passe
 	@PreDestroy
 	public void shutdown(){
 		

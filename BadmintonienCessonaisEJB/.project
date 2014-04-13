@@ -3,6 +3,8 @@
 	<name>BadmintonienCessonaisEJB</name>
 	<comment></comment>
 	<projects>
+		<project>BadmintonienCessonais</project>
+		<project>BadmintonienCessonaisWeb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
