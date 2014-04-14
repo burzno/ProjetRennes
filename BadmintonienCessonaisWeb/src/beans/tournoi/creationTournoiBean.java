@@ -24,7 +24,7 @@ public class creationTournoiBean {
 	
 	public void enregistrerTournoi(){
 		System.out.println("ici");
-		JsfUtils.sendMessage("growl", "Enregistrement du tournoi");
+		JsfUtils.sendMessage("Enregistrement du tournoi");
 	}
 }
 
