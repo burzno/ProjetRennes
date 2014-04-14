@@ -1,16 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:bc="http://bc/customtags"> 
-
-	<h:head>
-		<title>Le Badmintonien Cessonnais</title>
-		<bc:bc-header />
-	</h:head> 
-	<h:body> 
-		<h1>Salut Bande de Salopes!</h1>
-	</h:body> 
-</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui"
+		template="/WEB-INF/templates/disposition.xhtml">
+		
+		<ui:define name="pageHeader">
+			Salut Bande de Salopes!
+		</ui:define>
+		
+		<ui:define name="body">
+			Mettre en place la page d'accueil
+			Avec les images des différents partenaires
+			 			Bonus
+			 Ajouter les infos et les articles
+			 <h:form>
+			 	<p:commandButton value="Tournoi" action="#{redirect.getCreerTournoi}"></p:commandButton>
+			 </h:form>
+		</ui:define>
+		
+		<ui:define name="pageFooter">
+			Si besoin est, un footer est présent
+		</ui:define>
+		
+</ui:composition>

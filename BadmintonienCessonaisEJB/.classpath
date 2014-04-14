@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="ejbModule"/>
+	<classpathentry excluding="META-INF/lib/" kind="src" path="ejbModule"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/1_7_0_51">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -12,7 +12,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Documents/lucas.guerrot/Documents/eclipse-jee-kepler-SR1-win32/JAVA-libs/Lombok/lombok.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/logger"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container/BadmintonienCessonaisWeb"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

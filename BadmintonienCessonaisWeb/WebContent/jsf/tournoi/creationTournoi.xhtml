@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui"
+		template="/WEB-INF/templates/disposition.xhtml"
+		xmlns:tag="http://java.sun.com/jsf/composite/taglibs">
+		
+		<ui:define name="pageHeader">
+			Création d'un tournoi
+		</ui:define>
+		
+		<ui:define name="body">
+			<h:form>
+				<tag:inputZone for="inputNomTournoi" label="Nom du tournoi">
+					<p:inputText id="inputNomTournoi" placeholder="Nom" value="#{creationTournoiBean.tournoi.nom}"/>
+				</tag:inputZone>
+				<tag:inputZone for="inputDateTournoi" label="Date">
+					<p:calendar id="inputDateTournoi" placeholder="jj/mm/aaaa" value="#{creationTournoiBean.tournoi.dateTournoi}" required="required" />
+				</tag:inputZone>
+				<tag:inputZone for="inputLieuTournoi" label="Lieu">
+					<p:inputText id="inputLieuTournoi" placeholder="Lieu" value="#{creationTournoiBean.tournoi.lieu}" required="required"/>
+				</tag:inputZone>
+				<tag:inputZone for="inputDureeTournoi" label="Durée d'un match">
+					<p:inputText id="inputDureeTournoi" placeholder="Durée moyenne" value="#{creationTournoiBean.tournoi.dureeMatch}" required="required"/>
+				</tag:inputZone>
+				<tag:inputZone for="inputRecupTournoi" label="Temps de récupération">
+					<p:inputText id="inputRecupTournoi" placeholder="Récupération minimum" value="#{creationTournoiBean.tournoi.dureeRecup}" required="required"/>
+				</tag:inputZone>
+				<tag:inputZone for="inputNbTerrainTournoi" label="Nombre de terrains disponible">
+					<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="required"/>
+				</tag:inputZone>
+				<p:commandButton update="@form" value="Enregistrer" actionListener="#{creationTournoiBean.enregistrerTournoi()}"/>
+			</h:form>
+		</ui:define>
+		
+</ui:composition>
