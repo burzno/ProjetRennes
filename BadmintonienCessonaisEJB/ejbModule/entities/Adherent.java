@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -31,7 +29,7 @@ public class Adherent extends Utilisateur implements Serializable {
 	
 	String licence_fcd;
 	String licence_ffba;
-	Boolean isReferent;
+	boolean referent;
 	@ManyToOne(targetEntity=Categorie.class)
 	Categorie categorie;
 	@ManyToOne(targetEntity=Club.class)
