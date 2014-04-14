@@ -6,7 +6,7 @@
 		xmlns:ui="http://java.sun.com/jsf/facelets"
 		xmlns:p="http://primefaces.org/ui"
 		template="/WEB-INF/templates/disposition.xhtml"
-		xmlns:tag="http://java.sun.com/jsf/composite/taglibs">
+		xmlns:tag="http://taglibs/customtags">
 		
 		<ui:define name="pageHeader">
 			Création d'un tournoi
@@ -14,24 +14,26 @@
 		
 		<ui:define name="body">
 			<h:form>
-				<tag:inputZone for="inputNomTournoi" label="Nom du tournoi">
-					<p:inputText id="inputNomTournoi" placeholder="Nom" value="#{creationTournoiBean.tournoi.nom}"/>
-				</tag:inputZone>
-				<tag:inputZone for="inputDateTournoi" label="Date">
-					<p:calendar id="inputDateTournoi" placeholder="jj/mm/aaaa" value="#{creationTournoiBean.tournoi.dateTournoi}" required="required" />
-				</tag:inputZone>
-				<tag:inputZone for="inputLieuTournoi" label="Lieu">
-					<p:inputText id="inputLieuTournoi" placeholder="Lieu" value="#{creationTournoiBean.tournoi.lieu}" required="required"/>
-				</tag:inputZone>
-				<tag:inputZone for="inputDureeTournoi" label="Durée d'un match">
-					<p:inputText id="inputDureeTournoi" placeholder="Durée moyenne" value="#{creationTournoiBean.tournoi.dureeMatch}" required="required"/>
-				</tag:inputZone>
-				<tag:inputZone for="inputRecupTournoi" label="Temps de récupération">
-					<p:inputText id="inputRecupTournoi" placeholder="Récupération minimum" value="#{creationTournoiBean.tournoi.dureeRecup}" required="required"/>
-				</tag:inputZone>
-				<tag:inputZone for="inputNbTerrainTournoi" label="Nombre de terrains disponible">
-					<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="required"/>
-				</tag:inputZone>
+				<h:panelGrid columns="3">
+					<tag:input-zone for="inputNomTournoi" label="Nom du tournoi">
+						<p:inputText id="inputNomTournoi" placeholder="Nom" value="#{creationTournoiBean.tournoi.nom}"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputDateTournoi" label="Date">
+						<p:calendar id="inputDateTournoi" placeholder="jj/mm/aaaa" value="#{creationTournoiBean.tournoi.dateTournoi}" required="true" requiredMessage="Champs obligatoire"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputLieuTournoi" label="Lieu">
+						<p:inputText id="inputLieuTournoi" placeholder="Lieu" value="#{creationTournoiBean.tournoi.lieu}"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputDureeTournoi" label="Durée d'un match">
+						<p:inputText id="inputDureeTournoi" placeholder="Durée moyenne" value="#{creationTournoiBean.tournoi.dureeMatch}"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputRecupTournoi" label="Temps de récupération">
+						<p:inputText id="inputRecupTournoi" placeholder="Récupération minimum" value="#{creationTournoiBean.tournoi.dureeRecup}" required="true"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputNbTerrainTournoi" label="Nombre de terrains disponible">
+						<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="true"/>
+					</tag:input-zone>
+				</h:panelGrid>
 				<p:commandButton update="@form" value="Enregistrer" actionListener="#{creationTournoiBean.enregistrerTournoi()}"/>
 			</h:form>
 		</ui:define>

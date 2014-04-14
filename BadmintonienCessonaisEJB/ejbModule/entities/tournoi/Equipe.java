@@ -3,13 +3,15 @@ package entities.tournoi;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -25,8 +27,11 @@ import entities.Adherent;
 public class Equipe implements Serializable {
 
 	@Id
-	@Column(columnDefinition="VARCHAR(36)")
-	String idEquipe = UUID.randomUUID().toString();
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	Long idEquipe;
+	
+	@Version
+	long version;
 	
 	@ManyToOne
 	Adherent adherent;
@@ -38,7 +43,9 @@ public class Equipe implements Serializable {
 	@ManyToOne
 	TableauElimination tableauElimination;
 	
-	@OneToMany
+	//TODO Refaire cette partie en prenant en compte le fait que
+	//le mapping doit se faire sur l'equipe1 ou l'équipe2
+	//c'est une union des deux listes
+	@OneToMany(mappedBy="equipe1", cascade=CascadeType.ALL, orphanRemoval=true)
 	List<Match> matchs = new ArrayList<>();
-	
 }

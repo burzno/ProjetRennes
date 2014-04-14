@@ -3,14 +3,16 @@ package entities.tournoi;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -18,15 +20,18 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
 @SuppressWarnings("serial")
-@Entity
+@Entity(name="matchs")
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @EqualsAndHashCode(of={"idMatch"})
 public class Match implements Serializable {
 
 	@Id
-	@Column(columnDefinition="VARCHAR(36)")
-	String idMatch = UUID.randomUUID().toString();
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	Long idMatch;
+	
+	@Version
+	long version;
 
 	@OneToOne
 	Echeancier echeancier;
@@ -36,7 +41,7 @@ public class Match implements Serializable {
 	@ManyToOne
 	TableauElimination tableauElimination;
 	
-	@OneToMany
+	@OneToMany(mappedBy="match", cascade=CascadeType.ALL, orphanRemoval=true)
 	List<Resultat> resultats = new ArrayList<>();
 	
 	
