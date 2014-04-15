@@ -3,24 +3,26 @@ package entities.tournoi;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
-import entities.Adherent;
-import entities.Categorie;
-import entities.Classement;
-import entities.Format;
+import entities.utilisateur.Adherent;
+import entities.utilisateur.Categorie;
+import entities.utilisateur.Classement;
+import entities.utilisateur.Format;
 
 @SuppressWarnings("serial")
 @Entity
@@ -30,12 +32,16 @@ import entities.Format;
 public class Tableau implements Serializable {
 
 	@Id
-	@Column(columnDefinition="VARCHAR(36)")
-	String idTableau = UUID.randomUUID().toString();
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	Long idTableau;
+	
+	@Version
+	long version;
+	
 	int nbPax;
 
 	@ManyToOne
-	Tournoi tounoi;
+	Tournoi tournoi;
 	
 	@ManyToMany
 	List<Adherent> adherent = new ArrayList<>();
@@ -47,7 +53,7 @@ public class Tableau implements Serializable {
 	@ManyToMany
 	List<Categorie> categories = new ArrayList<>();
 
-	@OneToMany
+	@OneToMany(mappedBy="tableau", cascade=CascadeType.ALL, orphanRemoval=true)
 	List<Poule> poules = new ArrayList<>();
 	@OneToOne
 	TableauElimination tableauElimintations;
