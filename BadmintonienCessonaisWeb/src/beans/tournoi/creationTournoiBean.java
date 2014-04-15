@@ -23,8 +23,8 @@ public class creationTournoiBean {
 	}
 	
 	public void enregistrerTournoi(){
-		System.out.println("ici");
 		JsfUtils.sendMessage("Enregistrement du tournoi");
+		tournoi = facadeTournoi.getInstance();
 	}
 }
 

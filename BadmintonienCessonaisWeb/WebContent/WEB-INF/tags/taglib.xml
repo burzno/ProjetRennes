@@ -3,12 +3,13 @@
 		xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
 	
-			<namespace>http://bc/customtags</namespace>
+			<namespace>http://taglibs/customtags</namespace>
 			<tag>
-				<tag-name>bc-header</tag-name>
-				<source>bc-header.xhtml</source>
+				<tag-name>input-zone</tag-name>
+				<source>inputZone.xhtml</source>
 				<attribute>
 					<name>for</name>
+					<required>true</required>
 				</attribute>
 				<attribute>
 					<name>label</name>
