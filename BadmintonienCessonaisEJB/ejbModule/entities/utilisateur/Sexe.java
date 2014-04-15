@@ -1,4 +1,4 @@
-package entities;
+package entities.utilisateur;
 
 
 public enum Sexe {

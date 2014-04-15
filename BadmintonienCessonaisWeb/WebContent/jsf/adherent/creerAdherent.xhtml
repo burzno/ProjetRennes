@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/disposition.xhtml"
+	xmlns:tag="http://taglibs/customtags">
+
+	<ui:define name="pageHeader">
+			Création d'un adhérent
+		</ui:define>
+		
+		<ui:define name="body">
+			<h:form>
+				<h:panelGrid columns="3">
+					<tag:input-zone for="inputNomAdherent" label="Nom">
+						<p:inputText id="inputNomAdherent" placeholder="Nom" value="#{creationAdherentBean.adherent.nom}"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputDateNaissanceAdherent" label="Date de naissance">
+						<p:calendar id="inputDateNaissanceAdherent" placeholder="jj/mm/aaaa" value="#{creationAdherentBean.adherent.dateNaissance}" required="true" requiredMessage="Champs obligatoire"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputPrenomAdherent" label="Prénom">
+						<p:inputText id="inputPrenomAdherent" placeholder="Lieu" value="#{creationAdherentBean.adherent.prenom}"/>
+					</tag:input-zone>
+					<!--  
+					<tag:input-zone for="inputDureeTournoi" label="Durée d'un match">
+						<p:inputText id="inputDureeTournoi" placeholder="Durée moyenne" value="#{creationTournoiBean.tournoi.dureeMatch}"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputRecupTournoi" label="Temps de récupération">
+						<p:inputText id="inputRecupTournoi" placeholder="Récupération minimum" value="#{creationTournoiBean.tournoi.dureeRecup}" required="true"/>
+					</tag:input-zone>
+					<tag:input-zone for="inputNbTerrainTournoi" label="Nombre de terrains disponible">
+						<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="true"/>
+					</tag:input-zone>
+					-->
+				</h:panelGrid>
+				<p:commandButton update="@form" value="Enregistrer" actionListener="#{creationAdherentBean.enregistrerAdherent()}"/>
+			</h:form>
+		</ui:define>
+
+
+<!--  
+	<ui:define name="body">
+			Adherent
+			 <h:form>
+			 <h:panelGrid columns="3">
+				<grp:outLab title="Nom du groupe" for="inputNomGroupe"
+					valueBean="#{indexPageBean.nouveauGroupe.nom}" required="true"
+					message="oblig"></grp:outLab>
+
+				<!--<p:outputLabel value="Nom du groupe" for="inputNomGroupe" />
+				<p:inputText id="inputNomGroupe"
+					value="#{indexPageBean.nouveauGroupe.nom}" required="true"
+					requiredMessage="obligatoire"
+					validator="#{indexPageBean.validateNomBdd}" />
+				<p:message for="inputNomGroupe" />
+
+				<p:outputLabel value="Major" for="inputMajor" />
+				<p:selectOneMenu id="inputMajor"
+					value="#{indexPageBean.nouveauGroupe.major}"
+					converter="#{genericConverter}">
+					<f:selectItems value="#{indexPageBean.listeMajors}" var="m"
+						itemLabel="#{m.nom}" />
+				</p:selectOneMenu>
+				<p:message for="inputMajor" />
+
+				<p:outputLabel value="Nombre d'albums vendus"
+					for="inputNombreAlbumsVendus" />
+				<p:inputText id="inputNombreAlbumsVendus"
+					value="#{indexPageBean.nouveauGroupe.nombreAlbumsVendus}" />
+				<p:message for="inputNombreAlbumsVendus" />
+
+				<p:outputLabel value="Date création" for="inputDateCreation" />
+				<p:calendar id="inputDateCreation"
+					value="#{indexPageBean.nouveauGroupe.dateCreation}"></p:calendar>
+				<p:message for="inputDateCreation" />
+
+				<p:outputLabel value="Description" for="inputDescription" />
+				<p:editor id="inputDescription"
+					value="#{indexPageBean.nouveauGroupe.description}"></p:editor>
+				<p:message for="inputDescription" />
+			</h:panelGrid>
+			<p:commandButton value="Ajouter"
+				update="@form :formTableauGroupe:tableGroupesMusique"
+				actionListener="#{indexPageBean.enregistrerGroupe()}" />
+		</h:form>
+	</ui:define>
+-->
+
+
+</ui:composition>

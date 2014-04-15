@@ -1,11 +1,12 @@
-package entities;
+package entities.utilisateur;
 
 import java.io.Serializable;
-import java.util.UUID;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -17,13 +18,15 @@ import lombok.experimental.FieldDefaults;
 @Entity
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)
-@EqualsAndHashCode(of={"id"})
+@EqualsAndHashCode(of={"idFormat"})
 public class Format implements Serializable {
 	
 	@Id
-	@Column(columnDefinition="VARCHAR(36)")
-	String id = UUID.randomUUID().toString();
-	String libelle;
-	String libelleCourt;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	Long idFormat;
+	@Version
+	long version;
+	String libelleFormat;
+	String libelleFormatCourt;
 
 }
