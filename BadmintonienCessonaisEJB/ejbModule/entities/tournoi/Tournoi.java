@@ -36,7 +36,7 @@ public class Tournoi implements Serializable {
 	@Version
 	long version;
 	
-	
+	@NotBlank
 	String nom;
 	@Temporal(TemporalType.DATE)
 	Date dateTournoi;

@@ -2,10 +2,10 @@ package sessions.dao;
 
 import javax.ejb.Stateless;
 
-import entities.tournoi.Tournoi;
+import entities.utilisateur.Classement;
 
 @SuppressWarnings("unchecked")
 @Stateless
-public class DaoTournoi extends AbstractDao<Tournoi> {
+public class DaoClassement extends AbstractDao<Classement> {
 
 }

@@ -1,19 +1,29 @@
 package sessions.tournoi;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
+import sessions.dao.DaoTournoi;
+import entities.tournoi.Tableau;
 import entities.tournoi.Tournoi;
 
 
 @Stateless
 public class FacadeTournoi{
 
-	@PersistenceContext
-	private EntityManager em;
+	@EJB
+	DaoTournoi daoTournoi;
+	
+	public void createTournoi(Tournoi tournoi){
+		daoTournoi.create(tournoi);
+	}
+	
 	
 	public Tournoi getInstance(){
-		return new Tournoi();
+		return daoTournoi.newInstance();
+	}
+
+	public Tableau newTableau() {
+		return new Tableau();
 	}
 }

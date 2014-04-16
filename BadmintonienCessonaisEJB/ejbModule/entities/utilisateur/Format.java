@@ -28,5 +28,7 @@ public class Format implements Serializable {
 	long version;
 	String libelleFormat;
 	String libelleFormatCourt;
+	
+
 
 }
