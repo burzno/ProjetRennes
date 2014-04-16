@@ -43,16 +43,22 @@ public class creationTournoiBean {
 		tournoi = facadeTournoi.getInstance();
 		tournoi.setDureeMatch(DUREE_MATCH);
 		tournoi.setDureeRecup(TPS_RECUP);
-		
+	}
+	
+	public void enregistrerTournoi(){
+		facadeTournoi.createTournoi(tournoi);
+		JsfUtils.sendMessage("Enregistrement du tournoi");
+	}
+	
+	public void initAjoutTableau(){
 		tableau = facadeTournoi.newTableau();
 		formats = facadeRef.getAllFormat();
 		categories = facadeRef.getAllCategorie();
 		classements = facadeRef.getAllClassement();
 	}
 	
-	public void enregistrerTournoi(){
-		facadeTournoi.createTournoi(tournoi);
-		JsfUtils.sendMessage("Enregistrement du tournoi");
+	public void ajouterTableau(){
+		tournoi.getTableaux().add(tableau);
 	}
 }
 

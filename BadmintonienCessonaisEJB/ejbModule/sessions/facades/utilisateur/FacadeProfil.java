@@ -31,6 +31,10 @@ public class FacadeProfil {
 			
 			return daoProfil.newInstance();
 		}
+		
+		public Profil getProfilByLibelle(String libelle){
+			return daoProfil.search("libelleProfil", libelle).get(0);
+		}
 
 
 }

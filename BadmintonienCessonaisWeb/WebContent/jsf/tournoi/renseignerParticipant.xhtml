@@ -14,18 +14,15 @@
 		
 		<ui:define name="body">
 			<h:form id="formulaireTableau">
-		
-				<h:panelGrid columns="2" style="margin-bottom:10px">
+				<h:panelGrid columns="4" style="margin-bottom:10px">
 					<tag:input-zone for="selectFormat" label="Format">
 						<p:selectOneMenu id="selectFormat" value="#{creationTournoiBean.tableau.format}" converter="#{genericConvertor}">
 							<f:selectItems value="#{creationTournoiBean.formats}" var="format" itemLabel="#{format.libelleFormat}"/>
 						</p:selectOneMenu>
 					</tag:input-zone>
 					
-					<tag:input-zone for="selectClassement" label="Classement(s)">
-						<p:selectManyMenu id="selectClassement" value="#{creationTournoiBean.tableau.classements}" converter="#{genericConvertor}">
-							<f:selectItems value="#{creationTournoiBean.classements}" var="class" itemLabel="#{class.libelleClassement}"/>
-						</p:selectManyMenu>
+					<tag:input-zone for="inputPax" label="Nombre de PAX/Poule">
+						<p:inputText id="inputPax" value="#{creationTournoiBean.tableau.nbPax}" maxlength="2" size="2"/>
 					</tag:input-zone>
 					
 					<tag:input-zone for="selectCategorie" label="Catégorie(s)">
@@ -34,11 +31,16 @@
 						</p:selectManyMenu>
 					</tag:input-zone>
 					
-					<tag:input-zone for="inputPax" label="Nombre de PAX/Poule">
-						<p:inputText id="inputPax" value="#{creationTournoiBean.tableau.nbPax}" maxlength="4"/>
+					<tag:input-zone for="selectClassement" label="Classement(s)">
+						<p:selectManyMenu id="selectClassement" value="#{creationTournoiBean.tableau.classements}" converter="#{genericConvertor}">
+							<f:selectItems value="#{creationTournoiBean.classements}" var="class" itemLabel="#{class.libelleClassement}"/>
+						</p:selectManyMenu>
 					</tag:input-zone>
 				</h:panelGrid>
-		
+				<p:commandButton value="Ajouter" update="@form" actionListener="#{creationTournoiBean.ajouterTableau()}"></p:commandButton>
+			</h:form>
+			<h:form id="formulaireTableauVisu">
+							
 			</h:form>
 		</ui:define>
 		
