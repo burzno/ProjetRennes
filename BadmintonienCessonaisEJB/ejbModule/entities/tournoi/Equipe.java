@@ -17,7 +17,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
-import entities.Adherent;
+import entities.utilisateur.Adherent;
 
 @SuppressWarnings("serial")
 @Entity

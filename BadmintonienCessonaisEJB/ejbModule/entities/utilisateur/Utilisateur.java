@@ -1,20 +1,22 @@
-package entities;
+package entities.utilisateur;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -26,30 +28,34 @@ import lombok.experimental.FieldDefaults;
 @Inheritance(strategy=InheritanceType.JOINED)
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)
-@EqualsAndHashCode(of={"id"})
+@EqualsAndHashCode(of={"idUtilisateur"})
 @NamedQueries({
 
 	@NamedQuery(name="findallUtilisateurs",query="select u from Utilisateur u"),
-	@NamedQuery(name="findUtilisateurByMail",query="select u from Utilisateur u WHERE u.adresse_mail = :mailUtilisateur")
+	@NamedQuery(name="findUtilisateurByMail",query="select u from Utilisateur u WHERE u.adresseMail = :mailUtilisateur")
 
 })
 public class Utilisateur implements Serializable{
 	
 	
 	@Id
-	@Column(columnDefinition="VARCHAR(36)")
-	String id = UUID.randomUUID().toString();
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	Long idUtilisateur;
+	@Version
+	long version;
 	String nom;
 	String prenom;
-	String adresse_mail;
-	String mot_de_passe;
+	String adresseMail;
+	String motDePasse;
 	@Temporal(TemporalType.DATE)
-	Date date_naissance;
+	Date dateNaissance;
 	String adresse;
-	int code_postale;
+	int codePostale;
 	String ville;
 	String fixe;
 	String mobile;
+	@ManyToOne
+	Profil profil;
 	@Enumerated(EnumType.STRING)
 	Sexe sexe;
 }

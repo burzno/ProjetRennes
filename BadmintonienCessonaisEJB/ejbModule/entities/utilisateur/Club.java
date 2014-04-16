@@ -1,11 +1,12 @@
-package entities;
+package entities.utilisateur;
 
 import java.io.Serializable;
-import java.util.UUID;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -16,12 +17,14 @@ import lombok.experimental.FieldDefaults;
 @Entity
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)
-@EqualsAndHashCode(of={"id"})
+@EqualsAndHashCode(of={"idClub"})
 public class Club implements Serializable {
 	
 	@Id
-	@Column(columnDefinition="VARCHAR(36)")
-	String id = UUID.randomUUID().toString();
-	String nom;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	Long idClub;
+	@Version
+	long version;
+	String nomClub;
 
 }

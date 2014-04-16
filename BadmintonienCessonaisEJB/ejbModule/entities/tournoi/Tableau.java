@@ -19,10 +19,10 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
-import entities.Adherent;
-import entities.Categorie;
-import entities.Classement;
-import entities.Format;
+import entities.utilisateur.Adherent;
+import entities.utilisateur.Categorie;
+import entities.utilisateur.Classement;
+import entities.utilisateur.Format;
 
 @SuppressWarnings("serial")
 @Entity

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/disposition.xhtml"
+	xmlns:tag="http://taglibs/customtags">
+
+	<ui:define name="pageHeader">
+			Création/Modification d'un adhérent
+		</ui:define>
+
+	<ui:define name="body">
+		<h:form>
+			<h:panelGrid columns="3">
+				<tag:input-zone for="inputLicenceFcdAdherent" label="Licence FCD">
+					<p:inputText id="inputLicenceFcdAdherent" placeholder=""
+						value="#{creationAdherentBean.adherent.licenceFcd}" />
+				</tag:input-zone>
+				<tag:input-zone for="inputLicenceFfbaAdherent" label="Licence FFBA">
+					<p:inputText id="inputLicenceFfbaAdherent" placeholder=""
+						value="#{creationAdherentBean.adherent.licenceFfba}" />
+				</tag:input-zone>
+				<tag:input-zone for="inputNomAdherent" label="Nom">
+					<p:inputText id="inputNomAdherent" placeholder=""
+						value="#{creationAdherentBean.adherent.nom}" />
+				</tag:input-zone>
+				<tag:input-zone for="inputPrenomAdherent" label="Prenom">
+					<p:inputText id="inputPrenomAdherent" placeholder=""
+						value="#{creationAdherentBean.adherent.prenom}" />
+				</tag:input-zone>
+				<tag:input-zone for="inputAdresseAdherent" label="Adresse">
+					<p:inputText id="inputAdresseAdherent" placeholder=""
+						value="#{creationAdherentBean.adherent.adresse}" />
+				</tag:input-zone>
+				<tag:input-zone for="inputProfilAdherent" label="Profil">
+					<p:selectOneMenu id="inputProfilAdherent"
+						value="#{creationAdherentBean.adherent.}"
+						converter="#{genericConverter}">
+						<f:selectItems value="#{indexPageBean.listeMajors}" var="m"
+							itemLabel="#{m.nom}" />
+					</p:selectOneMenu>
+				</tag:input-zone>
+			</h:panelGrid>
+			<p:commandButton update="@form" value="Enregistrer"
+				actionListener="#{creationAdherentBean.enregistrerAdherent()}" />
+		</h:form>
+	</ui:define>
+
+
+
+</ui:composition>
