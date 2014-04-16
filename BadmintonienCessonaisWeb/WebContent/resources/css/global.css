@@ -6,6 +6,8 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
 }
 
 #entete {
@@ -23,4 +25,10 @@ body {
  bottom: 0px;
  width: 99%;
  
+}
+#error_container {
+	left:20px;
+}
+#error_container > div {
+	background-color: red;
 }

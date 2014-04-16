@@ -6,50 +6,39 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
       
    		
-		<h:head>
-		   
-		   <h:outputStylesheet name="global.css" library="css" />
-		   
-		   
+		<h:head>	   
+		   <h:outputStylesheet name="global.css" library="css" />   		   
 		   <title><ui:insert name="pageTitle">Le Badmintonien Cessonnais</ui:insert></title>
-		<style type="text/css">
-			body {
-				  font-family: Verdana, Arial, Helvetica, sans-serif;
-				  font-size: 14px;
-			}
-			.header {
-				  font-family: Verdana, Arial, Helvetica, sans-serif;
-				  font-size: 18px;
-			}
-			.bottom {
-				  font-family: Verdana, Arial, Helvetica, sans-serif;
-				  font-size: 9px;
-				  text-align: center;
-				  vertical-align: middle;
-				  color: #8E969D;
-			}
-		</style>
 		</h:head>
 
-<h:body bgcolor="#ffffff">
+<h:body>
 
 	<ui:include src="/WEB-INF/templates/fragments/entete.xhtml" />
-	
-	<p:panel>
-		<f:facet name="header">
-			<ui:insert name="pageHeader">Définir un titre avec pageHeader</ui:insert>
-		</f:facet>	
-						
-				<ui:insert name="body">Page Body</ui:insert>
-		
-		<f:facet name="footer">
-			<ui:insert name="pageFooter"></ui:insert>
-		</f:facet>	
-	</p:panel>
-	
+	<table align="center">
+		<tbody>
+			<tr>
+				<td>
+					<h:panelGrid columns="1" >
+						<p:panel>
+							<f:facet name="header">
+								<ui:insert name="pageHeader">Définir un titre avec pageHeader</ui:insert>
+							</f:facet>	
+											
+									<ui:insert name="body">Page Body</ui:insert>
+							
+							<f:facet name="footer">
+								<ui:insert name="pageFooter"></ui:insert>
+							</f:facet>	
+						</p:panel>
+					</h:panelGrid>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<ui:include src="/WEB-INF/templates/fragments/piedDePage.xhtml" />
 	
 	<p:growl id="growl" autoUpdate="true" globalOnly="true"/>
+	<p:growl id="error" autoUpdate="true" globalOnly="false" severity="warn, error, fatal" life="50000"/>
 	
 </h:body>
 		
