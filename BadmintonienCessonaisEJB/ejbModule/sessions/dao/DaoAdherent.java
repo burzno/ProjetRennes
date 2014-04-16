@@ -1,11 +1,13 @@
 package sessions.dao;
 
 
+import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 
 import entities.utilisateur.Adherent;
 
 @SuppressWarnings("unchecked")
+@Stateless
 public class DaoAdherent extends AbstractDao<Adherent> {
 
 	public Adherent getAdherentByMail(String mailAdherent){

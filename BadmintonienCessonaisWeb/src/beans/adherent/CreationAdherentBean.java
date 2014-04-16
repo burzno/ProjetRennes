@@ -32,8 +32,6 @@ public class CreationAdherentBean {
 		
 		public void enregistrerAdherent(){
 			facadeAdherent.create(adherent);
-			//sert à rééinitialiser son truc d'ajout
-			adherent = facadeAdherent.newInstance();
 		}
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
@@ -53,6 +54,8 @@ public class Utilisateur implements Serializable{
 	String ville;
 	String fixe;
 	String mobile;
+	@ManyToOne
+	Profil profil;
 	@Enumerated(EnumType.STRING)
 	Sexe sexe;
 }
