@@ -145,7 +145,7 @@ public class Lancement implements Serializable{
 			a.setClub(facadeClub.getClubByLibelle(data[8]));
 			a.setAdresseMail(data[9]);
 			a.setMotDePasse(data[10]);
-			a.setCategorie(facadeReference.getCategorieByLibelle(data[11]));
+			a.setCategorie(facadeReference.getCategorieByLibelleCourt(data[11]));
 			facadeAdherent.create(a);
 		} catch (ParseException e) {
 			e.printStackTrace();
