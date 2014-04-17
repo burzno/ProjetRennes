@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 
 import sessions.dao.DaoAdherent;
 import entities.utilisateur.Adherent;
+import entities.utilisateur.Sexe;
 
 /**
  * Exemple D'EJB SESSION
@@ -56,6 +57,15 @@ public class FacadeAdherent {
 
 	}
 
+	public String[] lesSexes(){
+		String[] sexes = new String[Sexe.values().length];
+		int cpt=0;
+		for (Sexe s : Sexe.values()) {
+			sexes[cpt] =  s.getLibelle();
+			cpt++;
+		}
+		return sexes;
+	}
 
 
 

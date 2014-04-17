@@ -13,38 +13,55 @@
 
 	<ui:define name="body">
 		<h:form>
-			<h:panelGrid columns="3">
-				<tag:input-zone for="inputLicenceFcdAdherent" label="Licence FCD">
-					<p:inputText id="inputLicenceFcdAdherent" placeholder=""
-						value="#{creationAdherentBean.adherent.licenceFcd}" />
-				</tag:input-zone>
-				<tag:input-zone for="inputLicenceFfbaAdherent" label="Licence FFBA">
-					<p:inputText id="inputLicenceFfbaAdherent" placeholder=""
-						value="#{creationAdherentBean.adherent.licenceFfba}" />
-				</tag:input-zone>
-				<tag:input-zone for="inputNomAdherent" label="Nom">
-					<p:inputText id="inputNomAdherent" placeholder=""
-						value="#{creationAdherentBean.adherent.nom}" />
-				</tag:input-zone>
-				<tag:input-zone for="inputPrenomAdherent" label="Prenom">
-					<p:inputText id="inputPrenomAdherent" placeholder=""
-						value="#{creationAdherentBean.adherent.prenom}" />
-				</tag:input-zone>
-				<tag:input-zone for="inputAdresseAdherent" label="Adresse">
-					<p:inputText id="inputAdresseAdherent" placeholder=""
-						value="#{creationAdherentBean.adherent.adresse}" />
-				</tag:input-zone>
-				<tag:input-zone for="inputProfilAdherent" label="Profil">
-					<p:selectOneMenu id="inputProfilAdherent"
-						value="#{creationAdherentBean.adherent.}"
-						converter="#{genericConverter}">
-						<f:selectItems value="#{indexPageBean.listeMajors}" var="m"
-							itemLabel="#{m.nom}" />
-					</p:selectOneMenu>
-				</tag:input-zone>
-			</h:panelGrid>
-			<p:commandButton update="@form" value="Enregistrer"
-				actionListener="#{creationAdherentBean.enregistrerAdherent()}" />
+			<p:layout style="min-width:400px;min-height:200px;" id="layout">
+				<p:layoutUnit position="west" resizable="true" size="100"
+					minSize="40" maxSize="200">
+					<h:panelGrid columns="3">
+						<tag:input-zone for="inputLicenceFcdAdherent" label="Licence FCD">
+							<p:inputText id="inputLicenceFcdAdherent" placeholder=""
+								value="#{creationAdherentBean.adherent.licenceFcd}" />
+						</tag:input-zone>
+						<tag:input-zone for="inputLicenceFfbaAdherent"
+							label="Licence FFBA">
+							<p:inputText id="inputLicenceFfbaAdherent" placeholder=""
+								value="#{creationAdherentBean.adherent.licenceFfba}" />
+						</tag:input-zone>
+						<tag:input-zone for="inputNomAdherent" label="Nom">
+							<p:inputText id="inputNomAdherent" placeholder=""
+								value="#{creationAdherentBean.adherent.nom}" />
+						</tag:input-zone>
+						<tag:input-zone for="inputPrenomAdherent" label="Prenom">
+							<p:inputText id="inputPrenomAdherent" placeholder=""
+								value="#{creationAdherentBean.adherent.prenom}" />
+						</tag:input-zone>
+						<tag:input-zone for="inputAdresseAdherent" label="Adresse">
+							<p:inputText id="inputAdresseAdherent" placeholder=""
+								value="#{creationAdherentBean.adherent.adresse}" />
+						</tag:input-zone>
+						<tag:input-zone for="inputProfilAdherent" label="Profil">
+							<p:selectOneMenu id="inputProfilAdherent"
+								value="#{creationAdherentBean.adherent.profil}">
+								<f:selectItems value="#{creationAdherentBean.listProfils}"
+									var="p" itemLabel="#{p.libelleProfil}" />
+							</p:selectOneMenu>
+						</tag:input-zone>
+						<tag:input-zone for="inputClubAdherent" label="Club">
+							<p:selectOneMenu id="inputClubAdherent"
+								value="#{creationAdherentBean.adherent.club}">
+								<f:selectItems value="#{creationAdherentBean.listClubs}" var="c"
+									itemLabel="#{c.nomClub}" />
+							</p:selectOneMenu>
+						</tag:input-zone>
+					</h:panelGrid>
+					<p:commandButton update="@form" value="Enregistrer"
+						actionListener="#{creationAdherentBean.enregistrerAdherent()}" />
+				</p:layoutUnit>
+
+				<p:layoutUnit position="center">  
+        			Center  
+   				 </p:layoutUnit>
+			</p:layout>
+
 		</h:form>
 	</ui:define>
 
