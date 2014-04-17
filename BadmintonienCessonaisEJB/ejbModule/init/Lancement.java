@@ -12,17 +12,18 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import sessions.dao.DaoCategorie;
-import sessions.dao.DaoClub;
 import sessions.dao.DaoFormat;
+import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
+import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
-import sun.util.logging.resources.logging;
 import entities.utilisateur.Adherent;
 import entities.utilisateur.Categorie;
 import entities.utilisateur.Club;
@@ -49,7 +50,9 @@ public class Lancement implements Serializable{
 	@EJB
 	DaoCategorie daoCategorie;
 	@EJB
-	DaoClub daoClub;
+	FacadeClub facadeClub;
+	@EJB
+	FacadeReferences facadeReference;
 
 	@PostConstruct
 	public void init(){
@@ -122,9 +125,9 @@ public class Lancement implements Serializable{
 	
 	private void creerClub(String[] data){
 		log.debug("Chargement table -Club-");
-		Club c = daoClub.newInstance();
+		Club c = facadeClub.newInstance();
 		c.setNomClub(data[0]);
-		daoClub.create(c);
+		facadeClub.create(c);
 	}
 
 	private void creerAdherent(String[] data){
@@ -139,6 +142,10 @@ public class Lancement implements Serializable{
 			a.setDateNaissance(sdf.parse(data[5]));
 			a.setReferent(Boolean.getBoolean(data[6]));
 			a.setProfil(facadeProfil.getProfilByLibelle(data[7]));
+			a.setClub(facadeClub.getClubByLibelle(data[8]));
+			a.setAdresseMail(data[9]);
+			a.setMotDePasse(data[10]);
+			a.setCategorie(facadeReference.getCategorieByLibelle(data[11]));
 			facadeAdherent.create(a);
 		} catch (ParseException e) {
 			e.printStackTrace();

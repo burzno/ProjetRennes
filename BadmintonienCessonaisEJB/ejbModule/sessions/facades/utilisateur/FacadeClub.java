@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 
 import sessions.dao.DaoClub;
 import entities.utilisateur.Club;
+import entities.utilisateur.Profil;
 
 
 @Stateless
@@ -41,6 +42,10 @@ public class FacadeClub {
 			cpt++;
 		}
 		return clubs;
+	}
+	
+	public Club getClubByLibelle(String libelle){
+		return daoClub.search("nomClub", libelle).get(0);
 	}
 
 
