@@ -36,10 +36,13 @@ public class FacadeReferences {
 		return daoClassement.readAll();
 	}
 	
+<<<<<<< HEAD
 	public Categorie getCategorieByLibelleCourt(String libelle){
 		return daoCategorie.search("libelleCategorieCourt", libelle).get(0);
 	}
 	
+=======
+>>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
 	public Format getFormatByLibelleCourt(String libCourt){
 		return daoFormat.search("libelleFormatCourt", libCourt).get(0);
 	}

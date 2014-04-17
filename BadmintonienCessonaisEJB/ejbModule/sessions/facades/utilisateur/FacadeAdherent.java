@@ -1,5 +1,6 @@
 package sessions.facades.utilisateur;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,7 +12,10 @@ import webservice.ClassementFFBA;
 import webservice.ClassementInterop;
 import webservice.ClassementInteropService;
 import entities.utilisateur.Adherent;
+<<<<<<< HEAD
 import entities.utilisateur.Sexe;
+=======
+>>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
 import entities.utilisateur.Classement;
 
 /**
@@ -64,6 +68,7 @@ public class FacadeAdherent {
 
 	}
 
+<<<<<<< HEAD
 	public String[] lesSexes(){
 		String[] sexes = new String[Sexe.values().length];
 		int cpt=0;
@@ -73,6 +78,8 @@ public class FacadeAdherent {
 		}
 		return sexes;
 	}
+=======
+>>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
 	public List<Classement> getClassementFFBAWebService(Adherent t){
 		ClassementInterop ws = new ClassementInteropService().getClassementInteropPort();
 		ClassementFFBA classement = ws.getClassementFfba(t.getLicenceFfba());
@@ -90,7 +97,10 @@ public class FacadeAdherent {
 		classe.setLicenceFfba(licenceFfba);
 		return classe;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
 
 }
 
