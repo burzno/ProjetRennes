@@ -14,6 +14,7 @@ import sessions.facades.utilisateur.FacadeProfil;
 import entities.utilisateur.Adherent;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
+import entities.utilisateur.Sexe;
 
 @ManagedBean
 @Data
@@ -45,6 +46,10 @@ public class CreationAdherentBean {
 
 	public List<Club> getListClubs(){
 		return facadeClub.readAll();
+	}
+	
+	public List<Sexe> getListSexe(){
+		return facadeAdherent.getListeSexeList();
 	}
 
 
