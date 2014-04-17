@@ -36,7 +36,11 @@ public class FacadeReferences {
 		return daoClassement.readAll();
 	}
 	
-	public Categorie getCategorieByLibelle(String libelle){
+	public Categorie getCategorieByLibelleCourt(String libelle){
 		return daoCategorie.search("libelleCategorieCourt", libelle).get(0);
+	}
+	
+	public Format getFormatByLibelleCourt(String libCourt){
+		return daoFormat.search("libelleFormatCourt", libCourt).get(0);
 	}
 }
