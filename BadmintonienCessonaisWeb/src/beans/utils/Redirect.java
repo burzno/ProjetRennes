@@ -28,6 +28,11 @@ public class Redirect {
 	
 	//Tournoi
 	String creerTournoi = PATH_INIT + PATH_TOURNOI + "/creationTournoi.xhtml" + FACESREDIRECT;
+	String renseignerAdherent = PATH_INIT + PATH_TOURNOI + "/renseignerParticipant.xhtml" + FACESREDIRECT;
+	
+	
+	
+	
 	
 	
 }

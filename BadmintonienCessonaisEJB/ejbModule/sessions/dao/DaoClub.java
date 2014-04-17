@@ -6,7 +6,6 @@ import entities.utilisateur.Club;
 
 @SuppressWarnings("unchecked")
 @Stateless
-public class DaoClub extends AbstractDao<Club>{
-
+public class DaoClub extends AbstractDao<Club> {
 
 }
