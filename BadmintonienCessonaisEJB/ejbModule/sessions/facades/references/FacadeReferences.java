@@ -34,4 +34,8 @@ public class FacadeReferences {
 	public List<Classement> getAllClassement(){
 		return daoClassement.readAll();
 	}
+	
+	public Format getFormatByLibelleCourt(String libCourt){
+		return daoFormat.search("libelleFormatCourt", libCourt).get(0);
+	}
 }
