@@ -8,8 +8,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
 
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
@@ -20,9 +18,9 @@ import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
 
 
-@SuppressWarnings("serial")
+/*@SuppressWarnings("serial")
 @Singleton
-@Startup
+@Startup*/
 public class InitSingleton implements Serializable{
 
 	@EJB
