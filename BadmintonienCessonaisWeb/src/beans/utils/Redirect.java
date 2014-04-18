@@ -25,6 +25,7 @@ public class Redirect {
 	//Adherent
 	String creerAdherent = PATH_INIT + PATH_ADHERENT + "/creerAdherent.xhtml" + FACESREDIRECT;
 	String rechercherAdherent = PATH_INIT + PATH_ADHERENT + "/rechercherAdherent.xhtml" + FACESREDIRECT;
+	String test = PATH_INIT + PATH_ADHERENT + "/test.xhtml" + FACESREDIRECT;
 	
 	//Tournoi
 	String creerTournoi = PATH_INIT + PATH_TOURNOI + "/creationTournoi.xhtml" + FACESREDIRECT;
