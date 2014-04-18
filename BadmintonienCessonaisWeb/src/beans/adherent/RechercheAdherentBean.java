@@ -31,7 +31,7 @@ public class RechercheAdherentBean {
 	
 	@PostConstruct
 	public void init(){
-		sexeOptions = createFilterOptions(facadeAdherent.lesSexes());
+		sexeOptions = createFilterOptions(facadeAdherent.getListeSexeStringTab());
 		clubOptions = createFilterOptions(facadeClub.listeClubsStringTab());
 		
 	}
