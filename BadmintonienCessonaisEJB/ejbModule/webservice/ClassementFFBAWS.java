@@ -9,12 +9,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for classementFFBA complex type.
+ * <p>Java class for classementFFBAWS complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="classementFFBA">
+ * &lt;complexType name="classementFFBAWS">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -31,12 +31,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "classementFFBA", propOrder = {
+@XmlType(name = "classementFFBAWS", propOrder = {
     "simple",
     "_double",
     "doubleMixte"
 })
-public class ClassementFFBA {
+public class ClassementFFBAWS {
 
     protected String simple;
     @XmlElement(name = "double")

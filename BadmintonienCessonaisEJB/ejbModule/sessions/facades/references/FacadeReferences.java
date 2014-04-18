@@ -1,47 +1,36 @@
 package sessions.facades.references;
 
+import java.util.Arrays;
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import sessions.dao.DaoCategorie;
-import sessions.dao.DaoClassement;
-import sessions.dao.DaoFormat;
-import entities.utilisateur.Categorie;
-import entities.utilisateur.Classement;
-import entities.utilisateur.Club;
-import entities.utilisateur.Format;
+import entities.reference.Categorie;
+import entities.reference.Classement;
+import entities.reference.Format;
 
 @Stateless
 public class FacadeReferences {
 
-	@EJB
-	private DaoFormat daoFormat;
-	@EJB
-	private DaoCategorie daoCategorie;
-	@EJB
-	private DaoClassement daoClassement;
-	
 	
 	public List<Format> getAllFormat(){
-		return daoFormat.readAll();
+		return Arrays.asList(Format.values());
 	}
 	
 	public List<Categorie> getAllCategorie(){
-		return daoCategorie.readAll();
+		return Arrays.asList(Categorie.values());
 	}
 	
 	public List<Classement> getAllClassement(){
-		return daoClassement.readAll();
+		return Arrays.asList(Classement.values());
 	}
 	
-
-	public Categorie getCategorieByLibelleCourt(String libelle){
-		return daoCategorie.search("libelleCategorieCourt", libelle).get(0);
+	public Categorie getCategorieByLibelleCourt(String libCourt){
+		return Categorie.valueOf(libCourt);
 	}
 	
 	public Format getFormatByLibelleCourt(String libCourt){
-		return daoFormat.search("libelleFormatCourt", libCourt).get(0);
+		return Format.valueOf(libCourt);
 	}
+	
 }

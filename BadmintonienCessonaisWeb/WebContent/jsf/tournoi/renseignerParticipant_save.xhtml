@@ -13,6 +13,9 @@
 		</ui:define>
 		
 		<ui:define name="body">
+			
+			<p:commandButton value="Tournoi" onclick="createTournoi.show()"/>
+			
 			<p:dialog header="Création du Tournoi" widgetVar="createTournoi" resizable="false" modal="true"> 
 				<h:form id="formulaireCreateTournoi">
 					<h:panelGrid columns="2">
@@ -35,38 +38,63 @@
 							<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="true"/>
 						</tag:input-zone>
 					</h:panelGrid>
-					<p:commandButton update="@form :formRecap" value="Valider" actionListener="#{creationTournoiBean.flashTournoi()}" oncomplete="validerCreateTournoi(xhr, status, args)"/>
+					<p:commandButton update="@form" value="Valider" actionListener="#{creationTournoiBean.flashTournoi()}"/>
 				</h:form>
 			</p:dialog>
 		
-			<h:form id="formulaireTableau">
-				<p:dialog header="Création un tableau" widgetVar="createTableau" resizable="false" modal="false"> 
-						<h:panelGrid columns="4" style="margin-bottom:10px">
-							<tag:input-zone for="selectFormat" label="Format">
-								<p:selectOneMenu id="selectFormat" value="#{creationTournoiBean.tableau.format}" converter="#{genericConvertor}">
-									<f:selectItems value="#{creationTournoiBean.formats}" var="format" itemLabel="#{format.libelle}"/>
-								</p:selectOneMenu>
-							</tag:input-zone>
-							
-							<tag:input-zone for="inputPax" label="Nombre de PAX/Poule">
-								<p:inputText id="inputPax" value="#{creationTournoiBean.tableau.nbPax}" maxlength="2" size="2"/>
-							</tag:input-zone>
-							
-							<tag:input-zone for="selectCategorie" label="Catégorie(s)">
-								<p:selectManyMenu id="selectCategorie" value="#{creationTournoiBean.tableau.categories}" converter="#{genericConvertor}" styleClass="manySelect">
-									<f:selectItems value="#{creationTournoiBean.categories}" var="cat" itemLabel="#{cat.libelle}"/>
-								</p:selectManyMenu>
-							</tag:input-zone>
-							
-							<tag:input-zone for="selectClassement" label="Classement(s)">
-								<p:selectManyMenu id="selectClassement" value="#{creationTournoiBean.tableau.classements}" converter="#{genericConvertor}" styleClass="manySelect">
-									<f:selectItems value="#{creationTournoiBean.classements}" var="class" itemLabel="#{class}"/>
-								</p:selectManyMenu>
-							</tag:input-zone>
-						</h:panelGrid>
-							<p:commandButton value="Ajouter" update="@form" actionListener="#{creationTournoiBean.ajouterTableau()}" oncomplete="createTableau.show()"></p:commandButton>
-							
-							<p:dataTable var="tab" value="#{creationTournoiBean.tournoi.tableaux}" emptyMessage="Aucun tableau n'est créé">  
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<p:dialog header="Création un tableau" widgetVar="createTab" resizable="false" modal="true"> 
+				<h:form id="formulaireTableau">
+					<h:panelGrid columns="4" style="margin-bottom:10px">
+						<tag:input-zone for="selectFormat" label="Format">
+							<p:selectOneMenu id="selectFormat" value="#{creationTournoiBean.tableau.format}" converter="#{genericConvertor}">
+								<f:selectItems value="#{creationTournoiBean.formats}" var="format" itemLabel="#{format.libelle}"/>
+							</p:selectOneMenu>
+						</tag:input-zone>
+						
+						<tag:input-zone for="inputPax" label="Nombre de PAX/Poule">
+							<p:inputText id="inputPax" value="#{creationTournoiBean.tableau.nbPax}" maxlength="2" size="2"/>
+						</tag:input-zone>
+						
+						<tag:input-zone for="selectCategorie" label="Catégorie(s)">
+							<p:selectManyMenu id="selectCategorie" value="#{creationTournoiBean.tableau.categories}" converter="#{genericConvertor}" styleClass="manySelect">
+								<f:selectItems value="#{creationTournoiBean.categories}" var="cat" itemLabel="#{cat.libelle}"/>
+							</p:selectManyMenu>
+						</tag:input-zone>
+						
+						<tag:input-zone for="selectClassement" label="Classement(s)">
+							<p:selectManyMenu id="selectClassement" value="#{creationTournoiBean.tableau.classements}" converter="#{genericConvertor}" styleClass="manySelect">
+								<f:selectItems value="#{creationTournoiBean.classements}" var="class" itemLabel="#{class}"/>
+							</p:selectManyMenu>
+						</tag:input-zone>
+					</h:panelGrid>
+					<p:commandButton value="Ajouter" update="@form :formulaireTableauVisu" actionListener="#{creationTournoiBean.ajouterTableau()}"></p:commandButton>
+				</h:form>
+				<h:form id="formulaireTableauVisu">
+						<p:dataTable var="tab" value="#{creationTournoiBean.tournoi.tableaux}" emptyMessage="Aucun tableau n'est créé">  
 						        <p:column headerText="Ident">  
 						            <h:outputText value="#{tab.numTab}" />  
 						        </p:column>  
@@ -82,15 +110,33 @@
 						        <p:column headerText="Nb de PAX/Poule ">  
 						            <h:outputText value="#{tab.nbPax}" />  
 						        </p:column> 
-							 </p:dataTable>
-						<f:facet name="footer">
-							<p:commandButton value="Valider" oncomplete="createTableau.hide()" update=":formRecap"/>
-						</f:facet>
-				</p:dialog>
-			</h:form>
-		
+						 </p:dataTable>
+				</h:form>
+				<f:facet name="footer">
+					<h:form>
+						<p:commandButton value="Valider" update=":formRecap" onclick="createTab.hide()"/>
+					</h:form>
+				</f:facet>
+			</p:dialog>
 			
-		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			<h:form id="formRecap">
 				<p:panelGrid columns="2" id="panelRecap">
 						<p:panel>
@@ -111,8 +157,8 @@
 								<p:selectOneMenu id="selectTableau" value="#{creationTournoiBean.tableau}" converter="#{genericConvertor}">
 									<f:selectItems value="#{creationTournoiBean.tournoi.tableaux}" var="tab" itemLabel="#{tab.numTab}"/>
 								</p:selectOneMenu>
-								<p:commandButton id="btnUpdateTab" type="button" value="maj" update="@form"/>
-								<p:commandButton id="showDialogButtonCreateTab" value="+" actionListener="#{creationTournoiBean.initAjoutTableau()}" update=":formulaireTableau" oncomplete="createTableau.show()"/>
+								<p:commandButton id="btnUpdateTab" type="button" value="majTabSelect" update="@form"/>
+								<p:commandButton id="showDialogButtonCreateTab" value="+" actionListener="#{creationTournoiBean.initAjoutTableau()}" onclick="createTab.show()"/>
 							</f:facet>
 							<p:panelGrid columns="2">
 								<p:outputLabel>Format</p:outputLabel><p:outputLabel>#{creationTournoiBean.tableau.format.libelle}</p:outputLabel>
@@ -123,27 +169,20 @@
 						</p:panel>
 				</p:panelGrid>
 			</h:form>
-		
-		
-		
-		
-		
-		</ui:define>
-		
-		
-		<ui:define name="script">
-			<script type="text/javascript">
-					$(document).ready(function() {PF('createTournoi').show();});
-
-				    function validerCreateTournoi(xhr, status, args) { 
-				        if(args.validationFailed) {  
-				            PF('createTournoi').jq.effect("shake", { times:5 }, 100);  
-				        }   
-				        else {  
-				            PF('createTournoi').hide();  
-				        }  
-				    } 
-		    </script> 
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		</ui:define>
 		
 </ui:composition>

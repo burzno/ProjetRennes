@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,10 +21,10 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
+import entities.reference.Categorie;
+import entities.reference.Classement;
+import entities.reference.Format;
 import entities.utilisateur.Adherent;
-import entities.utilisateur.Categorie;
-import entities.utilisateur.Classement;
-import entities.utilisateur.Format;
 
 @SuppressWarnings("serial")
 @Entity
@@ -38,6 +40,8 @@ public class Tableau implements Serializable {
 	@Version
 	long version;
 	
+	int numTab;
+	
 	int nbPax;
 
 	@ManyToOne
@@ -46,11 +50,11 @@ public class Tableau implements Serializable {
 	@ManyToMany
 	List<Adherent> adherent = new ArrayList<>();
 	
-	@ManyToOne
+	@Enumerated(EnumType.STRING)
 	Format format;
-	@ManyToMany
+	@Enumerated(EnumType.STRING)
 	List<Classement> classements = new ArrayList<>();
-	@ManyToMany
+	@Enumerated(EnumType.STRING)
 	List<Categorie> categories = new ArrayList<>();
 
 	@OneToMany(mappedBy="tableau", cascade=CascadeType.ALL, orphanRemoval=true)

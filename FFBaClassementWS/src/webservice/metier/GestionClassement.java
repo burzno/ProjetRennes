@@ -24,7 +24,7 @@ public class GestionClassement {
 		return prop;
 	}
 	
-	public ClassementFFBA getClassementByLicenceFFBa(String licenceFFBa) throws ClassementException{
+	public ClassementFFBAWS getClassementByLicenceFFBa(String licenceFFBa) throws ClassementException{
 		Properties prop = getProperties();
 		if(prop.containsKey(licenceFFBa)){
 			String[] data = prop.getProperty(licenceFFBa).split(",");
@@ -33,8 +33,8 @@ public class GestionClassement {
 			throw new ClassementException("Aucun classement ne correspond à cette licence");
 	}
 	
-	private ClassementFFBA splitData(String licenceFFBa, String[] data){
-		ClassementFFBA classement = new ClassementFFBA();
+	private ClassementFFBAWS splitData(String licenceFFBa, String[] data){
+		ClassementFFBAWS classement = new ClassementFFBAWS();
 		classement.setLicenceFFBA(licenceFFBa);
 		classement.setMatchSimple(data[0]);
 		classement.setMatchDouble(data[1]);

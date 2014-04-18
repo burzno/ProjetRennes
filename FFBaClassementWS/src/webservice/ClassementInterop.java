@@ -5,7 +5,7 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
 
 import exception.ClassementException;
-import webservice.metier.ClassementFFBA;
+import webservice.metier.ClassementFFBAWS;
 import webservice.metier.GestionClassement;
 
 @WebService
@@ -18,14 +18,14 @@ public class ClassementInterop {
 	 */
 	@XmlElement(name="classementFFBA")
 	@WebMethod
-	public ClassementFFBA getClassementFfba(String licenceFFBa){
+	public ClassementFFBAWS getClassementFfba(String licenceFFBa){
 		GestionClassement gestion = new GestionClassement();
-		ClassementFFBA classement = null;
+		ClassementFFBAWS classement = null;
 		try {
 			classement = gestion.getClassementByLicenceFFBa(licenceFFBa);
 		} catch (ClassementException e) {
 			//Pas de classement trouvé
-			classement = new ClassementFFBA();
+			classement = new ClassementFFBAWS();
 			classement.setLicenceFFBA(licenceFFBa);
 		}
 		return classement;

@@ -3,6 +3,9 @@ package entities.utilisateur;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -29,6 +32,8 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @EqualsAndHashCode(of={"idUtilisateur"})
+@DiscriminatorColumn(name="DISCRIMINATOR", discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue(value="idUtilisateur")
 @NamedQueries({
 
 	@NamedQuery(name="findallUtilisateurs",query="select u from Utilisateur u"),

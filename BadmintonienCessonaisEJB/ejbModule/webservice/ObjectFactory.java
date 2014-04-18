@@ -51,11 +51,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ClassementFFBA }
+     * Create an instance of {@link ClassementFFBAWS }
      * 
      */
-    public ClassementFFBA createClassementFFBA() {
-        return new ClassementFFBA();
+    public ClassementFFBAWS createClassementFFBAWS() {
+        return new ClassementFFBAWS();
     }
 
     /**
