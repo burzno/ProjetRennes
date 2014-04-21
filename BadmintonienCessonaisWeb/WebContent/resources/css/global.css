@@ -36,3 +36,12 @@ body {
 .manySelect{
 	height: 105px;
 }
+
+.borderLess > tbody > tr, .borderLess > tbody > tr > td{
+	border-width: 0px;
+	vertical-align: top;
+}
+
+.draggable{
+	cursor: grab !important;
+}

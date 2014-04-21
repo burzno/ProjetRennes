@@ -35,12 +35,12 @@
 							<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="true"/>
 						</tag:input-zone>
 					</h:panelGrid>
-					<p:commandButton update="@form :formRecap" value="Valider" actionListener="#{creationTournoiBean.flashTournoi()}" oncomplete="validerCreateTournoi(xhr, status, args)"/>
+					<p:commandButton update="@form :formRecap :formParticipantsTableaux" value="Valider" actionListener="#{creationTournoiBean.createTournoi()}" oncomplete="validerCreateTournoi(xhr, status, args)"/>
 				</h:form>
 			</p:dialog>
 		
 			<h:form id="formulaireTableau">
-				<p:dialog header="Création un tableau" widgetVar="createTableau" resizable="false" modal="false"> 
+				<p:dialog header="Création d'un tableau" widgetVar="createTableau" resizable="false" modal="true"> 
 						<h:panelGrid columns="4" style="margin-bottom:10px">
 							<tag:input-zone for="selectFormat" label="Format">
 								<p:selectOneMenu id="selectFormat" value="#{creationTournoiBean.tableau.format}" converter="#{genericConvertor}">
@@ -84,7 +84,7 @@
 						        </p:column> 
 							 </p:dataTable>
 						<f:facet name="footer">
-							<p:commandButton value="Valider" oncomplete="createTableau.hide()" update=":formRecap"/>
+							<p:commandButton value="Valider" oncomplete="createTableau.hide()"/>
 						</f:facet>
 				</p:dialog>
 			</h:form>
@@ -92,38 +92,94 @@
 			
 		
 			<h:form id="formRecap">
-				<p:panelGrid columns="2" id="panelRecap">
+				<p:panelGrid columns="2" id="panelRecap" styleClass="borderLess">
 						<p:panel>
 							<f:facet name="header">
 								Tournoi #{creationTournoiBean.tournoi.nom}
 							</f:facet>
-							<p:panelGrid columns="2">
-								<p:outputLabel>Date</p:outputLabel><p:outputLabel>#{creationTournoiBean.tournoi.dateTournoi}</p:outputLabel>
-								<p:outputLabel>Lieu</p:outputLabel><p:outputLabel>#{creationTournoiBean.tournoi.lieu}</p:outputLabel>
-								<p:outputLabel>Nb Terrains disponibles</p:outputLabel><p:outputLabel>#{creationTournoiBean.tournoi.nbTerrain}</p:outputLabel>
-								<p:outputLabel>Durée d'un match</p:outputLabel><p:outputLabel>#{creationTournoiBean.tournoi.dureeMatch}</p:outputLabel>
-								<p:outputLabel>Tps de récupération</p:outputLabel><p:outputLabel>#{creationTournoiBean.tournoi.dureeRecup}</p:outputLabel>
+							<p:panelGrid columns="2" styleClass="borderLess">
+								<p:outputLabel>Date</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.dateTournoi}"><f:convertDateTime pattern="dd/MM/yyyy" /></p:outputLabel>
+								<p:outputLabel>Lieu</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.lieu}"/>
+								<p:outputLabel>Nb Terrains disponibles</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.nbTerrain}"/>
+								<p:outputLabel>Durée d'un match</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.dureeMatch}"/>
+								<p:outputLabel>Tps de récupération</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.dureeRecup}"/>
 							</p:panelGrid>
 						</p:panel>
 						<p:panel id="panelTableau">
 							<f:facet name="header">
 								Tableau
-								<p:selectOneMenu id="selectTableau" value="#{creationTournoiBean.tableau}" converter="#{genericConvertor}">
+								<p:selectOneMenu id="selectTableau" value="#{creationTournoiBean.tableauCourant}" converter="#{genericConvertor}">
 									<f:selectItems value="#{creationTournoiBean.tournoi.tableaux}" var="tab" itemLabel="#{tab.numTab}"/>
 								</p:selectOneMenu>
-								<p:commandButton id="btnUpdateTab" type="button" value="maj" update="@form"/>
+								<p:commandButton id="btnUpdateTab" type="button" value="maj form" update="@form"/>
 								<p:commandButton id="showDialogButtonCreateTab" value="+" actionListener="#{creationTournoiBean.initAjoutTableau()}" update=":formulaireTableau" oncomplete="createTableau.show()"/>
 							</f:facet>
-							<p:panelGrid columns="2">
-								<p:outputLabel>Format</p:outputLabel><p:outputLabel>#{creationTournoiBean.tableau.format.libelle}</p:outputLabel>
-								<p:outputLabel>Classement</p:outputLabel><p:outputLabel>#{creationTournoiBean.tableau.classements}</p:outputLabel>
-								<p:outputLabel>Catégories</p:outputLabel><p:outputLabel>#{creationTournoiBean.tableau.categories}</p:outputLabel>
-								<p:outputLabel>Nb de participants/Poule</p:outputLabel><p:outputLabel>#{creationTournoiBean.tableau.nbPax}</p:outputLabel>
+							<p:panelGrid columns="2" styleClass="borderLess">
+								<p:outputLabel>Format</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tableauCourant.format.libelle}"/>
+								<p:outputLabel>Classement</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tableauCourant.classements}"/>
+								<p:outputLabel>Catégories</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tableauCourant.categories}"/>
+								<p:outputLabel>Nb de participants/Poule</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tableauCourant.nbPax}"/>
 							</p:panelGrid>
 						</p:panel>
 				</p:panelGrid>
 			</h:form>
 		
+			<h:form id="formParticipantsTableaux">
+				<p:panelGrid columns="2" styleClass="borderLess" style="width:100%; align:top">
+					<p:dataTable id="dataTableAdherents" var="ad"
+							value="#{creationTournoiBean.adherents}"
+							widgetVar="adherentsTable" rows="15" paginator="true"
+							rowKey="#{ad.idUtilisateur}"
+							emptyMessage="Aucun adhérent avec ces critères">
+			
+							<f:facet name="header">
+								<h:outputText value="Adhérents" />
+							</f:facet>
+								<p:column id="licenceFcdColumn"
+									headerText="Licence Fcd">
+									<h:outputText value="#{ad.licenceFcd}" id="dragAdherent" styleClass="draggable" />
+									<p:draggable for="dragAdherent" revert="true" />  
+								</p:column>
+								<p:column id="nomColumn"
+									headerText="Nom">
+									<h:outputText value="#{ad.nom}" />
+								</p:column>
+								<p:column id="PrenomColumn"
+									headerText="Prénom">
+									<h:outputText value="#{ad.prenom}" />
+								</p:column>
+							<p:row id="lineAdherent#{ad.idUtilisateur}"/>
+							<p:draggable for="lineAdherent#{ad.idUtilisateur}" revert="true"/>
+					</p:dataTable>
+					
+					<p:dataTable id="dataTableParticipants" var="participant"
+							value="#{creationTournoiBean.tableauCourant.adherent}"
+							widgetVar="participantsTable" rows="15" paginator="true"
+							rowKey="#{participant.idUtilisateur}">
+			
+							<f:facet name="header">
+								<h:outputText value="Participants au tableau" />
+							</f:facet>
+			
+							<p:column id="licenceFcdColumnparticipant"
+								headerText="Licence Fcd">
+								<h:outputText value="#{participant.licenceFcd}" />
+							</p:column>
+							<p:column id="nomColumnparticipant"
+								headerText="Nom">
+								<h:outputText value="#{participant.nom}" />
+							</p:column>
+							<p:column id="PrenomColumnparticipant"
+								headerText="Prénom">
+								<h:outputText value="#{participant.prenom}" />
+							</p:column>
+					</p:dataTable>
+					
+					<p:droppable for="dataTableParticipants" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="dataTableAdherents">  
+					        <p:ajax listener="#{creationTournoiBean.addParticipant}" update="@form" />  
+					    </p:droppable>
+				</p:panelGrid>
+			</h:form>
 		
 		
 		
@@ -137,7 +193,7 @@
 
 				    function validerCreateTournoi(xhr, status, args) { 
 				        if(args.validationFailed) {  
-				            PF('createTournoi').jq.effect("shake", { times:5 }, 100);  
+				            //PF('createTournoi').jq.effect("shake", { times:5 }, 100);  
 				        }   
 				        else {  
 				            PF('createTournoi').hide();  
