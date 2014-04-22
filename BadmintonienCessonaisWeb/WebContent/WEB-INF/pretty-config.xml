@@ -19,4 +19,9 @@
         <view-id value="/jsf/tournoi/creationTournoi.xhtml?faces-redirect=true" />
     </url-mapping>
 	
+	    <url-mapping id="renseignerParticipant">
+        <pattern value="/renseignerParticipant" />
+        <view-id value="/jsf/tournoi/renseignerParticipant.xhtml?faces-redirect=true" />
+    </url-mapping>
+	
 </pretty-config>

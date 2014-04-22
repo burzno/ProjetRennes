@@ -18,7 +18,7 @@
 		 
 		        <p:submenu label="Tournoi" icon="ui-icon-pencil">
 		     	    <p:menuitem value="Créer un tournoi" url="#{redirect.creerTournoi}" />
-		            <p:menuitem value="Renseigner les participants" url="#" />
+		            <p:menuitem value="Renseigner les participants" url="#{redirect.renseignerParticipant}" />
 		            <p:menuitem value="Générer les poules" url="#" />
 		            <p:menuitem value="Générer les paramètres du tournoi" url="#" />
 		            <p:menuitem value="Générer les tableaux à élimination" url="#" />
@@ -42,8 +42,10 @@
 		        
 		        <f:facet name="options">
 					<p:outputLabel value="Bienvenue, #{authentificationBean.login} "/>
+					<p:spacer/><p:spacer/>
+					<p:spacer/>
 					<p:commandButton name="connexion_btn" id="connexion_btn" value="Se déconnecter"
-					ajax="false" actionListener="#{loginBean.logout}" action="/index.xhtml"/>
+					ajax="false" actionListener="#{loginBean.logout}" action="/index.xhtml" style="margin-left:15px;"/>
 		        </f:facet>
 		        
 		      </p:menubar>  

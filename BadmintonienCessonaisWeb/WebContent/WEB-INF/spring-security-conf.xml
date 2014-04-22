@@ -24,7 +24,7 @@
   
   		        <form-login login-page="/index.xhtml" 
         			authentication-failure-url="/jsf/commun/erreur.xhtml?fail=true"
-        			default-target-url="/jsf/commun/erreur.xhtml?fail=true"/>
+        			default-target-url="/index.xhtml?fail=true"/>
   
     </http>
     
