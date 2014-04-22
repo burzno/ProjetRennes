@@ -7,7 +7,6 @@
 	  
 	<div id="entete">
 		<div id="menu">
-		  <div style="float: left">						
 			<h:form rendered="#{authentificationBean.connecte}">
 			  <p:menubar>
 		        <p:menuitem value="Accueil" icon="ui-icon-document" url="/index.xhtml" />
@@ -40,10 +39,16 @@
 		            <p:menuitem value="Mettre en ligne une vidéo" url="#" />
 		            <p:menuitem value="Mettre en ligne une actualité" url="#" />
 		        </p:submenu>
+		        
+		        <f:facet name="options">
+					<p:outputLabel value="Bienvenue, #{authentificationBean.login} "/>
+					<p:commandButton name="connexion_btn" id="connexion_btn" value="Se déconnecter"
+					ajax="false" actionListener="#{loginBean.logout}" action="/index.xhtml"/>
+		        </f:facet>
+		        
 		      </p:menubar>  
 		      
 		    </h:form>
-		  </div>
 			
 			
 			<div style="text-align: right">
@@ -61,12 +66,8 @@
 			      </f:facet>
 			    </p:menubar>			 
 			</h:form>			
-			<h:form rendered="#{authentificationBean.connecte}">
-				<p:outputLabel value="Bienvenue, #{authentificationBean.login} "/><br />
-				<p:commandButton name="connexion_btn" id="connexion_btn" value="Se déconnecter"
-				ajax="false" actionListener="#{loginBean.logout}" action="/index.xhtml"/>
-			</h:form>
-			</div>
+	 		</div>
+	 		
 		</div>
 	</div>
 	

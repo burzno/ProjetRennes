@@ -30,6 +30,7 @@ public class FacadeAdherent {
 	@EJB
 	private FacadeReferences facadeRef;
 
+	
 
 	public void create(Adherent t) {
 		daoAdherent.create(t);

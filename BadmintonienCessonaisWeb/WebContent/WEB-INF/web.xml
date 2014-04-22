@@ -17,6 +17,24 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 	
+	
+    <!-- PRETTY FACES : BEGIN -->
+    
+	<filter>
+	    <filter-name>Pretty Filter</filter-name>
+	    <filter-class>com.ocpsoft.pretty.PrettyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>Pretty Filter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	    <dispatcher>FORWARD</dispatcher>
+	    <dispatcher>REQUEST</dispatcher>
+	    <dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	    
+    <!-- PRETTY FACES : END --> 
+	
+	
 	<!--SPRING SECURITY : BEGIN -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -41,7 +59,8 @@
     </filter-mapping>
 
     <!--SPRING SECURITY : END -->
-
+    
+    
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>

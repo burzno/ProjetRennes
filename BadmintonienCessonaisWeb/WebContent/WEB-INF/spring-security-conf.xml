@@ -18,12 +18,13 @@
         <intercept-url pattern="/profile-all/**"          access="isAuthenticated()" />
         <intercept-url pattern="/index.xhtml"             access="permitAll" />        
         <intercept-url pattern="/jsf/tournoi/**"          access="hasRole('ROLE_ADMINISTRATEUR')" />        
-  		<intercept-url pattern="/jsf/adherent/**"          access="hasRole('ROLE_ADMINISTRATEUR')" />
+  		<intercept-url pattern="/jsf/adherent/**"         access="hasRole('ROLE_ADMINISTRATEUR')" />
+
   
   
   		        <form-login login-page="/index.xhtml" 
-        			authentication-failure-url="/index.xhtml?fail=true"
-        			default-target-url="/jsf/commun/erreur.xhtml"/>
+        			authentication-failure-url="/jsf/commun/erreur.xhtml?fail=true"
+        			default-target-url="/jsf/commun/erreur.xhtml?fail=true"/>
   
     </http>
     

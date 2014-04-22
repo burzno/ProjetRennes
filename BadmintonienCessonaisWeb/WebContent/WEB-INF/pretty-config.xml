@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.2
+   http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.2.xsd">
+
+    <url-mapping id="creerAdherent">
+        <pattern value="/creerAdherent" />
+        <view-id value="/jsf/adherent/creerAdherent.xhtml?faces-redirect=true" />
+    </url-mapping>
+    
+	<url-mapping id="rechercherAdherent">
+        <pattern value="/rechercherAdherent" />
+        <view-id value="/jsf/adherent/rechercherAdherent.xhtml?faces-redirect=true" />
+    </url-mapping>
+   
+    <url-mapping id="creationTournoi">
+        <pattern value="/creationTournoi" />
+        <view-id value="/jsf/tournoi/creationTournoi.xhtml?faces-redirect=true" />
+    </url-mapping>
+	
+</pretty-config>

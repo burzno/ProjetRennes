@@ -1,6 +1,7 @@
 package demo;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,10 @@ import utils.jsf.JsfUtils;
  *
  * @author francois.robin
  */
+@SuppressWarnings("serial")
 @ManagedBean
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
 
    
     public String getUserLogin() 
