@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="classementFFBA" type="{http://webservice/}classementFFBA" minOccurs="0"/>
+ *         &lt;element name="classementFFBA" type="{http://webservice/}classementFFBAWS" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GetClassementFfbaResponse {
 
-    protected ClassementFFBA classementFFBA;
+    protected ClassementFFBAWS classementFFBA;
 
     /**
      * Gets the value of the classementFFBA property.
      * 
      * @return
      *     possible object is
-     *     {@link ClassementFFBA }
+     *     {@link ClassementFFBAWS }
      *     
      */
-    public ClassementFFBA getClassementFFBA() {
+    public ClassementFFBAWS getClassementFFBA() {
         return classementFFBA;
     }
 
@@ -50,10 +50,10 @@ public class GetClassementFfbaResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link ClassementFFBA }
+     *     {@link ClassementFFBAWS }
      *     
      */
-    public void setClassementFFBA(ClassementFFBA value) {
+    public void setClassementFFBA(ClassementFFBAWS value) {
         this.classementFFBA = value;
     }
 

@@ -13,7 +13,7 @@
 		</ui:define>
 		
 		<ui:define name="body">
-			<h:form>
+			<h:form id="formulaireCreateTournoi">
 				<h:panelGrid columns="2">
 					<tag:input-zone for="inputNomTournoi" label="Nom du tournoi">
 						<p:inputText id="inputNomTournoi" placeholder="Nom" value="#{creationTournoiBean.tournoi.nom}"/>
@@ -34,7 +34,7 @@
 						<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="true"/>
 					</tag:input-zone>
 				</h:panelGrid>
-				<p:commandButton update="@form" value="Enregistrer" actionListener="#{creationTournoiBean.enregistrerTournoi()}" action="#{redirect.getRenseignerAdherent}"/>
+				<p:commandButton update="@form" value="Valider" actionListener="#{creationTournoiBean.flashTournoi()}" action="#{redirect.getRenseignerAdherent}"/>
 			</h:form>
 		</ui:define>
 		

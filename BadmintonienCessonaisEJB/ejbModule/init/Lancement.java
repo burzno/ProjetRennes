@@ -18,16 +18,12 @@ import lombok.experimental.FieldDefaults;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import sessions.dao.DaoCategorie;
-import sessions.dao.DaoFormat;
 import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
 import entities.utilisateur.Adherent;
-import entities.utilisateur.Categorie;
 import entities.utilisateur.Club;
-import entities.utilisateur.Format;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
 
@@ -46,10 +42,6 @@ public class Lancement implements Serializable{
 	@EJB
 	FacadeProfil facadeProfil;
 	@EJB
-	DaoFormat daoFormat;
-	@EJB
-	DaoCategorie daoCategorie;
-	@EJB
 	FacadeClub facadeClub;
 	@EJB
 	FacadeReferences facadeReference;
@@ -57,11 +49,17 @@ public class Lancement implements Serializable{
 	@PostConstruct
 	public void init(){
 			try {
+				log.debug("--------------------------------------------------------------------");
 				log.debug("-------------------------Init chargment BDD-------------------------");
 				Properties prop = new Properties();
 				prop.load(this.getClass().getResourceAsStream("jeuDeDonnees.properties"));
 				genererData(prop);
+				log.debug("**************************Partie Adhérents**************************");
+				prop.clear();
+				prop.load(this.getClass().getResourceAsStream("adherents.properties"));
+				genererData(prop);
 				log.debug("-------------------------Fin chargment BDD-------------------------");
+				log.debug("--------------------------------------------------------------------");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -77,12 +75,6 @@ public class Lancement implements Serializable{
 					if(init.contains(key)){
 						String[] data = entry.getValue().toString().split(",");
 						switch (key) {
-							case "Format":
-								creerFormat(data);
-								break;
-							case "Categorie":
-								creerCategorie(data);
-								break;
 							case "Profil":
 								creerProfil(data);
 								break;
@@ -100,22 +92,6 @@ public class Lancement implements Serializable{
 			}
 	}
 
-	private void creerFormat(String[] data){
-		log.debug("Chargement table -Format-");
-		Format f = daoFormat.newInstance();
-		f.setLibelleFormat(data[0]);
-		f.setLibelleFormatCourt(data[1]);
-		daoFormat.create(f);
-	}
-	
-	private void creerCategorie(String[] data){
-		log.debug("Chargement table -Categorie-");
-		Categorie c = daoCategorie.newInstance();
-		c.setLibelleCategorie(data[0]);
-		c.setLibelleCategorieCourt(data[1]);
-		daoCategorie.create(c);
-	}
-	
 	private void creerProfil(String[] data){
 		log.debug("Chargement table -Profil-");
 		Profil p = facadeProfil.newInstance();

@@ -42,6 +42,10 @@ public class Redirect {
 	//Tournoi
 //	String creerTournoi = PATH_INIT + PATH_TOURNOI + "/creationTournoi.xhtml" + FACESREDIRECT;
 //	String renseignerAdherent = PATH_INIT + PATH_TOURNOI + "/renseignerParticipant.xhtml" + FACESREDIRECT;
+<<<<<<< HEAD
+	String creerTournoi2 = PATH_INIT + PATH_TOURNOI + "/renseignerParticipant.xhtml" + FACESREDIRECT;
+=======
+>>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
 	
 	//Commun
 	//String erreur = PATH_INIT + PATH_COMMUN + "/erreur.xhtml.xhtml" +FACESREDIRECT;

@@ -18,8 +18,8 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @EqualsAndHashCode(of={"idPieces"})
-public class Pieces implements Serializable{
-
+public class Pieces implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	Long idPieces;
@@ -33,7 +33,3 @@ public class Pieces implements Serializable{
 	boolean chequeCsa;
 
 }
-
-
-
-

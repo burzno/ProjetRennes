@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ClassementFFBA {
+public class ClassementFFBAWS {
 
 	
 	@XmlAttribute(name="licence")

@@ -28,14 +28,14 @@ public interface ClassementInterop {
      * 
      * @param arg0
      * @return
-     *     returns webservice.ClassementFFBA
+     *     returns webservice.ClassementFFBAWS
      */
     @WebMethod
     @WebResult(name = "classementFFBA", targetNamespace = "")
     @RequestWrapper(localName = "getClassementFfba", targetNamespace = "http://webservice/", className = "webservice.GetClassementFfba")
     @ResponseWrapper(localName = "getClassementFfbaResponse", targetNamespace = "http://webservice/", className = "webservice.GetClassementFfbaResponse")
     @Action(input = "http://webservice/ClassementInterop/getClassementFfbaRequest", output = "http://webservice/ClassementInterop/getClassementFfbaResponse")
-    public ClassementFFBA getClassementFfba(
+    public ClassementFFBAWS getClassementFfba(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 

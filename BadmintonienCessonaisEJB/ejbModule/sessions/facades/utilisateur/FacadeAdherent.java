@@ -7,14 +7,16 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import sessions.dao.DaoAdherent;
+import sessions.dao.DaoPieces;
 import sessions.facades.references.FacadeReferences;
-import webservice.ClassementFFBA;
+import webservice.ClassementFFBAWS;
 import webservice.ClassementInterop;
 import webservice.ClassementInteropService;
+import entities.reference.Classement;
+import entities.reference.Format;
 import entities.utilisateur.Adherent;
+import entities.utilisateur.ClassementFFBA;
 import entities.utilisateur.Sexe;
-//github.com/burzno/ProjetRennes.git
-import entities.utilisateur.Classement;
 
 /**
  * Exemple D'EJB SESSION
@@ -28,18 +30,27 @@ public class FacadeAdherent {
 	@EJB
 	private DaoAdherent daoAdherent;
 	@EJB
+	private DaoPieces daoPieces;
+	@EJB
 	private FacadeReferences facadeRef;
 
 
-	public void create(Adherent t) {
+	public void create(Adherent t){
 		daoAdherent.create(t);
+
 	}
 
 
 
 	public Adherent newInstance() {
+		Adherent a = daoAdherent.newInstance();
+		a.setPieces(daoPieces.newInstance());
 
-		return daoAdherent.newInstance();
+		return a;
+	}
+
+	public ClassementFFBA newClassementFFBA() {
+		return new ClassementFFBA();
 	}
 
 
@@ -75,7 +86,7 @@ public class FacadeAdherent {
 		}
 		return sexes;
 	}
-	
+
 	public List<Sexe> getListeSexeList(){
 		List<Sexe> sexes = new ArrayList<>();
 		for (Sexe s : Sexe.values()) {
@@ -84,23 +95,48 @@ public class FacadeAdherent {
 		return sexes;
 	}
 
-	public List<Classement> getClassementFFBAWebService(Adherent t){
-		ClassementInterop ws = new ClassementInteropService().getClassementInteropPort();
-		ClassementFFBA classement = ws.getClassementFfba(t.getLicenceFfba());
+	public List<Classement> getListeClassementsList(){
 		List<Classement> classements = new ArrayList<>();
-		classements.add(setClassement(t.getLicenceFfba(), classement.getSimple(), "SPL"));
-		classements.add(setClassement(t.getLicenceFfba(), classement.getDouble(), "DBL"));
-		classements.add(setClassement(t.getLicenceFfba(), classement.getDoubleMixte(), "DBM"));
+		for (Classement c : Classement.values()) {
+			classements.add(c);
+		}
 		return classements;
 	}
 
-	private Classement setClassement(String licenceFfba, String classement, String format){
-		Classement classe = new Classement();
-		classe.setFormat(facadeRef.getFormatByLibelleCourt(format));
-		classe.setLibelleClassement(classement);
-		classe.setLicenceFfba(licenceFfba);
-		return classe;
+	public ClassementFFBA getClassementFFBAWebService(Adherent t){
+		ClassementInterop ws = new ClassementInteropService().getClassementInteropPort();
+		ClassementFFBAWS classement = ws.getClassementFfba(t.getLicenceFfba());
+
+		ClassementFFBA classementFbba = newClassementFFBA();
+		try{
+			classementFbba.getClassement().put(Format.SPL, Classement.valueOf(classement.getSimple()));
+		}catch(Exception e){
+		}
+		try{
+			classementFbba.getClassement().put(Format.DBL, Classement.valueOf(classement.getDouble()));
+		}catch(Exception e){
+		}
+		try{
+			classementFbba.getClassement().put(Format.DBM, Classement.valueOf(classement.getDoubleMixte()));
+		}catch(Exception e){
+		}
+		return classementFbba;
 	}
+
+
+	public Adherent getAdherentByMail(String mailAdherent){
+
+		return daoAdherent.getAdherentByMail(mailAdherent);
+	}
+
+	public boolean isExistAdherent(String mailAdherent){
+
+		return daoAdherent.isExistAdherent(mailAdherent);
+	}
+
+
+
+
 
 }
 

@@ -21,6 +21,16 @@ public class JsfUtils
     {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
     }
+   
+    /**
+     * Envoie un message JSF pour l'IHM. Classe : ERROR
+     *
+     * @param message
+     */
+    public static void sendError(String message)
+    {
+    	FacesContext.getCurrentInstance().addMessage("error", new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
+    }
 
     /**
      * Envoie le message d'une exception à l'IHM. Classe : ERROR
@@ -29,7 +39,7 @@ public class JsfUtils
      */
     public static void sendMessage(Exception ex)
     {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), null));
+        FacesContext.getCurrentInstance().addMessage("error", new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), null));
     }
 
     /**

@@ -2,6 +2,19 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="BadmintonienCessonaisEJB">
 		<jta-data-source>jdbc/badminton_cessonnais</jta-data-source>
+		<class>entities.utilisateur.Utilisateur</class>
+		<class>entities.utilisateur.Adherent</class>
+		<class>entities.utilisateur.ClassementFFBA</class>
+		<class>entities.utilisateur.Club</class>
+		<class>entities.utilisateur.Profil</class>
+		<class>entities.tournoi.Echeancier</class>
+		<class>entities.tournoi.Equipe</class>
+		<class>entities.tournoi.Match</class>
+		<class>entities.tournoi.Poule</class>
+		<class>entities.tournoi.Resultat</class>
+		<class>entities.tournoi.Tableau</class>
+		<class>entities.tournoi.TableauElimination</class>
+		<class>entities.tournoi.Tournoi</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 	</persistence-unit>
 </persistence>

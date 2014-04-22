@@ -1,20 +1,20 @@
 package entities.utilisateur;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+import entities.reference.Categorie;
 
 @SuppressWarnings("serial")
 @Entity
@@ -32,13 +32,13 @@ public class Adherent extends Utilisateur implements Serializable {
 	String licenceFcd;
 	String licenceFfba;
 	boolean referent;
-	@ManyToOne
+	@Enumerated(EnumType.STRING)
 	Categorie categorie;
 	@ManyToOne
 	Club club;
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
-	@JoinColumn(referencedColumnName = "licenceFfba", name="LICENCEFFBA")
-	List<Classement> listeClassements = new ArrayList<>();
-	@ManyToOne
-	Pieces piece;
+	@OneToOne(cascade=CascadeType.ALL)
+	ClassementFFBA Classement;
+
+	@OneToOne(cascade=CascadeType.ALL)
+	Pieces pieces;
 }
