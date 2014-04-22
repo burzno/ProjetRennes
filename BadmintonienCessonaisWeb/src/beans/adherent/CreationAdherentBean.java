@@ -1,27 +1,22 @@
 package beans.adherent;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-
-import org.primefaces.event.FileUploadEvent;
+import javax.faces.validator.ValidatorException;
 
 import lombok.Data;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
 import entities.utilisateur.Adherent;
+import entities.utilisateur.Classement;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
@@ -39,8 +34,8 @@ public class CreationAdherentBean {
 	private FacadeClub facadeClub;
 
 	private Adherent adherent;
-
-	private String destination="D:\\";
+	
+	private boolean isClasse;
 
 	//après construction, init ma méthode
 	@PostConstruct
@@ -50,7 +45,13 @@ public class CreationAdherentBean {
 
 
 	public void enregistrerAdherent(){
-		facadeAdherent.create(adherent);
+		try { 
+			chercherClassements();
+			facadeAdherent.create(adherent);
+		} catch (Exception e) {
+			isClasse = true;
+		}
+
 	}
 
 	public List<Profil> getListProfils(){
@@ -65,44 +66,26 @@ public class CreationAdherentBean {
 		return facadeAdherent.getListeSexeList();
 	}
 
-	public void upload(FileUploadEvent event) {  
-		System.out.println("ici");
-		FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");  
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-		// Do what you want with the file        
-		try {
-			System.out.println("ici");
-			copyFile(event.getFile().getFileName(), event.getFile().getInputstream());
-			System.out.println("la");
-		} catch (IOException e) {
-			e.printStackTrace();
+	public void validateAdresseMailBdd(FacesContext context, UIComponent component,Object value) throws ValidatorException {
+		String adresseMail = (String) value;
+		if (facadeAdherent.isExistAdherent(adresseMail)) {
+			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"L'adresse mail a déjà été saisi","Entrée non valide"));
 		}
 
-	}  
 
-	public void copyFile(String fileName, InputStream in) {
-		try {
-
-
-			// write the inputStream to a FileOutputStream
-			OutputStream out = new FileOutputStream(new File(destination + fileName));
-
-			int read = 0;
-			byte[] bytes = new byte[1024];
-
-			while ((read = in.read(bytes)) != -1) {
-				out.write(bytes, 0, read);
-			}
-
-			in.close();
-			out.flush();
-			out.close();
-
-			System.out.println("New file created!");
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
 	}
 
+	public void chercherClassements() throws Exception{
+		
+		
+		if (adherent.getLicenceFfba() != "") {
+			List<Classement> lc = facadeAdherent.getClassementFFBAWebService(adherent);
+			if (lc.get(0).getLibelleClassement() == null) {
+				throw new Exception("pas de classements");
+			}
+			adherent.setListeClassements(lc);
+		}
+	}
+	
 } 
 

@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -39,6 +40,7 @@ public class Adherent extends Utilisateur implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(referencedColumnName = "licenceFfba", name="LICENCEFFBA")
 	List<Classement> listeClassements = new ArrayList<>();
-	@ManyToOne
-	Pieces piece;
+
+	@OneToOne(cascade=CascadeType.ALL)
+	Pieces pieces;
 }

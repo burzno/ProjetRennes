@@ -7,14 +7,15 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import sessions.dao.DaoAdherent;
+import sessions.dao.DaoPieces;
 import sessions.facades.references.FacadeReferences;
 import webservice.ClassementFFBA;
 import webservice.ClassementInterop;
 import webservice.ClassementInteropService;
 import entities.utilisateur.Adherent;
-import entities.utilisateur.Sexe;
 //github.com/burzno/ProjetRennes.git
 import entities.utilisateur.Classement;
+import entities.utilisateur.Sexe;
 
 /**
  * Exemple D'EJB SESSION
@@ -28,18 +29,23 @@ public class FacadeAdherent {
 	@EJB
 	private DaoAdherent daoAdherent;
 	@EJB
+	private DaoPieces daoPieces;
+	@EJB
 	private FacadeReferences facadeRef;
 
 
-	public void create(Adherent t) {
+	public void create(Adherent t){
 		daoAdherent.create(t);
+	
 	}
 
 
 
 	public Adherent newInstance() {
-
-		return daoAdherent.newInstance();
+		Adherent a = daoAdherent.newInstance();
+		a.setPieces(daoPieces.newInstance());
+		
+		return a;
 	}
 
 
@@ -101,6 +107,18 @@ public class FacadeAdherent {
 		classe.setLicenceFfba(licenceFfba);
 		return classe;
 	}
+
+	public Adherent getAdherentByMail(String mailAdherent){
+
+		return daoAdherent.getAdherentByMail(mailAdherent);
+	}
+	
+	public boolean isExistAdherent(String mailAdherent){
+
+		return daoAdherent.isExistAdherent(mailAdherent);
+	}
+	
+
 
 }
 

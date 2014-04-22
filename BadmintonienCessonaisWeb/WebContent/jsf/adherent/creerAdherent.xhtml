@@ -20,7 +20,7 @@
 						<h:panelGrid columns="4">
 						
 						<tag:input-zone for="inputProfilAdherent" label="Profil">
-								<p:selectOneMenu id="inputProfilAdherent" value="#{creationAdherentBean.adherent.profil}" required="true" converter="#{genericConverter}">
+								<p:selectOneMenu id="inputProfilAdherent" value="#{creationAdherentBean.adherent.profil}" required="false" converter="#{genericConverter}">
 									<f:selectItems value="#{creationAdherentBean.listProfils}" var="p" itemLabel="#{p.libelleProfil}" />
 								</p:selectOneMenu>
 							</tag:input-zone>
@@ -34,21 +34,21 @@
 								<p:inputText id="inputLicenceFfbaAdherent" value="#{creationAdherentBean.adherent.licenceFfba}" />
 							</tag:input-zone>
 							<tag:input-zone for="inputNomAdherent" label="Nom">
-								<p:inputText id="inputNomAdherent" value="#{creationAdherentBean.adherent.nom}" required="true" />
+								<p:inputText id="inputNomAdherent" value="#{creationAdherentBean.adherent.nom}" required="false" />
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 							<tag:input-zone for="inputPrenomAdherent" label="Prenom">
-								<p:inputText id="inputPrenomAdherent" value="#{creationAdherentBean.adherent.prenom}" required="true" />
+								<p:inputText id="inputPrenomAdherent" value="#{creationAdherentBean.adherent.prenom}" required="false" />
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 							<tag:input-zone for="inputSexeAdherent" label="Sexe">
-								<p:selectOneRadio id="inputSexeAdherent" value="#{creationAdherentBean.adherent.sexe}" required="true">
+								<p:selectOneRadio id="inputSexeAdherent" value="#{creationAdherentBean.adherent.sexe}" required="false">
 									<f:selectItems value="#{creationAdherentBean.listSexe}" var="s" itemLabel="#{s.libelle}" />
 								</p:selectOneRadio>
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 							<tag:input-zone for="inputDateNaissanceAdherent" label="Date de naissance" >
-								<p:calendar id="inputDateNaissanceAdherent" navigator="true" value="#{creationAdherentBean.adherent.dateNaissance}" required="true"/>
+								<p:calendar id="inputDateNaissanceAdherent" navigator="true" value="#{creationAdherentBean.adherent.dateNaissance}" required="false"/>
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 						</h:panelGrid>
@@ -56,27 +56,27 @@
 					<p:panel header="Pièces administratives">
 						<h:panelGrid columns="4">
 							<p:outputLabel value="Formulaire FCD" />
-							<!--  <p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.piece.formulaireFcd}" style="height:25px;margin-left:20px"  /> -->
+							<p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.pieces.formulaireFcd}" style="height:25px;margin-left:20px"  />
 							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
 							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>
 							
 							<p:outputLabel value="Chèque FCD" />
-							<!-- <p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.piece.chequeFcd}" style="height:25px;margin-left:20px" />-->
+							<p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.pieces.chequeFcd}" style="height:25px;margin-left:20px" />
 							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
 							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
 							
 							<p:outputLabel value="Licence FCD" />
-							<!-- <p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.piece.licenceFcd}" style="height:25px;margin-left:20px" />-->
+							<p:selectBooleanCheckbox  value="#{creationAdherentBean.adherent.pieces.licenceFcd}" style="height:25px;margin-left:20px" />
 							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
 							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
 							
 							<p:outputLabel value="Certificat Médical" />
-							<!-- <p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.piece.certificatMedical}" style="height:25px;margin-left:20px" />-->
+							<p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.pieces.certificatMedical}" style="height:25px;margin-left:20px" />
 							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
 							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
 							
 							<p:outputLabel value="Chèque CSA" />
-							<!-- <p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.piece.chequeCsa}" style="height:25px;margin-left:20px" />-->
+							<p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.pieces.chequeCsa}" style="height:25px;margin-left:20px" />
 							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
 							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>
 							
@@ -86,7 +86,7 @@
 					<p:panel >
 						<h:panelGrid columns="4">
 						<tag:input-zone for="inputClubAdherent" label="Club">
-								<p:selectOneMenu id="inputClubAdherent" value="#{creationAdherentBean.adherent.club}" required="true" converter="#{genericConverter}">
+								<p:selectOneMenu id="inputClubAdherent" value="#{creationAdherentBean.adherent.club}" required="false" converter="#{genericConverter}">
 									<f:selectItems value="#{creationAdherentBean.listClubs}" var="c" itemLabel="#{c.nomClub}" />
 								</p:selectOneMenu>
 							</tag:input-zone>
@@ -108,24 +108,28 @@
 								<p:inputText id="inputMobileAdherent" value="#{creationAdherentBean.adherent.mobile}" />
 							</tag:input-zone>
 							<tag:input-zone for="inputAdresseMailAdherent" label="Adresse mail">
-								<p:inputText id="inputAdresseMailAdherent" value="#{creationAdherentBean.adherent.adresseMail}" required="true" />
+								<p:inputText id="inputAdresseMailAdherent" value="#{creationAdherentBean.adherent.adresseMail}" required="true" validator="#{creationAdherentBean.validateAdresseMailBdd}"/>
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 							
 						</h:panelGrid>
 					</p:panel>
 					<p:panel header="Indisponibilités">
-					<p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" />  
-						<p:dialog header="Selected Values" modal="true" showEffect="fade"
-							hideEffect="fade" widgetVar="dlg">
-							<h:panelGrid columns="1" id="display">
-								<h:outputText value="Value 1: #{creationAdherentBean.adherent.piece.formulaireFcd}" />
-
-								<h:outputText value="Value 2: #{creationAdherentBean.adherent.adresseMail}" />
-							</h:panelGrid>
-						</p:dialog>
+					
 					</p:panel>
-					<p:commandButton update="@form" value="Enregistrer" action="#{redirect.getIndex}" actionListener="#{creationAdherentBean.enregistrerAdherent}" ajax="false" />
+					<p:panel header="Classements" rendered="#{creationAdherentBean.classe}">
+						<h:panelGrid columns="4">
+							<tag:input-zone for="inputClassementSimpleAdherent" label="Simple">
+								<p:selectOneMenu id="inputClassementSimpleAdherent"
+									value="#{creationAdherentBean.adherent.listeClassements.}"
+									required="false" converter="#{genericConverter}">
+									<f:selectItems value="#{creationAdherentBean.listProfils}"
+										var="p" itemLabel="#{p.libelleProfil}" />
+								</p:selectOneMenu>
+							</tag:input-zone>
+						</h:panelGrid>
+					</p:panel>
+					<p:commandButton update="@form" value="Enregistrer" actionListener="#{creationAdherentBean.enregistrerAdherent}" ajax="false" />
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
