@@ -18,5 +18,16 @@ public class DaoAdherent extends AbstractDao<Adherent> {
 		return  query.getSingleResult();
 	}
 	
-
+	public boolean isExistAdherent(String mailAdherent){
+		
+		try {
+			getAdherentByMail(mailAdherent);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+	
+	
 }

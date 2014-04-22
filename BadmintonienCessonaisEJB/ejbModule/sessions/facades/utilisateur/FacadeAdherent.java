@@ -120,5 +120,17 @@ public class FacadeAdherent {
 	
 
 
+	public Adherent getAdherentByMail(String mailAdherent){
+
+		return daoAdherent.getAdherentByMail(mailAdherent);
+	}
+	
+	public boolean isExistAdherent(String mailAdherent){
+
+		return daoAdherent.isExistAdherent(mailAdherent);
+	}
+	
+
+
 }
 
