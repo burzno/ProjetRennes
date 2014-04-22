@@ -95,15 +95,31 @@ public class FacadeAdherent {
 		return sexes;
 	}
 
+	public List<Classement> getListeClassementsList(){
+		List<Classement> classements = new ArrayList<>();
+		for (Classement c : Classement.values()) {
+			classements.add(c);
+		}
+		return classements;
+	}
+
 	public ClassementFFBA getClassementFFBAWebService(Adherent t){
 		ClassementInterop ws = new ClassementInteropService().getClassementInteropPort();
 		ClassementFFBAWS classement = ws.getClassementFfba(t.getLicenceFfba());
 		
 		ClassementFFBA classementFbba = newClassementFFBA();
-		classementFbba.getClassement().put(Format.SPL, Classement.valueOf(classement.getSimple()));
-		classementFbba.getClassement().put(Format.DBL, Classement.valueOf(classement.getDouble()));
-		classementFbba.getClassement().put(Format.DBM, Classement.valueOf(classement.getDoubleMixte()));
-		
+		try{
+			classementFbba.getClassement().put(Format.SPL, Classement.valueOf(classement.getSimple()));
+		}catch(Exception e){
+		}
+		try{
+			classementFbba.getClassement().put(Format.DBL, Classement.valueOf(classement.getDouble()));
+		}catch(Exception e){
+		}
+		try{
+			classementFbba.getClassement().put(Format.DBM, Classement.valueOf(classement.getDoubleMixte()));
+		}catch(Exception e){
+		}
 		return classementFbba;
 	}
 
@@ -117,19 +133,6 @@ public class FacadeAdherent {
 
 		return daoAdherent.isExistAdherent(mailAdherent);
 	}
-	
-
-
-	public Adherent getAdherentByMail(String mailAdherent){
-
-		return daoAdherent.getAdherentByMail(mailAdherent);
-	}
-	
-	public boolean isExistAdherent(String mailAdherent){
-
-		return daoAdherent.isExistAdherent(mailAdherent);
-	}
-	
 
 
 }

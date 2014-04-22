@@ -9,33 +9,214 @@
 		xmlns:tag="http://taglibs/customtags">
 		
 		<ui:define name="pageHeader">
-			Création d'un tournoi
+			Création tournoi / Renseigner des participants
 		</ui:define>
 		
 		<ui:define name="body">
-			<h:form id="formulaireCreateTournoi">
-				<h:panelGrid columns="2">
-					<tag:input-zone for="inputNomTournoi" label="Nom du tournoi">
-						<p:inputText id="inputNomTournoi" placeholder="Nom" value="#{creationTournoiBean.tournoi.nom}"/>
-					</tag:input-zone>
-					<tag:input-zone for="inputDateTournoi" label="Date">
-						<p:calendar id="inputDateTournoi" placeholder="jj/mm/aaaa" value="#{creationTournoiBean.tournoi.dateTournoi}" required="true"/>
-					</tag:input-zone>
-					<tag:input-zone for="inputLieuTournoi" label="Lieu">
-						<p:inputText id="inputLieuTournoi" placeholder="Lieu" value="#{creationTournoiBean.tournoi.lieu}" required="true"/>
-					</tag:input-zone>
-					<tag:input-zone for="inputDureeTournoi" label="Durée d'un match">
-						<p:inputText id="inputDureeTournoi" placeholder="Durée moyenne" value="#{creationTournoiBean.tournoi.dureeMatch}" required="true"/>
-					</tag:input-zone>
-					<tag:input-zone for="inputRecupTournoi" label="Temps de récupération">
-						<p:inputText id="inputRecupTournoi" placeholder="Récupération minimum" value="#{creationTournoiBean.tournoi.dureeRecup}" required="true"/>
-					</tag:input-zone>
-					<tag:input-zone for="inputNbTerrainTournoi" label="Nombre de terrains disponible">
-						<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="true"/>
-					</tag:input-zone>
-				</h:panelGrid>
-				<p:commandButton update="@form" value="Valider" actionListener="#{creationTournoiBean.flashTournoi()}" action="#{redirect.getRenseignerAdherent}"/>
+			<p:dialog header="Création du Tournoi" widgetVar="createTournoi" resizable="false" modal="true" closable="false"> 
+				<h:form id="formulaireCreateTournoi">
+					<h:panelGrid columns="2">
+						<tag:input-zone for="inputNomTournoi" label="Nom du tournoi">
+							<p:inputText id="inputNomTournoi" placeholder="Nom" value="#{creationTournoiBean.tournoi.nom}"/>
+						</tag:input-zone>
+						<tag:input-zone for="inputDateTournoi" label="Date">
+							<p:calendar id="inputDateTournoi" placeholder="jj/mm/aaaa" value="#{creationTournoiBean.tournoi.dateTournoi}" required="true"/>
+						</tag:input-zone>
+						<tag:input-zone for="inputLieuTournoi" label="Lieu">
+							<p:inputText id="inputLieuTournoi" placeholder="Lieu" value="#{creationTournoiBean.tournoi.lieu}" required="true"/>
+						</tag:input-zone>
+						<tag:input-zone for="inputDureeTournoi" label="Durée d'un match">
+							<p:inputText id="inputDureeTournoi" placeholder="Durée moyenne" value="#{creationTournoiBean.tournoi.dureeMatch}" required="true"/>
+						</tag:input-zone>
+						<tag:input-zone for="inputRecupTournoi" label="Temps de récupération">
+							<p:inputText id="inputRecupTournoi" placeholder="Récupération minimum" value="#{creationTournoiBean.tournoi.dureeRecup}" required="true"/>
+						</tag:input-zone>
+						<tag:input-zone for="inputNbTerrainTournoi" label="Nombre de terrains disponible">
+							<p:inputText id="inputNbTerrainTournoi" placeholder="Nombre de terrains" value="#{creationTournoiBean.tournoi.nbTerrain}" required="true"/>
+						</tag:input-zone>
+					</h:panelGrid>
+					<center>
+						<p:commandButton update="@form :formRecap :formParticipantsTableaux" styleClass="btn-validation" value="Valider" actionListener="#{creationTournoiBean.createTournoi()}" oncomplete="validerCreateTournoi(xhr, status, args)"/>
+					</center>
+				</h:form>
+			</p:dialog>
+		
+			<h:form id="formulaireTableau">
+				<p:dialog header="Création d'un tableau" widgetVar="createTableau" resizable="false" modal="true"> 
+						<h:panelGrid columns="4" style="margin-bottom:10px">
+							<tag:input-zone for="selectFormat" label="Format">
+								<p:selectOneMenu id="selectFormat" value="#{creationTournoiBean.tableau.format}" converter="#{genericConvertor}">
+									<f:selectItems value="#{creationTournoiBean.formats}" var="format" itemLabel="#{format.libelle}"/>
+								</p:selectOneMenu>
+							</tag:input-zone>
+							
+							<tag:input-zone for="inputPax" label="Nombre de PAX/Poule">
+								<p:inputText id="inputPax" value="#{creationTournoiBean.tableau.nbPax}" maxlength="2" size="2"/>
+							</tag:input-zone>
+							
+							<tag:input-zone for="selectCategorie" label="Catégorie(s)">
+								<p:selectManyMenu id="selectCategorie" value="#{creationTournoiBean.tableau.categories}" converter="#{genericConvertor}" styleClass="manySelect">
+									<f:selectItems value="#{creationTournoiBean.categories}" var="cat" itemLabel="#{cat.libelle}"/>
+								</p:selectManyMenu>
+							</tag:input-zone>
+							
+							<tag:input-zone for="selectClassement" label="Classement(s)">
+								<p:selectManyMenu id="selectClassement" value="#{creationTournoiBean.tableau.classements}" converter="#{genericConvertor}" styleClass="manySelect">
+									<f:selectItems value="#{creationTournoiBean.classements}" var="class" itemLabel="#{class}"/>
+								</p:selectManyMenu>
+							</tag:input-zone>
+						</h:panelGrid>
+							<div style=" margin-bottom: 1em;text-align: right;">
+								<p:commandButton value="Ajouter" styleClass="btn-info" update="@form :formRecap:panelTableau :formParticipantsTableaux" actionListener="#{creationTournoiBean.ajouterTableau()}" oncomplete="createTableau.show()"></p:commandButton>
+							</div>
+							<p:dataTable var="tab" value="#{creationTournoiBean.tournoi.tableaux}" emptyMessage="Aucun tableau n'est créé">  
+						        <p:column headerText="Ident">  
+						            <h:outputText value="#{tab.numTab}" />  
+						        </p:column>  
+						        <p:column headerText="Format">  
+						            <h:outputText value="#{tab.format.libelle}" />  
+						        </p:column>  
+						        <p:column headerText="Classement">  
+						            <h:outputText value="#{tab.classements}" />  
+						        </p:column>  
+						        <p:column headerText="Catégorie">  
+						            <h:outputText value="#{tab.categories}" />  
+						        </p:column> 
+						        <p:column headerText="Nb de PAX/Poule ">  
+						            <h:outputText value="#{tab.nbPax}" />  
+						        </p:column> 
+							 </p:dataTable>
+						<f:facet name="footer">
+							<center>
+								<p:commandButton value="Valider" styleClass="btn-validation" oncomplete="createTableau.hide()"/>
+							</center>
+						</f:facet>
+				</p:dialog>
 			</h:form>
+			
+		
+			<h:form id="formRecap">
+				<p:panelGrid columns="2" id="panelRecap" styleClass="borderLess">
+						<p:panel>
+							<f:facet name="header">
+								Tournoi #{creationTournoiBean.tournoi.nom}
+							</f:facet>
+							<p:panelGrid columns="2" styleClass="borderLess">
+								<p:outputLabel>Date</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.dateTournoi}" styleClass="infos"><f:convertDateTime pattern="dd/MM/yyyy" /></p:outputLabel>
+								<p:outputLabel>Lieu</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.lieu}" styleClass="infos"/>
+								<p:outputLabel>Nb Terrains disponibles</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.nbTerrain}" styleClass="infos"/>
+								<p:outputLabel>Durée d'un match</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.dureeMatch}" styleClass="infos"/>
+								<p:outputLabel>Tps de récupération</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tournoi.dureeRecup}" styleClass="infos"/>
+							</p:panelGrid>
+						</p:panel>
+						<p:panel id="panelTableau" styleClass="panelTableauClass">
+							<f:facet name="header">
+								<table border="0px">
+									<tbody>
+									<tr>
+										<td>
+											Tableau
+										</td>
+										<td>
+											<p:selectOneMenu id="selectTableau" value="#{creationTournoiBean.tableauCourant}" converter="#{genericConverter}">
+												<f:selectItems value="#{creationTournoiBean.tournoi.tableaux}" var="tab" itemLabel="#{tab.numTab}"/>
+												<p:ajax update="@form:panelTableau:infoPanelTableau :formParticipantsTableaux"></p:ajax>
+											</p:selectOneMenu>
+										</td>
+										<td>
+											<p:commandButton id="showDialogButtonCreateTab" styleClass="btn-info" value="+" actionListener="#{creationTournoiBean.initAjoutTableau()}" update=":formulaireTableau" oncomplete="createTableau.show()"/>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</f:facet>
+							<p:panelGrid columns="2" styleClass="borderLess" id="infoPanelTableau">
+								<p:outputLabel>Format</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tableauCourant.format.libelle}" styleClass="infos"/>
+								<p:outputLabel>Classement</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tableauCourant.classements}" styleClass="infos"/>
+								<p:outputLabel>Catégories</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tableauCourant.categories}" styleClass="infos"/>
+								<p:outputLabel>Nb de participants/Poule</p:outputLabel><p:outputLabel value="#{creationTournoiBean.tableauCourant.nbPax}" styleClass="infos"/>
+							</p:panelGrid>
+						</p:panel>
+				</p:panelGrid>
+			</h:form>
+		
+			<h:form id="formParticipantsTableaux">
+				<p:panelGrid columns="3" styleClass="borderLess" style="width:100%; align:top">
+					<p:dataTable id="dataTableAdherents" var="ad"
+							value="#{creationTournoiBean.adherents}"
+							widgetVar="adherentsTable" rows="10" paginator="true" paginatorPosition="bottom"
+							rowKey="#{ad.idUtilisateur}"
+							emptyMessage="Aucun adhérent avec ces critères">
+			
+							<f:facet name="header">
+								<h:outputText value="Adhérents" />
+							</f:facet>
+								<p:column id="licenceFcdColumn"
+									headerText="Licence Fcd">
+									<h:outputText value="#{ad.licenceFcd}" id="dragAdherent" styleClass="draggable" />
+									<p:draggable for="dragAdherent" revert="true" />  
+								</p:column>
+								<p:column id="nomColumn"
+									headerText="Nom">
+									<h:outputText value="#{ad.nom}" />
+								</p:column>
+								<p:column id="PrenomColumn"
+									headerText="Prénom">
+									<h:outputText value="#{ad.prenom}" />
+								</p:column>
+							<p:row id="lineAdherent#{ad.idUtilisateur}"/>
+							<p:draggable for="lineAdherent#{ad.idUtilisateur}" revert="true"/>
+					</p:dataTable>
+					<div class="separator"/>
+						<p:panel id="dropZoneParticipant">
+							<f:facet name="header">
+								<h:outputText value="Participants au tableau #{creationTournoiBean.tableauCourant.numTab}"/>
+							</f:facet>
+							<p:dataTable id="dataTableParticipants" var="participant"
+									value="#{creationTournoiBean.tableauCourant.adherent}"
+									widgetVar="participantsTable" rows="10" paginator="true"  paginatorPosition="bottom"
+									rowKey="#{participant.idUtilisateur}">
+									<p:column id="licenceFcdColumnparticipant"
+										headerText="Licence Fcd">
+										<h:outputText value="#{participant.licenceFcd}" />
+									</p:column>
+									<p:column id="nomColumnparticipant"
+										headerText="Nom">
+										<h:outputText value="#{participant.nom}" />
+									</p:column>
+									<p:column id="PrenomColumnparticipant"
+										headerText="Prénom">
+										<h:outputText value="#{participant.prenom}" />
+									</p:column>
+							</p:dataTable>
+						</p:panel>
+				</p:panelGrid>
+				
+				<p:droppable for=":formParticipantsTableaux:dropZoneParticipant" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="dataTableAdherents">  
+			        <p:ajax listener="#{creationTournoiBean.addParticipant}" update=":formParticipantsTableaux" />  
+			    </p:droppable>
+			</h:form>
+		
+			<h:form>
+				<p:commandButton id="btn2Test" styleClass="btn-info" value="Test" actionListener="#{creationTournoiBean.initAjoutTableauCourant()}" update=":formParticipantsTableaux:dataTableParticipants"/>
+			</h:form>
+		
+		</ui:define>
+		
+		
+		<ui:define name="script">
+			<script type="text/javascript">
+					$(document).ready(function() {PF('createTournoi').show();});
+
+				    function validerCreateTournoi(xhr, status, args) { 
+				        if(args.validationFailed) {  
+				            //PF('createTournoi').jq.effect("shake", { times:5 }, 100);  
+				        }   
+				        else {  
+				            PF('createTournoi').hide();  
+				        }  
+				    } 
+		    </script> 
 		</ui:define>
 		
 </ui:composition>

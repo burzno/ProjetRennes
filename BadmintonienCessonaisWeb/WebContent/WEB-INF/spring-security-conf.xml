@@ -11,7 +11,7 @@
 
     <http auto-config='true' use-expressions="true" >
      
-        <intercept-url pattern="/resources/**"            access="denyAll" />
+        <intercept-url pattern="/resources/**"            access="isAuthenticated()" />
         <intercept-url pattern="/javax.faces.resource/**" access="permitAll" />
         <intercept-url pattern="/profile-admin/**"        access="hasRole('ROLE_ADMINISTRATEUR')" />
         <intercept-url pattern="/profile-user/**"         access="hasRole('ROLE_UTILISATEUR')" />
@@ -24,7 +24,7 @@
   
   		        <form-login login-page="/index.xhtml" 
         			authentication-failure-url="/jsf/commun/erreur.xhtml?fail=true"
-        			default-target-url="/jsf/commun/erreur.xhtml?fail=true"/>
+        			default-target-url="/index.xhtml"/>
   
     </http>
     
