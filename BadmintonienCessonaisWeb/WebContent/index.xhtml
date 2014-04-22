@@ -12,15 +12,19 @@
 		</ui:define>
 		
 		<ui:define name="body">
-			Mettre en place la page d'accueil
-			Avec les images des différents partenaires
-			 			Bonus
-			 Ajouter les infos et les articles
-			 <h:form>
-			 	<p:commandButton value="Tournoi2" action="#{redirect.getCreerTournoi2}"></p:commandButton>
-			 	<p:commandButton value="CreerAdherent" action="#{redirect.getCreerAdherent}"></p:commandButton>
-			 	<p:commandButton value="RechercherAdherent" action="#{redirect.getRechercherAdherent}"></p:commandButton>
-			 </h:form>
+		<div align="center">
+			<a href="http://www.plusdebad.com"><p:graphicImage name="Logo_+2Bad.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
+			<a href="http://www.lafederationdefense.fr/"><p:graphicImage name="Logo_FCD.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
+			<a href="http://www.ffbad.org"><p:graphicImage name="Logo_FFBa.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
+			<p:graphicImage name="LogoCSABadETRS.bmp" library="images" height="200px" />
+		</div>	
+		<div id="actu" align="center">	
+		
+		<p:galleria effect="#{galleriaBean.effect}" effectSpeed="1000" value="#{galleriaBean.images}" var="image">  
+   			<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
+		</p:galleria>    
+                    
+		</div>
 		</ui:define>
 		
 		<ui:define name="pageFooter">

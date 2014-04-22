@@ -2,6 +2,7 @@ package entities.utilisateur;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -38,4 +39,6 @@ public class Adherent extends Utilisateur implements Serializable {
 	@OneToOne
 	ClassementFFBA Classement;
 
+	@OneToOne(cascade=CascadeType.ALL)
+	Pieces pieces;
 }

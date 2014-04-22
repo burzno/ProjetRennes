@@ -37,7 +37,8 @@ import lombok.experimental.FieldDefaults;
 @NamedQueries({
 
 	@NamedQuery(name="findallUtilisateurs",query="select u from Utilisateur u"),
-	@NamedQuery(name="findUtilisateurByMail",query="select u from Utilisateur u WHERE u.adresseMail = :mailUtilisateur")
+	@NamedQuery(name="findUtilisateurByMail",query="select u from Utilisateur u WHERE u.adresseMail = :mailUtilisateur"),
+	@NamedQuery(name="verifConnection",query="select u from Utilisateur u WHERE u.adresseMail = :mailUtilisateur AND u.motDePasse = :motDePasse")
 
 })
 public class Utilisateur implements Serializable{

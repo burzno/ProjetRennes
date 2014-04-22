@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import sessions.dao.DaoAdherent;
+import sessions.dao.DaoPieces;
 import sessions.facades.references.FacadeReferences;
 import webservice.ClassementFFBAWS;
 import webservice.ClassementInterop;
@@ -29,18 +30,23 @@ public class FacadeAdherent {
 	@EJB
 	private DaoAdherent daoAdherent;
 	@EJB
+	private DaoPieces daoPieces;
+	@EJB
 	private FacadeReferences facadeRef;
 
 
-	public void create(Adherent t) {
+	public void create(Adherent t){
 		daoAdherent.create(t);
+	
 	}
 
 
 
 	public Adherent newInstance() {
-
-		return daoAdherent.newInstance();
+		Adherent a = daoAdherent.newInstance();
+		a.setPieces(daoPieces.newInstance());
+		
+		return a;
 	}
 	
 	public ClassementFFBA newClassementFFBA() {
@@ -100,6 +106,18 @@ public class FacadeAdherent {
 		
 		return classementFbba;
 	}
+
+
+	public Adherent getAdherentByMail(String mailAdherent){
+
+		return daoAdherent.getAdherentByMail(mailAdherent);
+	}
+	
+	public boolean isExistAdherent(String mailAdherent){
+
+		return daoAdherent.isExistAdherent(mailAdherent);
+	}
+	
 
 
 }

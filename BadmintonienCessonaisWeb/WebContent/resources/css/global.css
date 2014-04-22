@@ -11,7 +11,7 @@ body {
 }
 
 #entete {
- border : solid blue 2px; 
+ //border : solid blue 2px; 
  padding : 10px; 
  text-align : center;
  margin-bottom: 30px;
@@ -19,7 +19,7 @@ body {
 
 
 #piedDePage {
- border : solid blue 2px; 
+ //border : solid blue 2px; 
  text-align : center;
  position: fixed;
  bottom: 0px;
