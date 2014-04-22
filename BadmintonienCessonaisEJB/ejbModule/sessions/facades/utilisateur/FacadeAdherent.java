@@ -1,6 +1,6 @@
 package sessions.facades.utilisateur;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -88,19 +88,7 @@ public class FacadeAdherent {
 	}
 
 	public List<Sexe> getListeSexeList(){
-		List<Sexe> sexes = new ArrayList<>();
-		for (Sexe s : Sexe.values()) {
-			sexes.add(s);
-		}
-		return sexes;
-	}
-
-	public List<Classement> getListeClassementsList(){
-		List<Classement> classements = new ArrayList<>();
-		for (Classement c : Classement.values()) {
-			classements.add(c);
-		}
-		return classements;
+		return Arrays.asList(Sexe.values());
 	}
 
 	public ClassementFFBA getClassementFFBAWebService(Adherent t){
@@ -125,12 +113,10 @@ public class FacadeAdherent {
 
 
 	public Adherent getAdherentByMail(String mailAdherent){
-
 		return daoAdherent.getAdherentByMail(mailAdherent);
 	}
 
 	public boolean isExistAdherent(String mailAdherent){
-
 		return daoAdherent.isExistAdherent(mailAdherent);
 	}
 
