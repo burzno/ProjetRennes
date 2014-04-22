@@ -15,6 +15,6 @@
 		<class>entities.tournoi.Tableau</class>
 		<class>entities.tournoi.TableauElimination</class>
 		<class>entities.tournoi.Tournoi</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 	</persistence-unit>
 </persistence>
