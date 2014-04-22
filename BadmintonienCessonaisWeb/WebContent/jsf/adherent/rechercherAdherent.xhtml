@@ -16,7 +16,7 @@
 
 			<p:dataTable id="dataTable" var="a"
 				value="#{rechercheAdherentBean.listAdherents}"
-				widgetVar="adherentsTable" rows="15" paginator="true"
+				widgetVar="adherentsTable" rows="10" paginator="true"
 				rowKey="#{a.idUtilisateur}" selection="#{rechercheAdherentBean.selectedAdherents}" selectionMode="multiple"
 				emptyMessage="Aucun adhérent avec ces critères"
 				filteredValue="#{rechercheAdherentBean.filteredAdherents}">

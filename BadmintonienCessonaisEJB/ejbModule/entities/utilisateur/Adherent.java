@@ -39,5 +39,6 @@ public class Adherent extends Utilisateur implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(referencedColumnName = "licenceFfba", name="LICENCEFFBA")
 	List<Classement> listeClassements = new ArrayList<>();
-
+	@ManyToOne
+	Pieces piece;
 }

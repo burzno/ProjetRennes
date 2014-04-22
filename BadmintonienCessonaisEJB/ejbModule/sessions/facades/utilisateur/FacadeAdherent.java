@@ -30,7 +30,6 @@ public class FacadeAdherent {
 	@EJB
 	private FacadeReferences facadeRef;
 
-	
 
 	public void create(Adherent t) {
 		daoAdherent.create(t);
@@ -67,12 +66,20 @@ public class FacadeAdherent {
 
 	}
 
-	public String[] lesSexes(){
+	public String[] getListeSexeStringTab(){
 		String[] sexes = new String[Sexe.values().length];
 		int cpt=0;
 		for (Sexe s : Sexe.values()) {
 			sexes[cpt] =  s.getLibelle();
 			cpt++;
+		}
+		return sexes;
+	}
+	
+	public List<Sexe> getListeSexeList(){
+		List<Sexe> sexes = new ArrayList<>();
+		for (Sexe s : Sexe.values()) {
+			sexes.add(s);
 		}
 		return sexes;
 	}
