@@ -29,7 +29,7 @@ public class JsfUtils
      */
     public static void sendError(String message)
     {
-    	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
+    	FacesContext.getCurrentInstance().addMessage("error", new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
     }
 
     /**
@@ -39,7 +39,7 @@ public class JsfUtils
      */
     public static void sendMessage(Exception ex)
     {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), null));
+        FacesContext.getCurrentInstance().addMessage("error", new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), null));
     }
 
     /**

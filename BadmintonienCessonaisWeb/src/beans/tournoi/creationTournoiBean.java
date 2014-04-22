@@ -1,6 +1,5 @@
 package beans.tournoi;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,11 +7,12 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.primefaces.event.DragDropEvent;
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+
+import org.primefaces.event.DragDropEvent;
+
 import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.tournoi.FacadeTournoi;
@@ -69,9 +69,12 @@ public class creationTournoiBean {
 	public void initAjoutTableau(){
 		tableau = facadeTournoi.newTableau();
 	}
+	public void initAjoutTableauCourant(){
+		tableauCourant = facadeTournoi.newTableau();
+	}
 	
    public void addParticipant(DragDropEvent ddEvent) {
-	   if(tableauCourant != null){
+	  if(tableauCourant != null){
 		   Adherent ad = ((Adherent) ddEvent.getData());
 		   tableauCourant.getAdherent().add(ad);
 		   adherents.remove(ad);  
