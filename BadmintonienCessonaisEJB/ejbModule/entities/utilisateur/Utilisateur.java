@@ -32,8 +32,6 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @EqualsAndHashCode(of={"idUtilisateur"})
-@DiscriminatorColumn(name="DISCRIMINATOR", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue(value="UTILISATEUR")
 @NamedQueries({
 
 	@NamedQuery(name="findallUtilisateurs",query="select u from Utilisateur u"),
