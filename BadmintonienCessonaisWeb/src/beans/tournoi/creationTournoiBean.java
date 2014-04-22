@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -15,8 +16,10 @@ import org.primefaces.event.DragDropEvent;
 
 import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
+import sessions.facades.utilisateur.FacadeClub;
 import sessions.tournoi.FacadeTournoi;
 import utils.jsf.JsfUtils;
+import beans.utils.Utils;
 import entities.reference.Categorie;
 import entities.reference.Classement;
 import entities.reference.Format;
@@ -39,7 +42,9 @@ public class creationTournoiBean {
 	@EJB
 	FacadeAdherent facadeAdherent;
 	@EJB
+	FacadeClub facadeClub;
 	
+	@EJB
 	FacadeReferences facadeRef;
 	List<Format>		formats;
 	List<Categorie>		categories;
@@ -47,6 +52,14 @@ public class creationTournoiBean {
 	
 	List<Adherent>		adherents;
 	List<Adherent>		adherentsFiltred;
+	
+	private SelectItem[] sexeOptions; 
+	private SelectItem[] clubOptions;
+	private SelectItem[] categorieOptions;
+	
+	
+	
+	
 	
 	private final int DUREE_MATCH = 25;
 	private final int TPS_RECUP = 20;
@@ -65,6 +78,10 @@ public class creationTournoiBean {
 		categories = facadeRef.getAllCategorie();
 		classements = facadeRef.getAllClassement();
 		JsfUtils.sendMessage("initialisation des paramètres du tournoi");
+		sexeOptions = Utils.createFilterOptions(facadeAdherent.getListeSexeStringTab());
+		clubOptions = Utils.createFilterOptions(facadeClub.listeClubsStringTab());
+		categorieOptions = Utils.createFilterOptions(facadeRef.getAllCategorieStringTab());
+		
 	}
 	
 	public void initAjoutTableau(){
