@@ -1,17 +1,71 @@
 <ui:fragment xmlns:h="http://java.sun.com/jsf/html" 
+			 xmlns="http://www.w3.org/1999/xhtml"
 			 xmlns:ui="http://java.sun.com/jsf/facelets"
+			 xmlns:f="http://java.sun.com/jsf/core"
 	         xmlns:p="http://primefaces.org/ui" >
 
 	  
 	<div id="entete">
 		<div id="menu">
-			<div style="float: left">
-				Barre de menu
-			</div>
+		  <div style="float: left">						
+			<h:form rendered="#{authentificationBean.connecte}">
+			  <p:menubar>
+		        <p:menuitem value="Accueil" icon="ui-icon-document" url="/index.xhtml" />
+		 
+		        <p:submenu label="Adhérent" icon="ui-icon-pencil">
+		            <p:menuitem value="Créer un adhérent" url="#{redirect.creerAdherent}"/>
+		            <p:menuitem value="Rechercher un adhérent" url="#{redirect.rechercherAdherent}"/>
+		        </p:submenu>
+		 
+		        <p:submenu label="Tournoi" icon="ui-icon-pencil">
+		     	    <p:menuitem value="Créer un tournoi" url="#{redirect.creerTournoi}" />
+		            <p:menuitem value="Renseigner les participants" url="#" />
+		            <p:menuitem value="Générer les poules" url="#" />
+		            <p:menuitem value="Générer les paramètres du tournoi" url="#" />
+		            <p:menuitem value="Générer les tableaux à élimination" url="#" />
+					<p:menuitem value="Saisir les résultats" url="#" />
+					<p:menuitem value="Editer la programmation" url="#" />
+					<p:menuitem value="Envoyer la programmation" url="#" />
+					<p:menuitem value="Editer les feuilles de matchs" url="#" />
+		        </p:submenu>
+		 
+		        <p:submenu label="Championnats" icon="ui-icon-gear">
+		            <p:menuitem value="Créer une équipe" url="#" />
+		            <p:menuitem value="Rechercher un adhérent" url="#{redirect.rechercherAdherent}" />
+		             <p:menuitem value="Etablir une convocation" url="#" />
+		        </p:submenu>
+		        
+		         <p:submenu label="Gérer le contenu du site" icon="ui-icon-gear">
+		            <p:menuitem value="Mettre en ligne une fiche d'entrainement" url="#" />
+		            <p:menuitem value="Mettre en ligne une vidéo" url="#" />
+		            <p:menuitem value="Mettre en ligne une actualité" url="#" />
+		        </p:submenu>
+		      </p:menubar>  
+		      
+		    </h:form>
+		  </div>
+			
+			
 			<div style="text-align: right">
-			<p:inputText name="login" id="login" placeholder="adresse@mail.com"></p:inputText>
-			<p:password name="mdp" id="mdp" placeholder="Mot de passe"></p:password>
-			<p:commandButton name="connexion_btn" id="connexion_btn" value="Se connecter"></p:commandButton>
+			<h:form rendered="#{!authentificationBean.connecte}"  prependId="false">
+			    <p:menubar> 
+			      <f:facet name="options">
+			        <p:inputText id="j_username" style="margin-right:10px" placeholder="adresse@mail.com"
+			       	value="#{authentificationBean.login}"/>
+			        	
+			       	<p:password id="j_password" style="margin-right:10px" placeholder="Mot de passe"
+			       	value="#{authentificationBean.motDePasse}" />
+			        	
+			       	<p:commandButton value="Se connecter"  ajax="false" icon="ui-icon-extlink" actionListener="#{authentificationBean.connexion}" action="#{loginBean.login}"/>
+			                
+			      </f:facet>
+			    </p:menubar>			 
+			</h:form>			
+			<h:form rendered="#{authentificationBean.connecte}">
+				<p:outputLabel value="Bienvenue, #{authentificationBean.login} "/><br />
+				<p:commandButton name="connexion_btn" id="connexion_btn" value="Se déconnecter"
+				ajax="false" actionListener="#{loginBean.logout}" action="/index.xhtml"/>
+			</h:form>
 			</div>
 		</div>
 	</div>
