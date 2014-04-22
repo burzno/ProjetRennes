@@ -121,10 +121,28 @@
 						<h:panelGrid columns="4">
 							<tag:input-zone for="inputClassementSimpleAdherent" label="Simple">
 								<p:selectOneMenu id="inputClassementSimpleAdherent"
-									value="#{creationAdherentBean.adherent.listeClassements.}"
+									value="#{creationAdherentBean.classementSimple}"
 									required="false" converter="#{genericConverter}">
-									<f:selectItems value="#{creationAdherentBean.listProfils}"
-										var="p" itemLabel="#{p.libelleProfil}" />
+									<f:selectItems value="#{creationAdherentBean.listClassements}"
+										var="c" itemLabel="#{c}" />
+								</p:selectOneMenu>
+							</tag:input-zone>
+							<p:spacer /><p:spacer />
+							<tag:input-zone for="inputClassementDoubleAdherent" label="Double">
+								<p:selectOneMenu id="inputClassementDoubleAdherent"
+									value="#{creationAdherentBean.classementDouble}"
+									required="false" converter="#{genericConverter}">
+									<f:selectItems value="#{creationAdherentBean.listClassements}"
+										var="c" itemLabel="#{c}" />
+								</p:selectOneMenu>
+							</tag:input-zone>
+							<p:spacer /><p:spacer />
+							<tag:input-zone for="inputClassementDoubleMixteAdherent" label="Double Mixte">
+								<p:selectOneMenu id="inputClassementDoubleMixteAdherent"
+									value="#{creationAdherentBean.classementDoubleMixte}"
+									required="false" converter="#{genericConverter}">
+									<f:selectItems value="#{creationAdherentBean.listClassements}"
+										var="c" itemLabel="#{c}" />
 								</p:selectOneMenu>
 							</tag:input-zone>
 						</h:panelGrid>

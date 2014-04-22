@@ -37,7 +37,7 @@ public class FacadeAdherent {
 
 	public void create(Adherent t){
 		daoAdherent.create(t);
-	
+
 	}
 
 
@@ -45,10 +45,10 @@ public class FacadeAdherent {
 	public Adherent newInstance() {
 		Adherent a = daoAdherent.newInstance();
 		a.setPieces(daoPieces.newInstance());
-		
+
 		return a;
 	}
-	
+
 	public ClassementFFBA newClassementFFBA() {
 		return new ClassementFFBA();
 	}
@@ -86,7 +86,7 @@ public class FacadeAdherent {
 		}
 		return sexes;
 	}
-	
+
 	public List<Sexe> getListeSexeList(){
 		List<Sexe> sexes = new ArrayList<>();
 		for (Sexe s : Sexe.values()) {
@@ -106,7 +106,7 @@ public class FacadeAdherent {
 	public ClassementFFBA getClassementFFBAWebService(Adherent t){
 		ClassementInterop ws = new ClassementInteropService().getClassementInteropPort();
 		ClassementFFBAWS classement = ws.getClassementFfba(t.getLicenceFfba());
-		
+
 		ClassementFFBA classementFbba = newClassementFFBA();
 		try{
 			classementFbba.getClassement().put(Format.SPL, Classement.valueOf(classement.getSimple()));
@@ -128,11 +128,17 @@ public class FacadeAdherent {
 
 		return daoAdherent.getAdherentByMail(mailAdherent);
 	}
-	
+
 	public boolean isExistAdherent(String mailAdherent){
 
 		return daoAdherent.isExistAdherent(mailAdherent);
 	}
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
 
 
 }

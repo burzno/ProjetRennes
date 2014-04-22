@@ -36,7 +36,7 @@ public class Adherent extends Utilisateur implements Serializable {
 	Categorie categorie;
 	@ManyToOne
 	Club club;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	ClassementFFBA Classement;
 
 	@OneToOne(cascade=CascadeType.ALL)
