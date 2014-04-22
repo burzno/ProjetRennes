@@ -66,7 +66,7 @@
 								</p:selectManyMenu>
 							</tag:input-zone>
 						</h:panelGrid>
-							<div style=" margin-bottom: 1em;text-align: right;">
+							<div style="margin-bottom: 1em;text-align: right;">
 								<p:commandButton value="Ajouter" styleClass="btn-info" update="@form :formRecap:panelTableau :formParticipantsTableaux" actionListener="#{creationTournoiBean.ajouterTableau()}" oncomplete="createTableau.show()"></p:commandButton>
 							</div>
 							<p:dataTable var="tab" value="#{creationTournoiBean.tournoi.tableaux}" emptyMessage="Aucun tableau n'est créé">  
@@ -94,9 +94,17 @@
 				</p:dialog>
 			</h:form>
 			
-		
+			<p:panelGrid columns="3" id="panelFiltre" styleClass="borderLess">
+			<p:fieldset legend="Critères de recherche" style="width:360px">
+				<h:form>
+					<tag:input-zone for="filterLicenceFCD" label="Licence FCD">
+						<p:inputText id="inputNomTournoi" placeholder="Nom" value="#{creationTournoiBean.tournoi.nom}"/>
+					</tag:input-zone>				
+				</h:form>
+			</p:fieldset>
+			<div class="separator"/>
 			<h:form id="formRecap">
-				<p:panelGrid columns="2" id="panelRecap" styleClass="borderLess">
+				<p:panelGrid columns="1" id="panelRecap" styleClass="borderLess">
 						<p:panel>
 							<f:facet name="header">
 								Tournoi #{creationTournoiBean.tournoi.nom}
@@ -117,14 +125,14 @@
 										<td>
 											Tableau
 										</td>
-										<td>
+										<td style="width: 60%;">
 											<p:selectOneMenu id="selectTableau" value="#{creationTournoiBean.tableauCourant}" converter="#{genericConverter}">
 												<f:selectItems value="#{creationTournoiBean.tournoi.tableaux}" var="tab" itemLabel="#{tab.numTab}"/>
 												<p:ajax update="@form:panelTableau:infoPanelTableau :formParticipantsTableaux"></p:ajax>
 											</p:selectOneMenu>
 										</td>
 										<td>
-											<p:commandButton id="showDialogButtonCreateTab" styleClass="btn-info" value="+" actionListener="#{creationTournoiBean.initAjoutTableau()}" update=":formulaireTableau" oncomplete="createTableau.show()"/>
+											<p:commandButton id="showDialogButtonCreateTab" styleClass="btn-info" value="+" title="Créer un tableau" actionListener="#{creationTournoiBean.initAjoutTableau()}" update=":formulaireTableau" oncomplete="createTableau.show()"/>
 										</td>
 									</tr>
 									</tbody>
@@ -139,6 +147,7 @@
 						</p:panel>
 				</p:panelGrid>
 			</h:form>
+			</p:panelGrid>
 		
 			<h:form id="formParticipantsTableaux">
 				<p:panelGrid columns="3" styleClass="borderLess" style="width:100%; align:top">
@@ -146,13 +155,14 @@
 							value="#{creationTournoiBean.adherents}"
 							widgetVar="adherentsTable" rows="10" paginator="true" paginatorPosition="bottom"
 							rowKey="#{ad.idUtilisateur}"
-							emptyMessage="Aucun adhérent avec ces critères">
+							emptyMessage="Aucun adhérent avec ces critères"
+							filteredValue="#{creationTournoiBean.adherentsFiltred}">
 			
 							<f:facet name="header">
 								<h:outputText value="Adhérents" />
 							</f:facet>
-								<p:column id="licenceFcdColumn"
-									headerText="Licence Fcd">
+								<p:column id="licenceFcdColumn" headerText="Licence Fcd"
+											filterBy="#{ad.licenceFcd}" filterMatchMode="contains">
 									<h:outputText value="#{ad.licenceFcd}" id="dragAdherent" styleClass="draggable" />
 									<p:draggable for="dragAdherent" revert="true" />  
 								</p:column>
@@ -163,6 +173,11 @@
 								<p:column id="PrenomColumn"
 									headerText="Prénom">
 									<h:outputText value="#{ad.prenom}" />
+								</p:column>
+								<p:column headerText="Ajouter">
+									<p:commandLink actionListener="#{creationTournoiBean.addParticipant(ad)}" update="@form">
+										<p:graphicImage name="add_2.png" library="images/icones" alt="ajouter" style="height:17px;margin-left:20px"/>
+									</p:commandLink>
 								</p:column>
 							<p:row id="lineAdherent#{ad.idUtilisateur}"/>
 							<p:draggable for="lineAdherent#{ad.idUtilisateur}" revert="true"/>
@@ -188,19 +203,19 @@
 										headerText="Prénom">
 										<h:outputText value="#{participant.prenom}" />
 									</p:column>
+									<p:column headerText="Retirer">
+										<p:commandLink actionListener="#{creationTournoiBean.removeParticipant(participant)}" update="@form">
+											<p:graphicImage name="wrong.png" library="images/icones" alt="Retirer" style="height:17px;margin-left:20px"/>
+										</p:commandLink>
+									</p:column>
 							</p:dataTable>
 						</p:panel>
 				</p:panelGrid>
 				
-				<p:droppable for=":formParticipantsTableaux:dropZoneParticipant" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="dataTableAdherents">  
+				<p:droppable for="dropZoneParticipant" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="dataTableAdherents">  
 			        <p:ajax listener="#{creationTournoiBean.addParticipant}" update=":formParticipantsTableaux" />  
 			    </p:droppable>
 			</h:form>
-		
-			<h:form>
-				<p:commandButton id="btn2Test" styleClass="btn-info" value="Test" actionListener="#{creationTournoiBean.initAjoutTableauCourant()}" update=":formParticipantsTableaux:dataTableParticipants"/>
-			</h:form>
-		
 		</ui:define>
 		
 		
@@ -209,12 +224,9 @@
 					$(document).ready(function() {PF('createTournoi').show();});
 
 				    function validerCreateTournoi(xhr, status, args) { 
-				        if(args.validationFailed) {  
-				            //PF('createTournoi').jq.effect("shake", { times:5 }, 100);  
-				        }   
-				        else {  
+				        if(!args.validationFailed) {  
 				            PF('createTournoi').hide();  
-				        }  
+				        }   
 				    } 
 		    </script> 
 		</ui:define>

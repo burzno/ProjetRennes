@@ -46,6 +46,7 @@ public class creationTournoiBean {
 	List<Classement>	classements;
 	
 	List<Adherent>		adherents;
+	List<Adherent>		adherentsFiltred;
 	
 	private final int DUREE_MATCH = 25;
 	private final int TPS_RECUP = 20;
@@ -74,14 +75,31 @@ public class creationTournoiBean {
 	}
 	
    public void addParticipant(DragDropEvent ddEvent) {
-	  if(tableauCourant != null){
-		   Adherent ad = ((Adherent) ddEvent.getData());
+	   Adherent ad = ((Adherent) ddEvent.getData());
+	   addParticipant(ad);
+    } 
+   
+   public void addParticipant(Adherent ad) {
+	   JsfUtils.sendError("Je suis là");
+	   if(tableauCourant != null){
 		   tableauCourant.getAdherent().add(ad);
 		   adherents.remove(ad);  
+		   JsfUtils.sendMessage("Ajout de l'adhérent : "+ad.getLicenceFcd()+" au tableau num "+tableauCourant.getNumTab());
 	   }else{
 		   JsfUtils.sendError("Veuillez sélectionner au préalable un tableau");
 	   }
-    } 
+   } 
+   
+   public void removeParticipant(Adherent ad) {
+	   JsfUtils.sendError("Je suis là");
+	   if(tableauCourant != null){
+		   adherents.add(ad);  
+		   tableauCourant.getAdherent().remove(ad);
+		   JsfUtils.sendMessage("Retrait de l'adhérent : "+ad.getLicenceFcd()+" du tableau num "+tableauCourant.getNumTab());
+	   }else{
+		   JsfUtils.sendError("Veuillez sélectionner au préalable un tableau");
+	   }
+   } 
 	
 	public void ajouterTableau(){
 		tableau.setNumTab(tournoi.getTableaux().size()+1);
