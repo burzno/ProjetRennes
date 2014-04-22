@@ -12,10 +12,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import lombok.Data;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
@@ -52,6 +48,7 @@ public class CreationAdherentBean {
 	@PostConstruct
 	public void init(){
 		adherent = facadeAdherent.newInstance();
+		//groupeChoisi = (GroupeMusique) JsfUtils.getFromFlashScope("GROUPE_CHOISI");
 	}
 
 

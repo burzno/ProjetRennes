@@ -10,6 +10,7 @@ import javax.faces.model.SelectItem;
 import lombok.Data;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
+import utils.jsf.JsfUtils;
 import entities.utilisateur.Adherent;
 
 @ManagedBean
@@ -27,7 +28,7 @@ public class RechercheAdherentBean {
 	
 	private SelectItem[] clubOptions; 
 	
-	private Adherent[] selectedAdherents;  
+	private Adherent selectedAdherent;  
 	
 	@PostConstruct
 	public void init(){
@@ -38,6 +39,10 @@ public class RechercheAdherentBean {
 	
 	public List<Adherent> getListAdherents(){
 		return facadeAdherent.readAll();
+	}
+	
+	public List<Adherent> getListeAdherentsActifs(){
+		return facadeAdherent.getListeAdherentsActifs();
 	}
 	
 	
@@ -51,5 +56,18 @@ public class RechercheAdherentBean {
   
         return options;  
     }
+	
+	public void desactiverAdherent(){
+		Adherent a = getSelectedAdherent(); 
+		a.setActif(false);
+		facadeAdherent.update(a);
+		JsfUtils.sendMessage("Adhérent : "+a.getNom()+" désactivé");
+		
+	}
+	
+	public void selectionnerAdherent(){
+		JsfUtils.putInFlashScope("ADHERENT_MODIF",getSelectedAdherent());
+		
+	}
 
 }

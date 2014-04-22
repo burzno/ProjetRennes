@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.ws.rs.DefaultValue;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -32,6 +33,8 @@ public class Adherent extends Utilisateur implements Serializable {
 	String licenceFcd;
 	String licenceFfba;
 	boolean referent;
+	@DefaultValue(value = "true")
+	boolean actif;
 	@Enumerated(EnumType.STRING)
 	Categorie categorie;
 	@ManyToOne

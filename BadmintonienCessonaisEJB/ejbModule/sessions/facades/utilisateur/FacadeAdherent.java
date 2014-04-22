@@ -133,12 +133,10 @@ public class FacadeAdherent {
 
 		return daoAdherent.isExistAdherent(mailAdherent);
 	}
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
+	public List<Adherent> getListeAdherentsActifs(){
+		return daoAdherent.search("actif", true, "nom");
+	}
 
 
 }
