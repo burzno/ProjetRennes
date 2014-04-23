@@ -12,14 +12,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import lombok.Data;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/burzno/ProjetRennes.git
-=======
-import sessions.facades.references.FacadeReferences;
->>>>>>> 4eeedf6 conflits
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
-import utils.jsf.JsfUtils;
 import entities.reference.Classement;
 import entities.reference.Format;
 import entities.utilisateur.Adherent;
@@ -27,6 +22,10 @@ import entities.utilisateur.ClassementFFBA;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
+//github.com/burzno/ProjetRennes.git
+import sessions.facades.references.FacadeReferences;
+
+import utils.jsf.JsfUtils;
 
 @ManagedBean
 @Data
@@ -62,6 +61,7 @@ public class CreationAdherentBean {
 		try { 
 			chercherClassements();
 			facadeAdherent.create(adherent);
+			JsfUtils.sendMessage("Adhérent bien enregistré !");
 		} catch (Exception e) {
 			isClasse = true;
 		}
