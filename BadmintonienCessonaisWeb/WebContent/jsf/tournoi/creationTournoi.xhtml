@@ -181,24 +181,24 @@
 									<h:outputText value="#{ad.prenom}" />
 								</p:column>
 								<p:column id="sexeColumn" headerText="Sexe"
-											filterBy="#{ad.sexe}" filterMatchMode="contains" filterOptions="#{creationTournoiBean.sexeOptions}">
+											filterBy="#{ad.sexe}" filterMatchMode="contains" filterOptions="#{creationTournoiBean.sexeOptions}" style="display:none">
 									<h:outputText value="#{ad.sexe}" />
 								</p:column>
 								<p:column id="categorieColumn" headerText="Catégorie"
-											filterBy="#{ad.categorie}" filterMatchMode="contains" filterOptions="#{creationTournoiBean.categorieOptions}">
+											filterBy="#{ad.categorie}" filterMatchMode="contains" filterOptions="#{creationTournoiBean.categorieOptions}" style="display:none">
 									<h:outputText value="#{ad.categorie}" />
 								</p:column>
 								<p:column id="clubColumn" headerText="Club"
-											filterBy="#{ad.club.nomClub}" filterMatchMode="contains" filterOptions="#{creationTournoiBean.clubOptions}">
+											filterBy="#{ad.club.nomClub}" filterMatchMode="contains" filterOptions="#{creationTournoiBean.clubOptions}" style="display:none">
 									<h:outputText value="#{ad.club.nomClub}" />
 								</p:column>
-								<p:column id="classementSPLColumn" headerText="Classement Simple">
+								<p:column id="classementSPLColumn" headerText="Classement Simple" style="display:none">
 									<h:outputText value="#{ad.classement.classement.get('SPL')}" />
 								</p:column>
-								<p:column id="classementDBLColumn" headerText="Classement Double">
+								<p:column id="classementDBLColumn" headerText="Classement Double" style="display:none">
 									<h:outputText value="#{ad.classement.classement.get('DBL')}" />
 								</p:column>
-								<p:column id="classementDBMColumn" headerText="Classement Double Mixte">
+								<p:column id="classementDBMColumn" headerText="Classement Double Mixte" style="display:none">
 									<h:outputText value="#{ad.classement.classement.get('DBM')}" />
 								</p:column>
 								<p:column headerText="Ajouter">

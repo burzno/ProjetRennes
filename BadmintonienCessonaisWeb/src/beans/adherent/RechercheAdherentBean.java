@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 
+import beans.utils.Redirect;
 import beans.utils.Utils;
 import lombok.Data;
 import sessions.facades.utilisateur.FacadeAdherent;
@@ -45,18 +46,6 @@ public class RechercheAdherentBean {
 	public List<Adherent> getListeAdherentsActifs(){
 		return facadeAdherent.getListeAdherentsActifs();
 	}
-	
-	
-	private SelectItem[] createFilterOptions(String[] data)  {  
-        SelectItem[] options = new SelectItem[data.length + 1];  
-  
-        options[0] = new SelectItem("", "Select");  
-        for(int i = 0; i < data.length; i++) {  
-            options[i + 1] = new SelectItem(data[i], data[i]);  
-        }  
-  
-        return options;  
-    }
 	
 	public void desactiverAdherent(){
 		Adherent a = getSelectedAdherent(); 
