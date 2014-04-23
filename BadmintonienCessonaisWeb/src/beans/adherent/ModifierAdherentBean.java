@@ -10,6 +10,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import lombok.Data;
+import mail.EnvoiMail;
 import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;

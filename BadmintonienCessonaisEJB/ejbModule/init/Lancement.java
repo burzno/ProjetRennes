@@ -23,7 +23,7 @@ import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
-import entities.actua.Actualite;
+import entities.actualite.Actualite;
 import entities.utilisateur.Adherent;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;

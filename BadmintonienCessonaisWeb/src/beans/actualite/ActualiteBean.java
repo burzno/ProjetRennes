@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import sessions.facades.actualite.FacadeActualite;
 import utils.jsf.JsfUtils;
-import entities.actua.Actualite;
+import entities.actualite.Actualite;
 
 
 /**

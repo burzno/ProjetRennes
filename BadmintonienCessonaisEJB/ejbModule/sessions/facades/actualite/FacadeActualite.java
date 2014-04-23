@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import sessions.dao.DaoActualite;
-import entities.actua.Actualite;
+import entities.actualite.Actualite;
 
 /**
  * Facade permettant de faire le lien entre la dao et le managedbean

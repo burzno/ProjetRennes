@@ -13,13 +13,6 @@
 	</ui:define>
 
 	<ui:define name="body">
-	<h:form>
-			<p:fileUpload fileUploadListener="#{creationAdherentBean.uploadFile}" />
-		</h:form>
-			<h:form enctype="multipart/form-data">
-			<p:fileUpload value="#{fileUploadController.upload}" mode="simple" />
-				<p:commandButton value="Submit" ajax="false" actionListener="#{creationAdherentBean.uploadFile}"/>
-			</h:form>
 		<h:form>
 			<p:panel header="Création d'un adhérent" style="width:1000px">
 				<h:panelGrid columns="2">
@@ -87,8 +80,6 @@
 							<p:graphicImage library="images/icones" name="download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
 							<p:graphicImage library="images/icones" name="add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>
 							
-							
-							
 						</h:panelGrid>
 					</p:panel>
 					<p:panel >
@@ -154,13 +145,11 @@
 								</p:selectOneMenu>
 							</tag:input-zone>
 						</h:panelGrid>
-					
 					</p:panel>
 					<p:commandButton update="@form" value="Enregistrer" actionListener="#{creationAdherentBean.enregistrerAdherent}" ajax="false" styleClass="btn-validation"/>
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
-		
 	</ui:define>
 
 

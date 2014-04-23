@@ -1,4 +1,4 @@
-package entities.actua;
+package entities.actualite;
 
 import java.io.Serializable;
 
