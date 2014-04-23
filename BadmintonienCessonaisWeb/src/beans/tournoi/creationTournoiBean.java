@@ -72,9 +72,6 @@ public class creationTournoiBean {
 		sexeOptions = Utils.createFilterOptions(facadeAdherent.getListeSexeStringTab());
 		clubOptions = Utils.createFilterOptions(facadeClub.listeClubsStringTab());
 		categorieOptions = Utils.createFilterOptions(facadeRef.getAllCategorieStringTab());
-		System.out.println(sexeOptions);
-		System.out.println(clubOptions);
-		System.out.println(categorieOptions);
 	}
 	
 	

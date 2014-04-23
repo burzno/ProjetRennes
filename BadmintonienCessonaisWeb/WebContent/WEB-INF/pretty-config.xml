@@ -4,26 +4,44 @@
     xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.2
    http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.2.xsd">
 
+    <url-mapping id="accueil">
+        <pattern value="/accueil" />
+        <view-id value="/index.xhtml" />
+    </url-mapping>
+    
     <url-mapping id="creerAdherent">
         <pattern value="/creerAdherent" />
-        <view-id value="/jsf/adherent/creerAdherent.xhtml" />
+        <view-id value="/pages/jsf/adherent/creerAdherent.xhtml" />
     </url-mapping>
     
     <url-mapping id="modifierAdherent">
         <pattern value="/modifierAdherent" />
-        <view-id value="/jsf/adherent/modifierAdherent.xhtml" />
+        <view-id value="/pages/jsf/adherent/modifierAdherent.xhtml" />
     </url-mapping>
     
 	<url-mapping id="rechercherAdherent">
         <pattern value="/rechercherAdherent" />
-        <view-id value="/jsf/adherent/rechercherAdherent.xhtml" />
+        <view-id value="/pages/jsf/adherent/rechercherAdherent.xhtml" />
     </url-mapping>
     
-    
-   
     <url-mapping id="creationTournoi">
         <pattern value="/creationTournoi" />
-        <view-id value="/jsf/tournoi/creationTournoi.xhtml" />
+        <view-id value="/pages/jsf/tournoi/creationTournoi.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="enTravaux">
+        <pattern value="/enTravaux" />
+        <view-id value="/pages/jsf/construct.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="accesInterdit">
+        <pattern value="/accesInterdit" />
+        <view-id value="/pages/commun/erreur.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="consulterNews">
+        <pattern value="/consulterNews" />
+        <view-id value="/pages/commun/actualite.xhtml" />
     </url-mapping>
 	
 </pretty-config>

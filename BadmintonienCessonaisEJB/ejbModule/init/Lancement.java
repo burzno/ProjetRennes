@@ -18,10 +18,12 @@ import lombok.experimental.FieldDefaults;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import sessions.facades.actualite.FacadeActualite;
 import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
+import entities.actua.Actualite;
 import entities.utilisateur.Adherent;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
@@ -44,7 +46,9 @@ public class Lancement implements Serializable{
 	@EJB
 	FacadeClub facadeClub;
 	@EJB
-	FacadeReferences facadeReference;
+	FacadeReferences facadeReference;	
+	@EJB
+	FacadeActualite facadeActualite;
 
 	@PostConstruct
 	public void init(){
@@ -83,6 +87,9 @@ public class Lancement implements Serializable{
 								break;
 							case "Adherent":
 								creerAdherent(data);
+								break;
+							case "Actualite":
+								creerActualite(data);
 								break;
 							default:
 								break;
@@ -127,6 +134,16 @@ public class Lancement implements Serializable{
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void creerActualite(String[] data){
+		log.debug("Chargement table -Actualite-");
+		Actualite actua = facadeActualite.newInstance();
+		actua.setName(data[0]);
+		actua.setLibelle(data[1]);
+		actua.setImage(data[2]);
+		actua.setDescriptif(data[3]);
+		facadeActualite.create(actua);
 	}
 
 

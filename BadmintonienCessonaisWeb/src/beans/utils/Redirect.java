@@ -3,6 +3,7 @@ package beans.utils;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
+import utils.jsf.JsfUtils;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
@@ -24,27 +25,16 @@ public class Redirect {
 //	final String PATH_COMMUN = "/commun";
 	
 	//pretty faces
+	String accueil = "/accueil" + FACESREDIRECT;
 	String creerAdherent = "/creerAdherent" + FACESREDIRECT;
 	String rechercherAdherent = "/rechercherAdherent" + FACESREDIRECT;
 	String modifierAdherent = "/modifierAdherent" + FACESREDIRECT;
 	String creerTournoi = "/creationTournoi" + FACESREDIRECT;
 	String renseignerParticipant = "/renseignerParticipant" + FACESREDIRECT;
-
-//	//Adherent
-//	String creerAdherent = PATH_INIT + PATH_ADHERENT + "/creerAdherent.xhtml" + FACESREDIRECT;
-//	String rechercherAdherent = PATH_INIT + PATH_ADHERENT + "/rechercherAdherent.xhtml" + FACESREDIRECT;
-//
-//	
-//	//Adherent
-//	String creerAdherent = PATH_INIT + PATH_ADHERENT + "/creerAdherent.xhtml" + FACESREDIRECT;
-//	String rechercherAdherent = PATH_INIT + PATH_ADHERENT + "/rechercherAdherent.xhtml" + FACESREDIRECT;
-//	String test = PATH_INIT + PATH_ADHERENT + "/test.xhtml" + FACESREDIRECT;
-//	
-//	//Tournoi
-//	String creerTournoi = PATH_INIT + PATH_TOURNOI + "/creationTournoi.xhtml" + FACESREDIRECT;
-//	String renseignerAdherent = PATH_INIT + PATH_TOURNOI + "/renseignerParticipant.xhtml" + FACESREDIRECT;
-//	
-//	//Commun
-//	String erreur = PATH_INIT + PATH_COMMUN + "/erreur.xhtml.xhtml" +FACESREDIRECT;
+	String enTravaux = "/enTravaux" + FACESREDIRECT;
 	
+	public String newsPath(String nameNews){
+		JsfUtils.putInFlashScope("nameNews", nameNews);
+		return "/consulterNews" + FACESREDIRECT;
+	}
 }

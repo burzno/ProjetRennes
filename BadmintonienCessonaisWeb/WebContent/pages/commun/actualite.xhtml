@@ -7,16 +7,18 @@
 		template="/WEB-INF/templates/disposition.xhtml">
 		
 		<ui:define name="pageHeader">
-			Erreur de connexion
+		Consultation des actualités #{actualiteBean.actu.name}
 		</ui:define>
 		
 		<ui:define name="body">
-			<h:form>
-				Vous essayez d'accéder à un contenu interdit
-				<p:graphicImage name="wrong.png" library="images/icones" height="400px" width="600px" />
-				<p:commandButton action="#{redirect.accueil}" value="Retour Accueil" ajax="false" immediate="true"></p:commandButton>
-			</h:form>
+			<h1>#{actualiteBean.actu.libelle}</h1>
+			<p:fieldset legend="Contenu">
+				#{actualiteBean.actu.descriptif}
+			</p:fieldset>
+			<p:graphicImage name="#{actualiteBean.actu.image}.jpg" library="images/galleria"></p:graphicImage>
 		</ui:define>
 		
+		<ui:define name="pageFooter">
+		</ui:define>
 		
 </ui:composition>

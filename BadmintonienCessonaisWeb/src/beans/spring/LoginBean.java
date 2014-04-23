@@ -24,8 +24,45 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @SessionScoped
 public class LoginBean implements Serializable{
 
+	private final String AUTH 		= "ROLE_ANONYMOUS";
+	private final String SECRETAIRE = "ROLE_SECRETAIRE";
+	private final String ANIMATEUR 	= "ROLE_ANIMATEUR";
+	private final String ADHERENT 	= "ROLE_ADHERENT";
+	private final String PRESIDENT 	= "ROLE_PRESIDENT";
+	private final String ADMIN 		= "ROLE_ADMINISTRATEUR";
    
-    public String getUserLogin() 
+	
+	public boolean isAuthentificated(){
+		return !isInRole(AUTH);
+	}
+	public boolean isAdmin(){
+		return isInRole(ADMIN);
+	}
+	public boolean isPresident(){
+		return isAdmin()? true : isInRole(PRESIDENT);
+	}
+	public boolean isSecretaire(){
+		return isPresident()? true : isInRole(SECRETAIRE);
+	}
+	public boolean isAnimateur(){
+		return isPresident()? true : isInRole(ANIMATEUR);
+	}
+	public boolean isAdherent(){
+		return isAnimateur()? true : isInRole(ADHERENT);
+	}
+	
+	
+	
+	public String getRoleFormat(){
+		try{
+			return getRoles().get(0).replace("ROLE_", "").toLowerCase();
+		}catch(Exception e){
+			return "";
+		}
+	}
+	
+	
+	public String getUserLogin() 
     {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
@@ -60,14 +97,6 @@ public class LoginBean implements Serializable{
     	return roles;
     }
     
-//    public boolean isAuthentificated()
-//    {
-//    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//    	boolean retour = authentication.isAuthenticated();
-//    	System.out.println("valeur connexion : "+retour);
-//    	JsfUtils.sendError("valeur connexion : "+retour);
-//    	return retour;
-//    }
 
     /**
      * lance la fonction de "login"
@@ -92,4 +121,7 @@ public class LoginBean implements Serializable{
         SpringSecurityHelper.logout();
         return null;
     }
+    
+    
+    
 }

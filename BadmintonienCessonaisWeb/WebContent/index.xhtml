@@ -22,16 +22,15 @@
 			</div>	
 			<div id="actu" align="center">	
 			
+	           	    <h:form>
+	           	     	<h:commandLink action="#{redirect.newsPath('galleria1')}" value="test"></h:commandLink> 
+           	     	</h:form>
 				<p:galleria effect="#{galleriaBean.effect}" effectSpeed="1000" value="#{galleriaBean.images}" var="image">  
-		  			<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
+           	     	<p:graphicImage name="#{image}" library="images/galleria"/>
 		   			 <f:facet name="content">
 		       			<h:panelGrid  columns="2" cellpadding="5">
 		           	     <f:facet name="header">
-			           	     <h:form>
-			           	     	<p:commandLink action="#{redirect.newsPath(image)}" ajax="false" immediate="true">
-			           	     		<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
-			           	     	</p:commandLink>
-		           	     	</h:form>
+			           	     	<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
 		           		 </f:facet>
 		   				</h:panelGrid>
 		   			</f:facet>

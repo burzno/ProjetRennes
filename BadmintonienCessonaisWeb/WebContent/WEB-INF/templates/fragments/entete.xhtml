@@ -7,44 +7,42 @@
 	  
 	<div id="entete">
 		<div id="menu">
-			<h:form rendered="#{loginBean.isInRole('ROLE_AUTHENTIFIE')}">
+			<h:form rendered="#{loginBean.authentificated}">
 			  <p:menubar>
-		        <p:menuitem value="Accueil" icon="ui-icon-document" url="/index.xhtml" />
+		        <p:menuitem value="Accueil" icon="ui-icon-document" url="#{redirect.accueil}" />
 		 
-		        <p:submenu label="Adhérent" icon="ui-icon-pencil" rendered="#{loginBean.isInRole('ROLE_SECRETAIRE')}">
+		        <p:submenu label="Adhérent" icon="ui-icon-pencil" rendered="#{loginBean.secretaire}">
 		            <p:menuitem value="Créer un adhérent" url="#{redirect.creerAdherent}"/>
 		            <p:menuitem value="Rechercher un adhérent" url="#{redirect.rechercherAdherent}"/>
 		        </p:submenu>
 		 
-		        <p:submenu label="Tournoi" icon="ui-icon-pencil" rendered="#{loginBean.isInRole('ROLE_ADMINISTRATEUR')}">
-		     	    <p:menuitem value="Créer un tournoi" url="#{redirect.creerTournoi}" />
-		            <p:menuitem value="Renseigner les participants" url="#{redirect.renseignerParticipant}" />
-		            <p:menuitem value="Générer les poules" url="#" />
-		            <p:menuitem value="Générer les paramètres du tournoi" url="#" />
-		            <p:menuitem value="Générer les tableaux à élimination" url="#" />
-					<p:menuitem value="Saisir les résultats" url="#" />
-					<p:menuitem value="Editer la programmation" url="#" />
-					<p:menuitem value="Envoyer la programmation" url="#" />
-					<p:menuitem value="Editer les feuilles de matchs" url="#" />
+		        <p:submenu label="Tournoi" icon="ui-icon-pencil" rendered="#{loginBean.animateur}">
+		     	    <p:menuitem value="Créer un tournoi" url="#{redirect.creerTournoi}" rendered="#{loginBean.animateur}"/>
+		            <p:menuitem value="Générer les poules" url="#{redirect.enTravaux}" />
+		            <p:menuitem value="Générer les tableaux à élimination" url="#{redirect.enTravaux}" />
+					<p:menuitem value="Saisir les résultats" url="#{redirect.enTravaux}" />
+					<p:menuitem value="Editer la programmation" url="#{redirect.enTravaux}" />
+					<p:menuitem value="Editer les feuilles de matchs" url="#{redirect.enTravaux}" />
 		        </p:submenu>
 		 
-		        <p:submenu label="Championnats" icon="ui-icon-gear" rendered="#{loginBean.isInRole('ROLE_ADMINISTRATEUR')}">
-		            <p:menuitem value="Créer une équipe" url="#" />
-		            <p:menuitem value="Rechercher un adhérent" url="#{redirect.rechercherAdherent}" />
-		             <p:menuitem value="Etablir une convocation" url="#" />
+		        <p:submenu label="Championnats" icon="ui-icon-gear" rendered="#{loginBean.animateur}">
+		            <p:menuitem value="Créer une équipe" url="#{redirect.enTravaux}" />
+		             <p:menuitem value="Etablir une convocation" url="#{redirect.enTravaux}" />
 		        </p:submenu>
 		        
-		         <p:submenu label="Gérer le contenu du site" icon="ui-icon-gear" rendered="#{loginBean.isInRole('ROLE_SECRETAIRE')}">
-		            <p:menuitem value="Mettre en ligne une fiche d'entrainement" url="#" />
-		            <p:menuitem value="Mettre en ligne une vidéo" url="#" />
-		            <p:menuitem value="Mettre en ligne une actualité" url="#" />
+		         <p:submenu label="Gérer le contenu du site" icon="ui-icon-gear" rendered="#{loginBean.secretaire}">
+		            <p:menuitem value="Mettre en ligne une fiche d'entrainement" url="#{redirect.enTravaux}" />
+		            <p:menuitem value="Mettre en ligne une vidéo" url="#{redirect.enTravaux}" />
+		            <p:menuitem value="Mettre en ligne une actualité" url="#{redirect.enTravaux}" />
 		        </p:submenu>
 		        
 		        <f:facet name="options">
 					<p:outputLabel value="Bienvenue, #{loginBean.userLogin} "/>
+					(<p:outputLabel value="#{loginBean.roleFormat}" style="color:blue"/>)
 					<p:spacer/><p:spacer/>
 					<p:spacer/>
-					<p:commandButton name="connexion_btn" id="connexion_btn" value="Se déconnecter"
+					<p:commandButton styleClass="btn-logout" 
+					name="connexion_btn" id="connexion_btn" value="Se déconnecter"
 					ajax="false" actionListener="#{loginBean.logout}" action="/index.xhtml" style="margin-left:15px;"/>
 		        </f:facet>
 		        
@@ -52,16 +50,16 @@
 		      
 		    </h:form>
 			
-			
 			<div style="text-align: right">
-			<h:form rendered="#{!loginBean.isInRole('ROLE_AUTHENTIFIE')}"  prependId="false">
+			<h:form rendered="#{!loginBean.authentificated}"  prependId="false">
 			    <p:menubar> 
 			      <f:facet name="options">
+			      
 			        <p:inputText id="j_username" style="margin-right:10px" placeholder="adresse@mail.com" />
 			        	
 			       	<p:password id="j_password" style="margin-right:10px" placeholder="Mot de passe" />
 			        	
-			       	<h:commandButton value="Se connecter"  ajax="false" icon="ui-icon-extlink" actionListener="#{loginBean.login}"/>
+			       	<p:commandButton styleClass="btn-login" value="Se connecter" ajax="false" icon="ui-icon-extlink" actionListener="#{loginBean.login}"/>
 			                
 			      </f:facet>
 			    </p:menubar>			 

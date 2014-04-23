@@ -7,16 +7,11 @@
 		template="/WEB-INF/templates/disposition.xhtml">
 		
 		<ui:define name="pageHeader">
-			Erreur de connexion
+			En construction
 		</ui:define>
 		
 		<ui:define name="body">
-			<h:form>
-				Vous essayez d'accéder à un contenu interdit
-				<p:graphicImage name="wrong.png" library="images/icones" height="400px" width="600px" />
-				<p:commandButton action="#{redirect.accueil}" value="Retour Accueil" ajax="false" immediate="true"></p:commandButton>
-			</h:form>
+    	     <p:graphicImage name="en_travaux.png" library="images" height="400px" width="600px" />
 		</ui:define>
-		
 		
 </ui:composition>

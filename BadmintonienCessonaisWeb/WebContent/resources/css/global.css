@@ -20,6 +20,13 @@ body {
  z-index: 100;
 }
 
+a.ui-menuitem-link {
+	padding : 4px 6px !important;
+	border-radius : 2px !important;
+	text-align: left;
+    white-space: normal !important;
+}
+
 
 #piedDePage {
  //border : solid blue 2px; 
@@ -68,6 +75,32 @@ body {
 .btn-validation:HOVER {
     background-color: #3276B1 !important;
     border-color: #285E8E !important;
+    color: #FFFFFF !important;
+    background-image: none !important;
+}
+.btn-login{
+    background-color: #5CB85C !important;
+    border-color: #4CAE4C !important;
+    color: #FFFFFF !important;
+    background-image: none !important;
+}
+
+.btn-login:HOVER {
+    background-color: #47A447 !important;
+    border-color: #398439 !important;
+    color: #FFFFFF !important;
+    background-image: none !important;
+}
+.btn-logout{
+    background-color: #D9534F !important;
+    border-color: #D43F3A !important;
+    color: #FFFFFF !important;
+    background-image: none !important;
+}
+
+.btn-logout:HOVER {
+    background-color: #D2322D !important;
+    border-color: #AC2925 !important;
     color: #FFFFFF !important;
     background-image: none !important;
 }

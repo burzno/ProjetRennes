@@ -11,28 +11,31 @@
 
     <http auto-config='true' use-expressions="true" >
      
-        <intercept-url pattern="/resources/**"            access="permitAll" />
-        <intercept-url pattern="/javax.faces.resource/**" access="permitAll" />
-        <intercept-url pattern="/index.xhtml"             access="permitAll" />        
-        <intercept-url pattern="/jsf/tournoi/**"          access="hasRole('ROLE_ADMINISTRATEUR')" />        
-  		<intercept-url pattern="/jsf/adherent/**"         access="hasRole('ROLE_ADMINISTRATEUR')" />
-  		<intercept-url pattern="/jsf/adherent/**"         access="hasRole('ROLE_SECRETAIRE')" />
+        <intercept-url pattern="/pages/jsf/tournoi/**"		access="hasAnyRole('ROLE_ADMINISTRATEUR','ROLE_PRESIDENT','ROLE_ANIMATEUR','ROLE_ADHERENT')" />        
+  		<intercept-url pattern="/pages/jsf/adherent/**"		access="hasAnyRole('ROLE_ADMINISTRATEUR','ROLE_PRESIDENT','ROLE_SECRETAIRE')" />
+        <intercept-url pattern="/pages/jsf/**"				access="isAuthenticated()" />        
+        <intercept-url pattern="/pages/commun/**"			access="permitAll" />        
+        <intercept-url pattern="/resources/**"				access="denyAll" />
+        <intercept-url pattern="/javax.faces.resource/**"	access="permitAll" />
+        <intercept-url pattern="/index.xhtml"				access="permitAll" />        
 
   
   
-  		        <form-login login-page="/index.xhtml" 
-        			authentication-failure-url="/jsf/commun/erreur.xhtml?fail=true"
-        			default-target-url="/index.xhtml?fail=true"/>
+  		<form-login login-page="/accueil" 
+        			authentication-failure-url="/accueil?failAuth=true"
+        			default-target-url="/accueil"/>
   
     </http>
     
     <authentication-manager>
         <authentication-provider>     
             <user-service>
-                <user name="administrateur"  password="admin"  authorities="ROLE_ADMINISTRATEUR,ROLE_SECRETAIRE,ROLE_AUTHENTIFIE" />               
-                <user name="user"  password="user"  authorities="ROLE_UTILISATEUR,ROLE_AUTHENTIFIE" />
-                <user name="secretaire"  password="secretaire"  authorities="ROLE_SECRETAIRE,ROLE_AUTHENTIFIE" />
-                <user name="toto"  password="toto"  authorities="ROLE_AUTHENTIFIE" />
+                <user name="administrateur"	password="admin"		authorities="ROLE_ADMINISTRATEUR" />               
+                <user name="president"		password="president"  	authorities="ROLE_PRESIDENT" />
+                <user name="secretaire"		password="secretaire"  	authorities="ROLE_SECRETAIRE" />
+                <user name="adherent"  		password="adherent"  	authorities="ROLE_ADHERENT" />
+                <user name="animateur"  	password="animateur"  	authorities="ROLE_ANIMATEUR" />
+                <user name="internaute"		password="internaute"	authorities="ROLE_INTERNAUTE"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
