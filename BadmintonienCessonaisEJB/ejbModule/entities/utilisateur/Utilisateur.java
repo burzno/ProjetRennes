@@ -18,6 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import org.hibernate.validator.constraints.Email;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -54,6 +56,7 @@ public class Utilisateur implements Serializable{
 	long version;
 	String nom;
 	String prenom;
+	@Email
 	String adresseMail;
 	String motDePasse;
 	@Temporal(TemporalType.DATE)
