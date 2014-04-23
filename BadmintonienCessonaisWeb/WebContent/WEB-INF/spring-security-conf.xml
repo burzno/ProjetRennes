@@ -11,14 +11,12 @@
 
     <http auto-config='true' use-expressions="true" >
      
-        <intercept-url pattern="/resources/**"            access="isAuthenticated()" />
+        <intercept-url pattern="/resources/**"            access="permitAll" />
         <intercept-url pattern="/javax.faces.resource/**" access="permitAll" />
-        <intercept-url pattern="/profile-admin/**"        access="hasRole('ROLE_ADMINISTRATEUR')" />
-        <intercept-url pattern="/profile-user/**"         access="hasRole('ROLE_UTILISATEUR')" />
-        <intercept-url pattern="/profile-all/**"          access="isAuthenticated()" />
         <intercept-url pattern="/index.xhtml"             access="permitAll" />        
         <intercept-url pattern="/jsf/tournoi/**"          access="hasRole('ROLE_ADMINISTRATEUR')" />        
   		<intercept-url pattern="/jsf/adherent/**"         access="hasRole('ROLE_ADMINISTRATEUR')" />
+  		<intercept-url pattern="/jsf/adherent/**"         access="hasRole('ROLE_SECRETAIRE')" />
 
   
   
@@ -31,8 +29,10 @@
     <authentication-manager>
         <authentication-provider>     
             <user-service>
-                <user name="root"  password="root"  authorities="ROLE_ADMINISTRATEUR,ROLE_UTILISATEUR" />               
-                <user name="user"  password="user"  authorities="ROLE_UTILISATEUR" />
+                <user name="administrateur"  password="admin"  authorities="ROLE_ADMINISTRATEUR,ROLE_SECRETAIRE,ROLE_AUTHENTIFIE" />               
+                <user name="user"  password="user"  authorities="ROLE_UTILISATEUR,ROLE_AUTHENTIFIE" />
+                <user name="secretaire"  password="secretaire"  authorities="ROLE_SECRETAIRE,ROLE_AUTHENTIFIE" />
+                <user name="toto"  password="toto"  authorities="ROLE_AUTHENTIFIE" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
