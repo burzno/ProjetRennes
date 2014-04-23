@@ -12,13 +12,14 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-import beans.utils.Utils;
 import lombok.Data;
 import mail.EnvoiMail;
 import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
+import utils.jsf.JsfUtils;
+import beans.utils.Utils;
 import entities.reference.Classement;
 import entities.reference.Format;
 import entities.utilisateur.Adherent;
@@ -26,8 +27,12 @@ import entities.utilisateur.ClassementFFBA;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
-import utils.jsf.JsfUtils;
 
+/**
+ * ManagedBean permettant de gerer les adhérents avec les références, profils, clubs et mail
+ * @author g.joseph-mondesir
+ *
+ */
 @ManagedBean
 @Data
 @ViewScoped
@@ -59,7 +64,10 @@ public class CreationAdherentBean {
 		adherent = facadeAdherent.newInstance();
 	}
 
-
+	
+	/**
+	 * Permet d'enregistrer la création d'un adhérent
+	 */
 	public void enregistrerAdherent(){
 		try { 
 			chercherClassements();
@@ -75,22 +83,45 @@ public class CreationAdherentBean {
 
 	}
 
+	/**
+	 * Permet de lire tous les profils d'une facadeProfil
+	 * @return
+	 */
 	public List<Profil> getListProfils(){
 		return facadeProfil.readAll();
 	}
 
+	/**
+	 * Permet de lire tous les clubs d'une facadeClub
+	 * @return
+	 */
 	public List<Club> getListClubs(){
 		return facadeClub.readAll();
 	}
 
+	/**
+	 * Permet de récupérer la liste des sexes
+	 * @return
+	 */
 	public List<Sexe> getListSexe(){
 		return facadeAdherent.getListeSexeList();
 	}
 
+	/**
+	 * Permet de récupérer tous les classemets
+	 * @return
+	 */
 	public List<Classement> getListClassements(){
 		return facadeReferences.getAllClassement();
 	}
 
+	/**
+	 * Permet de vérifier si l'adresse mail existe dans la base de données
+	 * @param context
+	 * @param component
+	 * @param value
+	 * @throws ValidatorException
+	 */
 	public void validateAdresseMailBdd(FacesContext context, UIComponent component,Object value) throws ValidatorException {
 		String adresseMail = (String) value;
 		if (facadeAdherent.isExistAdherent(adresseMail)) {
@@ -99,6 +130,10 @@ public class CreationAdherentBean {
 	}
 
 
+	/**
+	 * Permet de récupérer le webservice du classement si l'adhérent possède une licence avec classement ou d'afficher le classement s'il n'en possède pas 
+	 * @throws Exception
+	 */
 	public void chercherClassements() throws Exception{
 		if (!isClasse) {
 			if (adherent.getLicenceFfba() != "") {
