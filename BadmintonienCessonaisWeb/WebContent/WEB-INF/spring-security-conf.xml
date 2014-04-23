@@ -21,12 +21,8 @@
   
   
   		        <form-login login-page="/index.xhtml" 
-        			authentication-failure-url="/jsf/commun/erreur.xhtml?fail=true"
-<<<<<<< HEAD
-        			default-target-url="/index.xhtml?fail=true"/>
-=======
-        			default-target-url="/index.xhtml"/>
->>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
+        			authentication-failure-url="/jsf/commun/erreur.xhtml?fail=true"/>
+
   
     </http>
     

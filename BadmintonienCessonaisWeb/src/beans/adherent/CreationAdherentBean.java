@@ -8,10 +8,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import beans.utils.Utils;
 import lombok.Data;
+import mail.EnvoiMail;
 import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
@@ -38,6 +41,9 @@ public class CreationAdherentBean {
 	private FacadeProfil facadeProfil;
 	@EJB
 	private FacadeClub facadeClub;
+	
+	@EJB
+	private EnvoiMail envoiMail;
 
 	private Adherent adherent;
 	private Classement classementSimple;
@@ -51,14 +57,19 @@ public class CreationAdherentBean {
 	@PostConstruct
 	public void init(){
 		adherent = facadeAdherent.newInstance();
+		envoiMail.sendMessage("test@localhost", null, "bite","cul");
 	}
 
 
 	public void enregistrerAdherent(){
 		try { 
 			chercherClassements();
+			adherent.setMotDePasse(Utils.hash(adherent.getPrenom()));
 			facadeAdherent.create(adherent);
 			JsfUtils.sendMessage("Adhérent bien enregistré !");
+			
+			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+			context.redirect(context.getRequestContextPath());
 		} catch (Exception e) {
 			isClasse = true;
 		}

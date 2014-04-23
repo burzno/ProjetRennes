@@ -24,6 +24,7 @@ public class Redirect {
 //	final String PATH_COMMUN = "/commun";
 	
 	//pretty faces
+	String index = "/index" + FACESREDIRECT;
 	String creerAdherent = "/creerAdherent" + FACESREDIRECT;
 	String rechercherAdherent = "/rechercherAdherent" + FACESREDIRECT;
 	String modifierAdherent = "/modifierAdherent" + FACESREDIRECT;

@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
@@ -23,7 +24,6 @@ import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
 import sessions.facades.references.FacadeReferences;
-
 import utils.jsf.JsfUtils;
 
 @ManagedBean
@@ -52,7 +52,7 @@ public class ModifierAdherentBean {
 	@PostConstruct
 	public void init(){
 		adherent = (Adherent) JsfUtils.getFromFlashScope("ADHERENT_MODIF");
-		if (adherent.getLicenceFfba() == null) {
+		if (adherent.getLicenceFfba() != "") {
 			isClasse = true;
 			classementSimple = adherent.getClassement().getClassement().get(Format.SPL);
 			classementDouble = adherent.getClassement().getClassement().get(Format.DBL);
@@ -64,9 +64,10 @@ public class ModifierAdherentBean {
 	public void enregistrerAdherent(){
 		try { 
 			chercherClassements();
-			System.out.println(adherent.toString());
 			facadeAdherent.update(adherent);
 			JsfUtils.sendMessage("Adhérent bien Modifié !");
+			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+			context.redirect(context.getRequestContextPath());
 		} catch (Exception e) {
 			isClasse = true;
 		}
