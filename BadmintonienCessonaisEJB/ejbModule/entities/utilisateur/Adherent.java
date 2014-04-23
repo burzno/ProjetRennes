@@ -33,8 +33,7 @@ public class Adherent extends Utilisateur implements Serializable {
 	String licenceFcd;
 	String licenceFfba;
 	boolean referent;
-	@DefaultValue(value = "true")
-	boolean actif;
+	boolean actif = true;
 	@Enumerated(EnumType.STRING)
 	Categorie categorie;
 	@ManyToOne

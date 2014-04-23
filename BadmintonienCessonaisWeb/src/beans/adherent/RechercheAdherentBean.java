@@ -46,24 +46,6 @@ public class RechercheAdherentBean {
 		return facadeAdherent.getListeAdherentsActifs();
 	}
 	
-	public List<Adherent> getListeAdherentsActifs(){
-		return facadeAdherent.getListeAdherentsActifs();
-	}
-	
-<<<<<<< Upstream, based on branch 'master' of https://github.com/burzno/ProjetRennes.git
-	private SelectItem[] createFilterOptions(String[] data)  {  
-        SelectItem[] options = new SelectItem[data.length + 1];  
-  
-        options[0] = new SelectItem("", "Select");  
-        for(int i = 0; i < data.length; i++) {  
-            options[i + 1] = new SelectItem(data[i], data[i]);  
-        }  
-  
-        return options;  
-    }
-	
-=======
->>>>>>> 4eeedf6 conflits
 	public void desactiverAdherent(){
 		Adherent a = getSelectedAdherent(); 
 		a.setActif(false);

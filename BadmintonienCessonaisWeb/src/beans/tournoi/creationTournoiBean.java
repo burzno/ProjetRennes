@@ -53,9 +53,9 @@ public class creationTournoiBean {
 	List<Adherent>		adherents;
 	List<Adherent>		adherentsFiltred;
 	
-	private SelectItem[] sexeOptions; 
-	private SelectItem[] clubOptions;
-	private SelectItem[] categorieOptions;
+	SelectItem[] sexeOptions; 
+	SelectItem[] clubOptions;
+	SelectItem[] categorieOptions;
 	
 	
 	
@@ -69,6 +69,12 @@ public class creationTournoiBean {
 		tournoi = facadeTournoi.getInstance();
 		tournoi.setDureeMatch(DUREE_MATCH);
 		tournoi.setDureeRecup(TPS_RECUP);
+		sexeOptions = Utils.createFilterOptions(facadeAdherent.getListeSexeStringTab());
+		clubOptions = Utils.createFilterOptions(facadeClub.listeClubsStringTab());
+		categorieOptions = Utils.createFilterOptions(facadeRef.getAllCategorieStringTab());
+		System.out.println(sexeOptions);
+		System.out.println(clubOptions);
+		System.out.println(categorieOptions);
 	}
 	
 	
@@ -78,9 +84,6 @@ public class creationTournoiBean {
 		categories = facadeRef.getAllCategorie();
 		classements = facadeRef.getAllClassement();
 		JsfUtils.sendMessage("initialisation des paramètres du tournoi");
-		sexeOptions = Utils.createFilterOptions(facadeAdherent.getListeSexeStringTab());
-		clubOptions = Utils.createFilterOptions(facadeClub.listeClubsStringTab());
-		categorieOptions = Utils.createFilterOptions(facadeRef.getAllCategorieStringTab());
 		
 	}
 	

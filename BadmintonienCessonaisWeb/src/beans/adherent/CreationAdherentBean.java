@@ -12,10 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import lombok.Data;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/burzno/ProjetRennes.git
-=======
 import sessions.facades.references.FacadeReferences;
->>>>>>> 4eeedf6 conflits
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
@@ -62,6 +59,7 @@ public class CreationAdherentBean {
 		try { 
 			chercherClassements();
 			facadeAdherent.create(adherent);
+			JsfUtils.sendMessage("Adhérent bien enregistré !");
 		} catch (Exception e) {
 			isClasse = true;
 		}

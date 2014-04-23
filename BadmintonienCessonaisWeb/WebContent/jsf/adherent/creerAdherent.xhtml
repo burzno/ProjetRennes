@@ -20,7 +20,7 @@
 						<h:panelGrid columns="4">
 						
 						<tag:input-zone for="inputProfilAdherent" label="Profil">
-								<p:selectOneMenu id="inputProfilAdherent" value="#{creationAdherentBean.adherent.profil}" required="false" converter="#{genericConverter}">
+								<p:selectOneMenu id="inputProfilAdherent" value="#{creationAdherentBean.adherent.profil}" required="true" converter="#{genericConverter}">
 									<f:selectItems value="#{creationAdherentBean.listProfils}" var="p" itemLabel="#{p.libelleProfil}" />
 								</p:selectOneMenu>
 							</tag:input-zone>
@@ -34,21 +34,21 @@
 								<p:inputText id="inputLicenceFfbaAdherent" value="#{creationAdherentBean.adherent.licenceFfba}" />
 							</tag:input-zone>
 							<tag:input-zone for="inputNomAdherent" label="Nom">
-								<p:inputText id="inputNomAdherent" value="#{creationAdherentBean.adherent.nom}" required="false" />
+								<p:inputText id="inputNomAdherent" value="#{creationAdherentBean.adherent.nom}" required="true" />
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 							<tag:input-zone for="inputPrenomAdherent" label="Prenom">
-								<p:inputText id="inputPrenomAdherent" value="#{creationAdherentBean.adherent.prenom}" required="false" />
+								<p:inputText id="inputPrenomAdherent" value="#{creationAdherentBean.adherent.prenom}" required="true" />
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 							<tag:input-zone for="inputSexeAdherent" label="Sexe">
-								<p:selectOneRadio id="inputSexeAdherent" value="#{creationAdherentBean.adherent.sexe}" required="false">
+								<p:selectOneRadio id="inputSexeAdherent" value="#{creationAdherentBean.adherent.sexe}" required="true">
 									<f:selectItems value="#{creationAdherentBean.listSexe}" var="s" itemLabel="#{s.libelle}" />
 								</p:selectOneRadio>
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 							<tag:input-zone for="inputDateNaissanceAdherent" label="Date de naissance" >
-								<p:calendar id="inputDateNaissanceAdherent" navigator="true" value="#{creationAdherentBean.adherent.dateNaissance}" required="false"/>
+								<p:calendar id="inputDateNaissanceAdherent" navigator="true" value="#{creationAdherentBean.adherent.dateNaissance}" required="true"/>
 							</tag:input-zone>
 							<p:spacer /><p:spacer />
 						</h:panelGrid>
@@ -86,7 +86,7 @@
 					<p:panel >
 						<h:panelGrid columns="4">
 						<tag:input-zone for="inputClubAdherent" label="Club">
-								<p:selectOneMenu id="inputClubAdherent" value="#{creationAdherentBean.adherent.club}" required="false" converter="#{genericConverter}">
+								<p:selectOneMenu id="inputClubAdherent" value="#{creationAdherentBean.adherent.club}" required="true" converter="#{genericConverter}">
 									<f:selectItems value="#{creationAdherentBean.listClubs}" var="c" itemLabel="#{c.nomClub}" />
 								</p:selectOneMenu>
 							</tag:input-zone>
