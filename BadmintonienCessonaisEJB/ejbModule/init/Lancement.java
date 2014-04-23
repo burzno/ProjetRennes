@@ -124,11 +124,12 @@ public class Lancement implements Serializable{
 			a.setSexe(Sexe.valueOf(data[4])); 
 			a.setDateNaissance(sdf.parse(data[5]));
 			a.setReferent(Boolean.getBoolean(data[6]));
-			a.setProfil(facadeProfil.getProfilByLibelle(data[7]));
-			a.setClub(facadeClub.getClubByLibelle(data[8]));
-			a.setAdresseMail(data[9]);
-			a.setMotDePasse(data[10]);
-			a.setCategorie(facadeReference.getCategorieByLibelleCourt(data[11]));
+			a.setActif(Boolean.getBoolean(data[7]));
+			a.setProfil(facadeProfil.getProfilByLibelle(data[8]));
+			a.setClub(facadeClub.getClubByLibelle(data[9]));
+			a.setAdresseMail(data[10]);
+			a.setMotDePasse(data[11]);
+			a.setCategorie(facadeReference.getCategorieByLibelleCourt(data[12]));
 			facadeAdherent.create(a);
 		} catch (ParseException e) {
 			e.printStackTrace();
