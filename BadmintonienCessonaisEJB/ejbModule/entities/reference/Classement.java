@@ -1,5 +1,10 @@
 package entities.reference;
 
+/**
+ * enum référençant les différents classements
+ * @author g.joseph-mondesir
+ *
+ */
 public enum Classement {
 	A1,
 	A2,

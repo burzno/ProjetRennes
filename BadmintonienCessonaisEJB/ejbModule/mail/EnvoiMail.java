@@ -18,6 +18,11 @@ import javax.mail.internet.MimeMultipart;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * Singleton permettant la gestion des mails
+ * @author g.joseph-mondesir
+ *
+ */
 @Singleton
 public class EnvoiMail {
 

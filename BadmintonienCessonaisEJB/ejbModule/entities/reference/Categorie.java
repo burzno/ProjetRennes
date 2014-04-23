@@ -4,6 +4,11 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
+/**
+ * Enum permettant l'initialisation des catégories
+ * @author g.joseph-mondesir
+ *
+ */
 @Getter
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public enum Categorie {

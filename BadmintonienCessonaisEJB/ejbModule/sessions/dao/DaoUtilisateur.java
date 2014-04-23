@@ -6,7 +6,12 @@ import javax.persistence.TypedQuery;
 
 import entities.utilisateur.Utilisateur;
 
-
+/**
+ * Dao permettant d'effectuer les requêtes sur la base de données
+ * Hérite de la classe AbstractDao
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("unchecked")
 @Stateless
 public class DaoUtilisateur extends AbstractDao<Utilisateur>{

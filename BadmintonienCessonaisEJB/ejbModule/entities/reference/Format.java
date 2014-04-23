@@ -4,6 +4,13 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
+/**
+ * Enum référençant les formats des matchs
+ * Les getters sont générés automatiquement par lombok
+ * Les attributs privés sont générés automatiquement
+ * @author g.joseph-mondesir
+ *
+ */
 @Getter
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public enum Format {

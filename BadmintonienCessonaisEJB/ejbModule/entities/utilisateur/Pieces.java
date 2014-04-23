@@ -13,6 +13,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
+/**
+ * Entité sérialisable et persistée permettant de gérer les pièces 
+ * les getters et setters sont générés par lombok
+ * les attributs privés sont générés automatiquement
+ * equals et hashcode générés automatiquement
+ * 
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("serial")
 @Entity
 @Data

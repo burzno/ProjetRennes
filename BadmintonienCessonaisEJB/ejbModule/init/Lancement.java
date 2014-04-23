@@ -29,7 +29,12 @@ import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
 
-
+/**
+ * Singleton permettant à partir d'un fichier de données de remplir la base de données
+ * Lancement au démarrage et en décommentant successivement les premières lignes init du jeu de données
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("serial")
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @Singleton
