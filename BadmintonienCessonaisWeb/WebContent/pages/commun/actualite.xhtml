@@ -8,14 +8,17 @@
 		
 		<ui:define name="pageHeader">
 		Consultation des actualités #{actualiteBean.actu.name}
+			<f:metadata>  
+				<f:viewParam name="nameImg" value="#{actualiteBean.actu}" converter="#{actualiteConverter}"></f:viewParam>  
+			</f:metadata>
 		</ui:define>
 		
 		<ui:define name="body">
 			<h1>#{actualiteBean.actu.libelle}</h1>
-			<p:fieldset legend="Contenu">
+			<p:fieldset legend="Contenu" style="width: 800px;">
 				#{actualiteBean.actu.descriptif}
 			</p:fieldset>
-			<p:graphicImage name="#{actualiteBean.actu.image}.jpg" library="images/galleria"></p:graphicImage>
+			<p:graphicImage name="#{actualiteBean.actu.image}.jpg" library="images/galleria" styleClass="imgActu"></p:graphicImage>
 		</ui:define>
 		
 		<ui:define name="pageFooter">

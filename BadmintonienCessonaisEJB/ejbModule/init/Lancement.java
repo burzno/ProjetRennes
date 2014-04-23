@@ -23,13 +23,18 @@ import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
-import entities.actua.Actualite;
+import entities.actualite.Actualite;
 import entities.utilisateur.Adherent;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
 
-
+/**
+ * Singleton permettant à partir d'un fichier de données de remplir la base de données
+ * Lancement au démarrage et en décommentant successivement les premières lignes init du jeu de données
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("serial")
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @Singleton
@@ -59,7 +64,7 @@ public class Lancement implements Serializable{
 				prop.load(this.getClass().getResourceAsStream("jeuDeDonnees.properties"));
 				genererData(prop);
 				log.debug("**************************Partie Adhérents**************************");
-				prop.clear();
+				prop = new Properties();
 				prop.load(this.getClass().getResourceAsStream("adherents.properties"));
 				genererData(prop);
 				log.debug("-------------------------Fin chargment BDD-------------------------");

@@ -168,16 +168,16 @@
 								<h:outputText value="Adhérents" />
 							</f:facet>
 								<p:column id="licenceFcdColumn" headerText="Licence Fcd"
-											filterBy="#{ad.licenceFcd}" filterMatchMode="contains">
+											filterBy="#{ad.licenceFcd}" filterMatchMode="contains" filterStyleClass="hideFilter">
 									<h:outputText value="#{ad.licenceFcd}" id="dragAdherent" styleClass="draggable" />
 									<p:draggable for="dragAdherent" revert="true" />  
 								</p:column>
 								<p:column id="nomColumn" headerText="Nom"
-											filterBy="#{ad.nom}" filterMatchMode="contains">
+											filterBy="#{ad.nom}" filterMatchMode="contains" filterStyleClass="hideFilter">
 									<h:outputText value="#{ad.nom}" />
 								</p:column>
 								<p:column id="PrenomColumn" headerText="Prénom"
-											filterBy="#{ad.prenom}" filterMatchMode="contains">
+											filterBy="#{ad.prenom}" filterMatchMode="contains" filterStyleClass="hideFilter">
 									<h:outputText value="#{ad.prenom}" />
 								</p:column>
 								<p:column id="sexeColumn" headerText="Sexe"
@@ -242,6 +242,9 @@
 				<p:droppable for="dropZoneParticipant" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="dataTableAdherents">  
 			        <p:ajax listener="#{creationTournoiBean.addParticipant}" update=":formParticipantsTableaux" />  
 			    </p:droppable>
+				<center>
+					<p:commandButton value="Valider" styleClass="btn-validation" actionListener="#{creationTournoiBean.validerTournoi}" update="@form"/>
+				</center>
 			</h:form>
 		</ui:define>
 		

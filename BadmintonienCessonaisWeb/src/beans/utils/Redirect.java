@@ -3,11 +3,16 @@ package beans.utils;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-import utils.jsf.JsfUtils;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+import utils.jsf.JsfUtils;
 
+/**
+ * ManagedBean permettant la redirection des urls
+ * @author g.joseph-mondesir
+ *
+ */
 @ManagedBean
 @ApplicationScoped
 @Getter
@@ -25,20 +30,13 @@ public class Redirect {
 //	final String PATH_COMMUN = "/commun";
 	
 	//pretty faces
-<<<<<<< HEAD
 	String accueil = "/accueil" + FACESREDIRECT;
-=======
-	String index = "/index" + FACESREDIRECT;
->>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
 	String creerAdherent = "/creerAdherent" + FACESREDIRECT;
 	String rechercherAdherent = "/rechercherAdherent" + FACESREDIRECT;
 	String modifierAdherent = "/modifierAdherent" + FACESREDIRECT;
 	String creerTournoi = "/creationTournoi" + FACESREDIRECT;
 	String renseignerParticipant = "/renseignerParticipant" + FACESREDIRECT;
 	String enTravaux = "/enTravaux" + FACESREDIRECT;
+	String consulterNews = "/consulterNews" + FACESREDIRECT;
 	
-	public String newsPath(String nameNews){
-		JsfUtils.putInFlashScope("nameNews", nameNews);
-		return "/consulterNews" + FACESREDIRECT;
-	}
 }

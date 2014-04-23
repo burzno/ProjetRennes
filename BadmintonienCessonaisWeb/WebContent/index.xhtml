@@ -15,22 +15,24 @@
 		
 		<ui:define name="body">
 			<div align="center">
-				<a href="http://www.plusdebad.com"><p:graphicImage name="Logo_+2Bad.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
-				<a href="http://www.lafederationdefense.fr/"><p:graphicImage name="Logo_FCD.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
-				<a href="http://www.ffbad.org"><p:graphicImage name="Logo_FFBa.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
-				<p:graphicImage name="LogoCSABadETRS.bmp" library="images" height="200px" />
+				<a href="http://www.plusdebad.com"><p:graphicImage name="Logo_+2Bad.jpg" library="images" styleClass="imgAccueil"/></a>
+				<a href="http://www.lafederationdefense.fr/"><p:graphicImage name="Logo_FCD.jpg" library="images" styleClass="imgAccueil"/></a>
+				<a href="http://www.ffbad.org"><p:graphicImage name="Logo_FFBa.jpg" library="images" height="200px" styleClass="imgAccueil"/></a>
+				<p:graphicImage name="LogoCSABadETRS.bmp" library="images" styleClass="imgAccueil"/>
 			</div>	
 			<div id="actu" align="center">	
 			
-	           	    <h:form>
-	           	     	<h:commandLink action="#{redirect.newsPath('galleria1')}" value="test"></h:commandLink> 
-           	     	</h:form>
 				<p:galleria effect="#{galleriaBean.effect}" effectSpeed="1000" value="#{galleriaBean.images}" var="image">  
            	     	<p:graphicImage name="#{image}" library="images/galleria"/>
 		   			 <f:facet name="content">
 		       			<h:panelGrid  columns="2" cellpadding="5">
 		           	     <f:facet name="header">
-			           	     	<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
+	           	   			 <h:form prependId="false">
+				           	     	<h:link outcome="/pages/commun/actualite.xhtml" id="identLienActu">
+	           	   			 			 <f:param  name="nameImg" value="#{image}"/>
+				           	     		<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
+				           	     	</h:link>
+		           	     	</h:form>
 		           		 </f:facet>
 		   				</h:panelGrid>
 		   			</f:facet>

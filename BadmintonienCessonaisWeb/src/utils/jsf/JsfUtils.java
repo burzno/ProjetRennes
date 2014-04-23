@@ -59,11 +59,12 @@ public class JsfUtils
      * @param key
      * @param data
      */
-    public static void putInFlashScope(String key, Object data)
-    {
+    public static void putInFlashScope(String key, Object data){
         FacesContext ctx = FacesContext.getCurrentInstance();
-        Flash flash = ctx.getExternalContext().getFlash();
-        flash.put(key, data);
+//        Flash flash = ctx.getExternalContext().getFlash();
+//        flash.put(key, data);
+        ctx.getExternalContext().getSessionMap().put(key, data);
+        
     }
 
     /**
@@ -72,10 +73,10 @@ public class JsfUtils
      * @param key
      * @return
      */
-    public static Object getFromFlashScope(String key)
-    {
+    public static Object getFromFlashScope(String key){
         FacesContext ctx = FacesContext.getCurrentInstance();
-        Flash flash = ctx.getExternalContext().getFlash();
-        return flash.get(key);
+//        Flash flash = ctx.getExternalContext().getFlash();
+//        return flash.get(key);
+        return ctx.getExternalContext().getSessionMap().get(key);
     }
 }

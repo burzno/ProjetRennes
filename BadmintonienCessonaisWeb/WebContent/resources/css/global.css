@@ -17,7 +17,12 @@ body {
  margin-bottom: 30px;
  position: fixed;
  width: 98%; 
- z-index: 100;
+ z-index: 1100;
+}
+
+.imgAccueil{
+	height:185px;
+	margin-right:150px;	
 }
 
 a.ui-menuitem-link {
@@ -27,6 +32,10 @@ a.ui-menuitem-link {
     white-space: normal !important;
 }
 
+.imgActu{
+	height: 400px;
+    margin-top: 20px;
+}
 
 #piedDePage {
  //border : solid blue 2px; 
@@ -36,11 +45,19 @@ a.ui-menuitem-link {
  width: 99%;
  
 }
+
+.hideFilter{
+	display: none !important;	
+}
+
 #error_container {
 	left:20px;
 }
 #error_container > div {
 	background-color: red;
+}
+.ui-growl {
+    z-index: 1200 !important;
 }
 
 .panelTableauClass > div > span{
