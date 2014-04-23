@@ -47,18 +47,6 @@ public class RechercheAdherentBean {
 		return facadeAdherent.getListeAdherentsActifs();
 	}
 	
-	
-	private SelectItem[] createFilterOptions(String[] data)  {  
-        SelectItem[] options = new SelectItem[data.length + 1];  
-  
-        options[0] = new SelectItem("", "Select");  
-        for(int i = 0; i < data.length; i++) {  
-            options[i + 1] = new SelectItem(data[i], data[i]);  
-        }  
-  
-        return options;  
-    }
-	
 	public void desactiverAdherent(){
 		Adherent a = getSelectedAdherent(); 
 		a.setActif(false);

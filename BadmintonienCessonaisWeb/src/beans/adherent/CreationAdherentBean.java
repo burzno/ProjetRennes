@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import lombok.Data;
+import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
@@ -22,9 +23,6 @@ import entities.utilisateur.ClassementFFBA;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
-//github.com/burzno/ProjetRennes.git
-import sessions.facades.references.FacadeReferences;
-
 import utils.jsf.JsfUtils;
 
 @ManagedBean

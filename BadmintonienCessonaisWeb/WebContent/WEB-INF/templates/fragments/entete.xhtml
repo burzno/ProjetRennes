@@ -7,18 +7,18 @@
 	  
 	<div id="entete">
 		<div id="menu">
-			<h:form rendered="#{authentificationBean.connecte}">
+			<h:form rendered="#{loginBean.isInRole('ROLE_AUTHENTIFIE')}">
 			  <p:menubar>
 		        <p:menuitem value="Accueil" icon="ui-icon-document" url="/index.xhtml" />
 		 
-		        <p:submenu label="Adhérent" icon="ui-icon-pencil">
+		        <p:submenu label="Adhérent" icon="ui-icon-pencil" rendered="#{loginBean.isInRole('ROLE_SECRETAIRE')}">
 		            <p:menuitem value="Créer un adhérent" url="#{redirect.creerAdherent}"/>
 		            <p:menuitem value="Rechercher un adhérent" url="#{redirect.rechercherAdherent}"/>
 		        </p:submenu>
 		 
-		        <p:submenu label="Tournoi" icon="ui-icon-pencil">
+		        <p:submenu label="Tournoi" icon="ui-icon-pencil" rendered="#{loginBean.isInRole('ROLE_ADMINISTRATEUR')}">
 		     	    <p:menuitem value="Créer un tournoi" url="#{redirect.creerTournoi}" />
-		            <p:menuitem value="Renseigner les participants" url="#" />
+		            <p:menuitem value="Renseigner les participants" url="#{redirect.renseignerParticipant}" />
 		            <p:menuitem value="Générer les poules" url="#" />
 		            <p:menuitem value="Générer les paramètres du tournoi" url="#" />
 		            <p:menuitem value="Générer les tableaux à élimination" url="#" />
@@ -28,22 +28,24 @@
 					<p:menuitem value="Editer les feuilles de matchs" url="#" />
 		        </p:submenu>
 		 
-		        <p:submenu label="Championnats" icon="ui-icon-gear">
+		        <p:submenu label="Championnats" icon="ui-icon-gear" rendered="#{loginBean.isInRole('ROLE_ADMINISTRATEUR')}">
 		            <p:menuitem value="Créer une équipe" url="#" />
 		            <p:menuitem value="Rechercher un adhérent" url="#{redirect.rechercherAdherent}" />
 		             <p:menuitem value="Etablir une convocation" url="#" />
 		        </p:submenu>
 		        
-		         <p:submenu label="Gérer le contenu du site" icon="ui-icon-gear">
+		         <p:submenu label="Gérer le contenu du site" icon="ui-icon-gear" rendered="#{loginBean.isInRole('ROLE_SECRETAIRE')}">
 		            <p:menuitem value="Mettre en ligne une fiche d'entrainement" url="#" />
 		            <p:menuitem value="Mettre en ligne une vidéo" url="#" />
 		            <p:menuitem value="Mettre en ligne une actualité" url="#" />
 		        </p:submenu>
 		        
 		        <f:facet name="options">
-					<p:outputLabel value="Bienvenue, #{authentificationBean.login} "/>
+					<p:outputLabel value="Bienvenue, #{loginBean.userLogin} "/>
+					<p:spacer/><p:spacer/>
+					<p:spacer/>
 					<p:commandButton name="connexion_btn" id="connexion_btn" value="Se déconnecter"
-					ajax="false" actionListener="#{loginBean.logout}" action="/index.xhtml"/>
+					ajax="false" actionListener="#{loginBean.logout}" action="/index.xhtml" style="margin-left:15px;"/>
 		        </f:facet>
 		        
 		      </p:menubar>  
@@ -52,16 +54,14 @@
 			
 			
 			<div style="text-align: right">
-			<h:form rendered="#{!authentificationBean.connecte}"  prependId="false">
+			<h:form rendered="#{!loginBean.isInRole('ROLE_AUTHENTIFIE')}"  prependId="false">
 			    <p:menubar> 
 			      <f:facet name="options">
-			        <p:inputText id="j_username" style="margin-right:10px" placeholder="adresse@mail.com"
-			       	value="#{authentificationBean.login}"/>
+			        <p:inputText id="j_username" style="margin-right:10px" placeholder="adresse@mail.com" />
 			        	
-			       	<p:password id="j_password" style="margin-right:10px" placeholder="Mot de passe"
-			       	value="#{authentificationBean.motDePasse}" />
+			       	<p:password id="j_password" style="margin-right:10px" placeholder="Mot de passe" />
 			        	
-			       	<p:commandButton value="Se connecter"  ajax="false" icon="ui-icon-extlink" actionListener="#{authentificationBean.connexion}" action="#{loginBean.login}"/>
+			       	<h:commandButton value="Se connecter"  ajax="false" icon="ui-icon-extlink" actionListener="#{loginBean.login}"/>
 			                
 			      </f:facet>
 			    </p:menubar>			 

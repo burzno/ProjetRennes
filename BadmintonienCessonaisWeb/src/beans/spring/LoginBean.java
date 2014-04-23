@@ -1,4 +1,4 @@
-package demo;
+package beans.spring;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -12,8 +12,6 @@ import javax.servlet.ServletException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-import utils.jsf.JsfUtils;
 
 /**
  * ManagedBean JSF qui permet de contrôler les action de login et logout des
@@ -61,6 +59,15 @@ public class LoginBean implements Serializable{
     	}
     	return roles;
     }
+    
+//    public boolean isAuthentificated()
+//    {
+//    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//    	boolean retour = authentication.isAuthenticated();
+//    	System.out.println("valeur connexion : "+retour);
+//    	JsfUtils.sendError("valeur connexion : "+retour);
+//    	return retour;
+//    }
 
     /**
      * lance la fonction de "login"
@@ -71,7 +78,6 @@ public class LoginBean implements Serializable{
      */
     public String login() throws IOException, ServletException {
         SpringSecurityHelper.login();
-        JsfUtils.sendMessage("Connexion OK !");
         return null;
     }
 

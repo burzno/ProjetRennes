@@ -1,4 +1,4 @@
-package demo;
+package beans.spring;
 
 import java.io.IOException;
 import javax.faces.context.ExternalContext;
@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * Classe utilitaire de lancement des fonctionnalités de login et logout 
+ * Classe utilitaire de lancement des fonctionnalitï¿½s de login et logout 
  * de Spring Security.
  * 
  * @author francois.robin
@@ -24,7 +24,7 @@ public class SpringSecurityHelper {
     }
 
     /**
-     * méthode interne pour lancer un "forward" vers une URL depuis un contexte
+     * mï¿½thode interne pour lancer un "forward" vers une URL depuis un contexte
      * JSF.
      *
      * @param url
@@ -39,7 +39,7 @@ public class SpringSecurityHelper {
     }
 
     /**
-     * lance la fonction de "login" auprès du framework Spring Security.
+     * lance la fonction de "login" auprï¿½s du framework Spring Security.
      *
      * @return
      * @throws IOException
