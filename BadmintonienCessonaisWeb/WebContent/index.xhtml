@@ -7,34 +7,41 @@
 		template="/WEB-INF/templates/disposition.xhtml">
 		
 		<ui:define name="pageHeader">
-			Salut badmintonniens
+			Salut badmintoniens
+			<center>
+				<h:outputLabel rendered="#{param.failAuth eq true}" style="color:red; font-size: 20px;">Erreur de connexion</h:outputLabel>
+			</center>
 		</ui:define>
 		
 		<ui:define name="body">
-		<div align="center">
-			<a href="http://www.plusdebad.com"><p:graphicImage name="Logo_+2Bad.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
-			<a href="http://www.lafederationdefense.fr/"><p:graphicImage name="Logo_FCD.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
-			<a href="http://www.ffbad.org"><p:graphicImage name="Logo_FFBa.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
-			<p:graphicImage name="LogoCSABadETRS.bmp" library="images" height="200px" />
-		</div>	
-		<div id="actu" align="center">	
-		
-		<p:galleria effect="#{galleriaBean.effect}" effectSpeed="1000" value="#{galleriaBean.images}" var="image">  
-  			<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
-   			 <f:facet name="content">
-       			<h:panelGrid  columns="2" cellpadding="5">
-           	     <f:facet name="header">
-              	   <a href="/BadmintonienCessonaisWeb/jsf/commun/#{image}.xhtml"><p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" /></a>
-           		 </f:facet>
-   				</h:panelGrid>
-   			</f:facet>
- 		</p:galleria>    
-                    
-		</div>
+			<div align="center">
+				<a href="http://www.plusdebad.com"><p:graphicImage name="Logo_+2Bad.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
+				<a href="http://www.lafederationdefense.fr/"><p:graphicImage name="Logo_FCD.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
+				<a href="http://www.ffbad.org"><p:graphicImage name="Logo_FFBa.jpg" library="images" height="200px" style="margin-right:150px;"/></a>
+				<p:graphicImage name="LogoCSABadETRS.bmp" library="images" height="200px" />
+			</div>	
+			<div id="actu" align="center">	
+			
+				<p:galleria effect="#{galleriaBean.effect}" effectSpeed="1000" value="#{galleriaBean.images}" var="image">  
+		  			<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
+		   			 <f:facet name="content">
+		       			<h:panelGrid  columns="2" cellpadding="5">
+		           	     <f:facet name="header">
+			           	     <h:form>
+			           	     	<p:commandLink action="#{redirect.newsPath(image)}" ajax="false" immediate="true">
+			           	     		<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
+			           	     	</p:commandLink>
+		           	     	</h:form>
+		           		 </f:facet>
+		   				</h:panelGrid>
+		   			</f:facet>
+		 		</p:galleria>    
+	                    
+			</div>
 		</ui:define>
 		
 		<ui:define name="pageFooter">
-			Si besoin est, un footer est présent
+			Le badminton sport olympique depuis 1992 !
 		</ui:define>
 		
 </ui:composition>
