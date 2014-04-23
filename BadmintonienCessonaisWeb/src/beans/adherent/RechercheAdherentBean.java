@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 
+import beans.utils.Redirect;
 import beans.utils.Utils;
 import lombok.Data;
 import sessions.facades.utilisateur.FacadeAdherent;
