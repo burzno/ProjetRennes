@@ -14,12 +14,14 @@ import javax.ws.rs.DefaultValue;
 
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import entities.reference.Categorie;
 
 @SuppressWarnings("serial")
 @Entity
 @Data
+@ToString
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @NamedQueries({
 

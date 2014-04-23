@@ -25,7 +25,11 @@ public class Redirect {
 //	final String PATH_COMMUN = "/commun";
 	
 	//pretty faces
+<<<<<<< HEAD
 	String accueil = "/accueil" + FACESREDIRECT;
+=======
+	String index = "/index" + FACESREDIRECT;
+>>>>>>> branch 'master' of https://github.com/burzno/ProjetRennes.git
 	String creerAdherent = "/creerAdherent" + FACESREDIRECT;
 	String rechercherAdherent = "/rechercherAdherent" + FACESREDIRECT;
 	String modifierAdherent = "/modifierAdherent" + FACESREDIRECT;
