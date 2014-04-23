@@ -9,10 +9,17 @@
         <view-id value="/jsf/adherent/creerAdherent.xhtml" />
     </url-mapping>
     
+    <url-mapping id="modifierAdherent">
+        <pattern value="/modifierAdherent" />
+        <view-id value="/jsf/adherent/modifierAdherent.xhtml" />
+    </url-mapping>
+    
 	<url-mapping id="rechercherAdherent">
         <pattern value="/rechercherAdherent" />
         <view-id value="/jsf/adherent/rechercherAdherent.xhtml" />
     </url-mapping>
+    
+    
    
     <url-mapping id="creationTournoi">
         <pattern value="/creationTournoi" />

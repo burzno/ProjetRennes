@@ -26,6 +26,7 @@ public class Redirect {
 	//pretty faces
 	String creerAdherent = "/creerAdherent" + FACESREDIRECT;
 	String rechercherAdherent = "/rechercherAdherent" + FACESREDIRECT;
+	String modifierAdherent = "/modifierAdherent" + FACESREDIRECT;
 	String creerTournoi = "/creationTournoi" + FACESREDIRECT;
 	String renseignerParticipant = "/renseignerParticipant" + FACESREDIRECT;
 

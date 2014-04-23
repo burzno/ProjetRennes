@@ -14,11 +14,11 @@
 	<ui:define name="body">
 		<h:form>
 			<p:contextMenu for="dataTable">
+			<p:menuitem value="Modifier" icon="ui-icon-pencil"
+					actionListener="#{rechercheAdherentBean.selectionnerAdherent}"
+						action="pretty:modifierAdherent" />
 				<p:menuitem value="Désactiver" update="@form" icon="ui-icon-trash"
 					actionListener="#{rechercheAdherentBean.desactiverAdherent}"/>
-				<p:menuitem value="Modifier" icon="ui-icon-pencil"
-					actionListener="#{rechercheAdherentBean.selectionnerAdherent}"
-						action="#{redirect.creerAdherent}" />
 			</p:contextMenu>
 			<p:dataTable id="dataTable" var="a"
 				value="#{rechercheAdherentBean.listeAdherentsActifs}"

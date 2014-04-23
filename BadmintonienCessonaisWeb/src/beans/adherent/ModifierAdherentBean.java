@@ -12,7 +12,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import lombok.Data;
-import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
@@ -23,12 +22,14 @@ import entities.utilisateur.ClassementFFBA;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
+import sessions.facades.references.FacadeReferences;
+
 import utils.jsf.JsfUtils;
 
 @ManagedBean
 @Data
 @ViewScoped
-public class CreationAdherentBean {
+public class ModifierAdherentBean {
 
 	@EJB
 	private FacadeAdherent facadeAdherent;
@@ -50,15 +51,22 @@ public class CreationAdherentBean {
 	//après construction, init ma méthode
 	@PostConstruct
 	public void init(){
-		adherent = facadeAdherent.newInstance();
+		adherent = (Adherent) JsfUtils.getFromFlashScope("ADHERENT_MODIF");
+		if (adherent.getLicenceFfba() == null) {
+			isClasse = true;
+			classementSimple = adherent.getClassement().getClassement().get(Format.SPL);
+			classementDouble = adherent.getClassement().getClassement().get(Format.DBL);
+			classementDoubleMixte = adherent.getClassement().getClassement().get(Format.DBM);
+		}
 	}
 
 
 	public void enregistrerAdherent(){
 		try { 
 			chercherClassements();
-			facadeAdherent.create(adherent);
-			JsfUtils.sendMessage("Adhérent bien enregistré !");
+			System.out.println(adherent.toString());
+			facadeAdherent.update(adherent);
+			JsfUtils.sendMessage("Adhérent bien Modifié !");
 		} catch (Exception e) {
 			isClasse = true;
 		}
@@ -79,13 +87,6 @@ public class CreationAdherentBean {
 
 	public List<Classement> getListClassements(){
 		return facadeReferences.getAllClassement();
-	}
-
-	public void validateAdresseMailBdd(FacesContext context, UIComponent component,Object value) throws ValidatorException {
-		String adresseMail = (String) value;
-		if (facadeAdherent.isExistAdherent(adresseMail)) {
-			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"L'adresse mail a déjà été saisi","Entrée non valide"));
-		}
 	}
 
 
