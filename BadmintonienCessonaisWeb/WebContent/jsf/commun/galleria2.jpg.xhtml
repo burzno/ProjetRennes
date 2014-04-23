@@ -7,7 +7,7 @@
 		template="/WEB-INF/templates/disposition.xhtml">
 		
 		<ui:define name="pageHeader">
-			Salut badmintonniens
+			Les informations de l'image 2
 		</ui:define>
 		
 		<ui:define name="body">
@@ -20,15 +20,8 @@
 		<div id="actu" align="center">	
 		
 		<p:galleria effect="#{galleriaBean.effect}" effectSpeed="1000" value="#{galleriaBean.images}" var="image">  
-  			<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
-   			 <f:facet name="content">
-       			<h:panelGrid  columns="2" cellpadding="5">
-           	     <f:facet name="header">
-              	   <a href="/BadmintonienCessonaisWeb/jsf/commun/#{image}.xhtml"><p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" /></a>
-           		 </f:facet>
-   				</h:panelGrid>
-   			</f:facet>
- 		</p:galleria>    
+   			<p:graphicImage name="#{image}" library="images/galleria" height="400px" width="600px" />
+		</p:galleria>    
                     
 		</div>
 		</ui:define>

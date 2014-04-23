@@ -16,7 +16,6 @@ import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
-import utils.jsf.JsfUtils;
 import entities.reference.Classement;
 import entities.reference.Format;
 import entities.utilisateur.Adherent;
@@ -24,6 +23,7 @@ import entities.utilisateur.ClassementFFBA;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
+import utils.jsf.JsfUtils;
 
 @ManagedBean
 @Data
