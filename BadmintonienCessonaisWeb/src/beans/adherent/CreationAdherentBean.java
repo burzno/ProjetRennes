@@ -57,7 +57,6 @@ public class CreationAdherentBean {
 	@PostConstruct
 	public void init(){
 		adherent = facadeAdherent.newInstance();
-		envoiMail.sendMessage("test@localhost", null, "bite","cul");
 	}
 
 
@@ -67,7 +66,7 @@ public class CreationAdherentBean {
 			adherent.setMotDePasse(Utils.hash(adherent.getPrenom()));
 			facadeAdherent.create(adherent);
 			JsfUtils.sendMessage("Adhérent bien enregistré !");
-			
+			envoiMail.sendMessage("test@localhost", null, "Creation compte","Un compte viens de vous être créé sur le site du badminton cessonnais");
 			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 			context.redirect(context.getRequestContextPath());
 		} catch (Exception e) {
