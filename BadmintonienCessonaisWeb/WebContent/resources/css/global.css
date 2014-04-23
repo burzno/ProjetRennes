@@ -15,6 +15,9 @@ body {
  padding : 10px; 
  text-align : center;
  margin-bottom: 30px;
+ position: fixed;
+ width: 98%; 
+ z-index: 100;
 }
 
 
@@ -80,6 +83,9 @@ body {
 	width: 100px;
 }
 
+.borderLess{
+	width: 100%;
+}
 .borderLess > tbody > tr, .borderLess > tbody > tr > td{
 	border-width: 0px;
 	vertical-align: top;

@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -15,8 +16,10 @@ import org.primefaces.event.DragDropEvent;
 
 import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
+import sessions.facades.utilisateur.FacadeClub;
 import sessions.tournoi.FacadeTournoi;
 import utils.jsf.JsfUtils;
+import beans.utils.Utils;
 import entities.reference.Categorie;
 import entities.reference.Classement;
 import entities.reference.Format;
@@ -39,13 +42,24 @@ public class creationTournoiBean {
 	@EJB
 	FacadeAdherent facadeAdherent;
 	@EJB
+	FacadeClub facadeClub;
 	
+	@EJB
 	FacadeReferences facadeRef;
 	List<Format>		formats;
 	List<Categorie>		categories;
 	List<Classement>	classements;
 	
 	List<Adherent>		adherents;
+	List<Adherent>		adherentsFiltred;
+	
+	private SelectItem[] sexeOptions; 
+	private SelectItem[] clubOptions;
+	private SelectItem[] categorieOptions;
+	
+	
+	
+	
 	
 	private final int DUREE_MATCH = 25;
 	private final int TPS_RECUP = 20;
@@ -64,6 +78,10 @@ public class creationTournoiBean {
 		categories = facadeRef.getAllCategorie();
 		classements = facadeRef.getAllClassement();
 		JsfUtils.sendMessage("initialisation des paramètres du tournoi");
+		sexeOptions = Utils.createFilterOptions(facadeAdherent.getListeSexeStringTab());
+		clubOptions = Utils.createFilterOptions(facadeClub.listeClubsStringTab());
+		categorieOptions = Utils.createFilterOptions(facadeRef.getAllCategorieStringTab());
+		
 	}
 	
 	public void initAjoutTableau(){
@@ -74,14 +92,31 @@ public class creationTournoiBean {
 	}
 	
    public void addParticipant(DragDropEvent ddEvent) {
-	  if(tableauCourant != null){
-		   Adherent ad = ((Adherent) ddEvent.getData());
+	   Adherent ad = ((Adherent) ddEvent.getData());
+	   addParticipant(ad);
+    } 
+   
+   public void addParticipant(Adherent ad) {
+	   JsfUtils.sendError("Je suis là");
+	   if(tableauCourant != null){
 		   tableauCourant.getAdherent().add(ad);
 		   adherents.remove(ad);  
+		   JsfUtils.sendMessage("Ajout de l'adhérent : "+ad.getLicenceFcd()+" au tableau num "+tableauCourant.getNumTab());
 	   }else{
 		   JsfUtils.sendError("Veuillez sélectionner au préalable un tableau");
 	   }
-    } 
+   } 
+   
+   public void removeParticipant(Adherent ad) {
+	   JsfUtils.sendError("Je suis là");
+	   if(tableauCourant != null){
+		   adherents.add(ad);  
+		   tableauCourant.getAdherent().remove(ad);
+		   JsfUtils.sendMessage("Retrait de l'adhérent : "+ad.getLicenceFcd()+" du tableau num "+tableauCourant.getNumTab());
+	   }else{
+		   JsfUtils.sendError("Veuillez sélectionner au préalable un tableau");
+	   }
+   } 
 	
 	public void ajouterTableau(){
 		tableau.setNumTab(tournoi.getTableaux().size()+1);

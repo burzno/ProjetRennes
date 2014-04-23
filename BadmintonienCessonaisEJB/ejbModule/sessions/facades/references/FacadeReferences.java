@@ -33,4 +33,24 @@ public class FacadeReferences {
 		return Format.valueOf(libCourt);
 	}
 	
+	public String[] getAllClassementStringTab(){
+		String[] classements = new String[Classement.values().length];
+		int cpt=0;
+		for (Classement c : Classement.values()) {
+			classements[cpt] =  c.name();
+			cpt++;
+		}
+		return classements;
+	}
+	
+	public String[] getAllCategorieStringTab(){
+		String[] categories = new String[Categorie.values().length];
+		int cpt=0;
+		for (Categorie c : Categorie.values()) {
+			categories[cpt] =  c.name();
+			cpt++;
+		}
+		return categories;
+	}
+	
 }
