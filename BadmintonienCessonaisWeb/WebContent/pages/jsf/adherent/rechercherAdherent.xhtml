@@ -42,7 +42,7 @@
 
 				<p:column id="licenceFfbaColumn" filterBy="licenceFfba"
 					headerText="Licence FFBA">
-					<h:outputText value="#{a.licenceFcd}" />
+					<h:outputText value="#{a.licenceFfba}" />
 				</p:column>
 
 				<p:column id="nomColumn" filterBy="nom" headerText="Nom">
@@ -57,10 +57,10 @@
 					<h:outputText value="#{a.sexe}" />
 				</p:column>
 	
-				<p:column id="dateNaissColumn" filterBy="dateNaissance"
+				<p:column id="dateNaissColumn" 
 					headerText="Date de naissance">
 					<h:outputText value="#{a.dateNaissance}">
-						<f:convertDateTime pattern="yyyy" />
+						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</p:column>
 

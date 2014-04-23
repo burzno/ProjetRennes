@@ -57,29 +57,28 @@
 						<h:panelGrid columns="4">
 							<p:outputLabel value="Formulaire FCD" />
 							<p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.pieces.formulaireFcd}" style="height:25px;margin-left:20px"  />
-							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
-							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>
+							<p:graphicImage library="images/icones" name="download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
+							<p:graphicImage library="images/icones" name="add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>
 							
 							<p:outputLabel value="Chèque FCD" />
 							<p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.pieces.chequeFcd}" style="height:25px;margin-left:20px" />
-							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
-							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
+							<p:graphicImage library="images/icones" name="download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
+							<p:graphicImage library="images/icones" name="add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
 							
 							<p:outputLabel value="Licence FCD" />
 							<p:selectBooleanCheckbox  value="#{creationAdherentBean.adherent.pieces.licenceFcd}" style="height:25px;margin-left:20px" />
-							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
-							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
+							<p:graphicImage library="images/icones" name="download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
+							<p:graphicImage library="images/icones" name="add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
 							
 							<p:outputLabel value="Certificat Médical" />
 							<p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.pieces.certificatMedical}" style="height:25px;margin-left:20px" />
-							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
-							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
+							<p:graphicImage library="images/icones" name="download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
+							<p:graphicImage library="images/icones" name="add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>  
 							
 							<p:outputLabel value="Chèque CSA" />
 							<p:selectBooleanCheckbox value="#{creationAdherentBean.adherent.pieces.chequeCsa}" style="height:25px;margin-left:20px" />
-							<p:graphicImage value="/resources/images/icones/download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
-							<p:graphicImage value="/resources/images/icones/add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>
-							
+							<p:graphicImage library="images/icones" name="download.png" style="height:25px;margin-left:20px"  title="Télécharger la pièce"/>
+							<p:graphicImage library="images/icones" name="add.png" style="height:25px;margin-left:20px" title="Mettre à jour la pièce"/>
 							
 						</h:panelGrid>
 					</p:panel>
@@ -147,7 +146,7 @@
 							</tag:input-zone>
 						</h:panelGrid>
 					</p:panel>
-					<p:commandButton update="@form" value="Enregistrer" actionListener="#{creationAdherentBean.enregistrerAdherent}" ajax="false" />
+					<p:commandButton update="@form" value="Enregistrer" actionListener="#{creationAdherentBean.enregistrerAdherent}" ajax="false" styleClass="btn-validation"/>
 				</h:panelGrid>
 			</p:panel>
 		</h:form>

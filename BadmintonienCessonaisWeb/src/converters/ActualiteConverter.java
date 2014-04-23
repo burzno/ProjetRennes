@@ -8,7 +8,7 @@ import javax.faces.convert.Converter;
 
 import sessions.facades.actualite.FacadeActualite;
 import utils.jsf.JsfUtils;
-import entities.actua.Actualite;
+import entities.actualite.Actualite;
 import exceptions.BadmintonException;
 
 @ManagedBean

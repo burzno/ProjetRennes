@@ -6,6 +6,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
+/**
+ * Bean permettant l'affichage des images de la page d'accueil
+ * @author g.joseph-mondesir
+ *
+ */
 @ManagedBean
 public class GalleriaBean {  
 

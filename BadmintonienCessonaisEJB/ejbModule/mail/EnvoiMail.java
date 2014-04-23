@@ -18,34 +18,36 @@ import javax.mail.internet.MimeMultipart;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * Singleton permettant la gestion des mails
+ * @author g.joseph-mondesir
+ *
+ */
 @Singleton
 public class EnvoiMail {
-
-	private Log log = LogFactory.getLog(this.getClass());
 	
 	private String from;
 	private String host;
 	private Session session;
+	private Log log = LogFactory.getLog(this.getClass());
 	private final String NOM_PROP="mail.properties";
 
 	@PostConstruct
 	public void init(){
-		chargerParam();
+		initParam();
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host);
 		session = Session.getDefaultInstance(props, null);
-
-		log.info("mail init : host: " + host + " from: " + from);
 	}
 	
 
-	public void sendMessage(String to, String cc, String subject, String content ){
+	public void sendMessage(String destinataire, String copie, String sujet, String contenu ){
 		try {
 			MimeMultipart mimeMultiPart = new MimeMultipart();
 			
 			MimeBodyPart textBodyPart = new MimeBodyPart();
-			textBodyPart.setText(content);
+			textBodyPart.setText(contenu);
 			
 			mimeMultiPart.addBodyPart(textBodyPart);
 			
@@ -53,21 +55,20 @@ public class EnvoiMail {
 			MimeMessage msg = new MimeMessage(session);
 			InternetAddress iaFrom = new InternetAddress(from);
 			msg.setSender(iaFrom);
-			msg.addRecipients(Message.RecipientType.TO, to);
-			if(cc != null && !"".equals(cc)){
-				msg.addRecipients(Message.RecipientType.CC, cc);
+			msg.addRecipients(Message.RecipientType.TO, destinataire);
+			if(copie != null && !"".equals(copie)){
+				msg.addRecipients(Message.RecipientType.CC, copie);
 			}
 			
-			msg.setSubject(subject);
+			msg.setSubject(sujet);
 			msg.setContent(mimeMultiPart);
 			Transport.send(msg);
-			log.info("Envoi de mail à " + to);
 		} catch (MessagingException e) {
 			log.error("Impossible d'envoyer le mail");
 		}
 	}
 	
-	private void chargerParam(){
+	private void initParam(){
 		Properties prop = new Properties();
 		try (InputStream in = EnvoiMail.class.getResourceAsStream(NOM_PROP);){
 			prop.load(in);

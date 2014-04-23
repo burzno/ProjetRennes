@@ -3,8 +3,13 @@ package sessions.dao;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 
-import entities.actua.Actualite;
+import entities.actualite.Actualite;
 
+/**
+ * Dao permettant le requettage en base de données
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("unchecked")
 @Stateless
 public class DaoActualite extends AbstractDao<Actualite>{

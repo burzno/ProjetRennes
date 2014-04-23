@@ -97,6 +97,9 @@ public class creationTournoiBean {
 		JsfUtils.sendMessage("Le tournoi "+tournoi.getNom()+" a bien été sauvegardé");
 	}
 	
+	/**
+	 * Initialisation d'un tableau
+	 */
 	public void initAjoutTableau(){
 		tableau = facadeTournoi.newTableau();
 	}
@@ -112,20 +115,19 @@ public class creationTournoiBean {
 	 * Permet d'ajouter un participant
 	 * @param ddEvent
 	 */
-   public void addParticipant(DragDropEvent ddEvent) {
+   /*public void addParticipant(DragDropEvent ddEvent) {
 	   Adherent ad = ((Adherent) ddEvent.getData());
 	   addParticipant(ad);
-    } 
+    } */
    
    /**
     * Permet d'ajouter un participant au tableau
     * @param ad
     */
    public void addParticipant(Adherent ad) {
-	   JsfUtils.sendError("Je suis là");
 	   if(tableauCourant != null){
 		   tableauCourant.getAdherent().add(ad);
-		   adherents.remove(ad);  
+		   adherentsFiltred.remove(ad);  
 		   JsfUtils.sendMessage("Ajout de l'adhérent : "+ad.getLicenceFcd()+" au tableau num "+tableauCourant.getNumTab());
 	   }else{
 		   JsfUtils.sendError("Veuillez sélectionner au préalable un tableau");
@@ -137,9 +139,8 @@ public class creationTournoiBean {
     * @param ad
     */
    public void removeParticipant(Adherent ad) {
-	   JsfUtils.sendError("Je suis là");
 	   if(tableauCourant != null){
-		   adherents.add(ad);  
+		   adherentsFiltred.add(ad);  
 		   tableauCourant.getAdherent().remove(ad);
 		   JsfUtils.sendMessage("Retrait de l'adhérent : "+ad.getLicenceFcd()+" du tableau num "+tableauCourant.getNumTab());
 	   }else{

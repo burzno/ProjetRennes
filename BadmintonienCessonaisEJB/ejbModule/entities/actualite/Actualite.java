@@ -1,4 +1,4 @@
-package entities.actua;
+package entities.actualite;
 
 import java.io.Serializable;
 
@@ -13,6 +13,15 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
+
+/**
+ * Entité sérialisable et persistée permettant de gérer les actualités 
+ * les getters et setters sont générés par lombok
+ * les attributs privés sont générés automatiquement
+ * 
+ * @author g.joseph-mondesir
+ *
+ */
 
 @SuppressWarnings("serial")
 @Entity
