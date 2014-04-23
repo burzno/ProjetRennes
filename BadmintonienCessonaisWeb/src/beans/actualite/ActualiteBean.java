@@ -12,7 +12,11 @@ import utils.jsf.JsfUtils;
 import entities.actua.Actualite;
 
 
-
+/**
+ * ManagedBean permettant de gérer les actualités
+ * @author g.joseph-mondesir
+ *
+ */
 @ManagedBean
 @Data
 @FieldDefaults(level=AccessLevel.PRIVATE)

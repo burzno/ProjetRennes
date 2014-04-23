@@ -26,6 +26,16 @@ import entities.reference.Classement;
 import entities.reference.Format;
 import entities.utilisateur.Adherent;
 
+
+/**
+ * Entité sérialisable et persistée permettant de gérer les tableaux 
+ * les getters et setters sont générés par lombok
+ * les attributs privés sont générés automatiquement
+ * equals et hashcode générés automatiquement
+ * 
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("serial")
 @Entity
 @Data

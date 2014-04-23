@@ -5,6 +5,11 @@ import javax.persistence.TypedQuery;
 
 import entities.actua.Actualite;
 
+/**
+ * Dao permettant le requettage en base de données
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("unchecked")
 @Stateless
 public class DaoActualite extends AbstractDao<Actualite>{

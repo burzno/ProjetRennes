@@ -6,6 +6,11 @@ import javax.persistence.TypedQuery;
 
 import entities.utilisateur.Adherent;
 
+/**
+ * Dao permettant le requettage en base de données
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("unchecked")
 @Stateless
 public class DaoAdherent extends AbstractDao<Adherent> {

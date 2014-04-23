@@ -1,6 +1,10 @@
 package entities.utilisateur;
 
-
+/**
+ * Enum permettant de choisir le sexe
+ * @author g.joseph-mondesir
+ *
+ */
 public enum Sexe {
 
 	FEMME("Femme"),

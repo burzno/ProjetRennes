@@ -14,7 +14,12 @@ public class FacadeUtilisateur {
 	@EJB
 	private DaoUtilisateur daoUtilisateur;
 	
-	
+	/**
+	 * Vérifie les paramètres de connection login et mot de passe
+	 * @param login
+	 * @param motDePasse
+	 * @return
+	 */
 	public Utilisateur getUtilisateur(String login, String motDePasse){
 		return daoUtilisateur.verifConnection(login, motDePasse);
 	}

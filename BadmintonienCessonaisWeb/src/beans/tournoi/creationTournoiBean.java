@@ -27,6 +27,11 @@ import entities.tournoi.Tableau;
 import entities.tournoi.Tournoi;
 import entities.utilisateur.Adherent;
 
+/**
+ * ManagedBean permettant de gérer la création de tournois
+ * @author g.joseph-mondesir
+ *
+ */
 @ManagedBean
 @ViewScoped
 @Data
@@ -64,6 +69,9 @@ public class creationTournoiBean {
 	private final int DUREE_MATCH = 25;
 	private final int TPS_RECUP = 20;
 	
+	/**
+	 * Initialisation des paramètres par defaut du tournoi
+	 */
 	@PostConstruct
 	public void init(){
 		tournoi = facadeTournoi.getInstance();
@@ -74,7 +82,9 @@ public class creationTournoiBean {
 		categorieOptions = Utils.createFilterOptions(facadeRef.getAllCategorieStringTab());
 	}
 	
-	
+	/**
+	 * Initialisation des paramètres du tournoi
+	 */
 	public void createTournoi(){
 		adherents = facadeAdherent.readAll();
 		formats = facadeRef.getAllFormat();
@@ -84,18 +94,33 @@ public class creationTournoiBean {
 		
 	}
 	
+	/**
+	 * Initialisation d'un tableau
+	 */
 	public void initAjoutTableau(){
 		tableau = facadeTournoi.newTableau();
 	}
+	
+	/**
+	 * Initialisation du tableau en cours
+	 */
 	public void initAjoutTableauCourant(){
 		tableauCourant = facadeTournoi.newTableau();
 	}
 	
+	/**
+	 * Permet d'ajouter un participant
+	 * @param ddEvent
+	 */
    public void addParticipant(DragDropEvent ddEvent) {
 	   Adherent ad = ((Adherent) ddEvent.getData());
 	   addParticipant(ad);
     } 
    
+   /**
+    * Permet d'ajouter un participant au tableau
+    * @param ad
+    */
    public void addParticipant(Adherent ad) {
 	   JsfUtils.sendError("Je suis là");
 	   if(tableauCourant != null){
@@ -107,6 +132,10 @@ public class creationTournoiBean {
 	   }
    } 
    
+   /**
+    * Permet de supprimer un participant du tableau
+    * @param ad
+    */
    public void removeParticipant(Adherent ad) {
 	   JsfUtils.sendError("Je suis là");
 	   if(tableauCourant != null){
@@ -118,6 +147,9 @@ public class creationTournoiBean {
 	   }
    } 
 	
+   /**
+    * permet d'ajouter un tableau
+    */
 	public void ajouterTableau(){
 		tableau.setNumTab(tournoi.getTableaux().size()+1);
 		tableau.setTournoi(tournoi);

@@ -15,13 +15,23 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+
+/**
+ * Entité sérialisable et persistée permettant de gérer les tournois 
+ * les getters et setters sont générés par lombok
+ * les attributs privés sont générés automatiquement
+ * equals et hashcode générés automatiquement
+ * 
+ * @author g.joseph-mondesir
+ *
+ */
 @SuppressWarnings("serial")
 @Entity
 @Data

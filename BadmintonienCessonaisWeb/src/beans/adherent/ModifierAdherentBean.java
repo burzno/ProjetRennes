@@ -4,18 +4,17 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 
 import lombok.Data;
+import sessions.facades.references.FacadeReferences;
 import sessions.facades.utilisateur.FacadeAdherent;
 import sessions.facades.utilisateur.FacadeClub;
 import sessions.facades.utilisateur.FacadeProfil;
+import utils.jsf.JsfUtils;
 import entities.reference.Classement;
 import entities.reference.Format;
 import entities.utilisateur.Adherent;
@@ -23,9 +22,12 @@ import entities.utilisateur.ClassementFFBA;
 import entities.utilisateur.Club;
 import entities.utilisateur.Profil;
 import entities.utilisateur.Sexe;
-import sessions.facades.references.FacadeReferences;
-import utils.jsf.JsfUtils;
 
+/**
+ * ManagedBean permettant de gérer les modifications d'un ahdérent
+ * @author g.joseph-mondesir
+ *
+ */
 @ManagedBean
 @Data
 @ViewScoped
@@ -61,6 +63,9 @@ public class ModifierAdherentBean {
 	}
 
 
+	/**
+	 * Permet d'enregistrer l'adhérnet après mise à jour
+	 */
 	public void enregistrerAdherent(){
 		try { 
 			chercherClassements();
@@ -74,23 +79,43 @@ public class ModifierAdherentBean {
 
 	}
 
+	/**
+	 * Récupère tous les profils de la facadeProfil
+	 * @return
+	 */
 	public List<Profil> getListProfils(){
 		return facadeProfil.readAll();
 	}
 
+	/**
+	 * récupère tous les clubs de la facadeClub
+	 * @return
+	 */
 	public List<Club> getListClubs(){
 		return facadeClub.readAll();
 	}
 
+	/**
+	 * Récupère la liste des sexes
+	 * @return
+	 */
 	public List<Sexe> getListSexe(){
 		return facadeAdherent.getListeSexeList();
 	}
 
+	/**
+	 * récupère la liste des classements
+	 * @return
+	 */
 	public List<Classement> getListClassements(){
 		return facadeReferences.getAllClassement();
 	}
 
 
+	/**
+	 * Permet d'ajouter les classements si le joueur est classé ou de les proposer à l'ajout s'il n'est pas classé
+	 * @throws Exception
+	 */
 	public void chercherClassements() throws Exception{
 		if (!isClasse) {
 			if (adherent.getLicenceFfba() != "") {
