@@ -128,8 +128,8 @@ public class Lancement implements Serializable{
 			a.setPrenom(data[3]);
 			a.setSexe(Sexe.valueOf(data[4])); 
 			a.setDateNaissance(sdf.parse(data[5]));
-			a.setReferent(Boolean.getBoolean(data[6]));
-			a.setActif(Boolean.getBoolean(data[7]));
+			a.setReferent(false);
+			a.setActif(true);
 			a.setProfil(facadeProfil.getProfilByLibelle(data[8]));
 			a.setClub(facadeClub.getClubByLibelle(data[9]));
 			a.setAdresseMail(data[10]);

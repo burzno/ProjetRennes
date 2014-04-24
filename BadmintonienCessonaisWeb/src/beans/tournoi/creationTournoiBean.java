@@ -93,7 +93,7 @@ public class creationTournoiBean {
 	}
 	
 	public void validerTournoi(){
-		//TODO save tournoi
+		facadeTournoi.createTournoi(tournoi);
 		JsfUtils.sendMessage("Le tournoi "+tournoi.getNom()+" a bien été sauvegardé");
 	}
 	
